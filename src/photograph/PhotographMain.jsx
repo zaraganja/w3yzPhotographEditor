@@ -21,9 +21,9 @@ const PhotographMain = (props) => {
     return (
         <section className={`max-h-screen overflow-hidden font-pop`}>
             <div className={`h-20  flex flex-row justify-between bg-white items-center pr-5 pl-5 devide-y border-b border-border-color-0`}>
-                <h className=" text-popNormal16">İmaj Düzenle</h>
+                <h className=" text-popNormal16 text-text-color-0">İmaj Düzenle</h>
                 <ul>
-                    <button className={`mr-7 hover:text-zinc-500 text-pop14`}>Vazgeç</button>
+                    <button className={`mr-7 hover:text-zinc-500 text-pop14 text-text-color-0`}>Vazgeç</button>
                     <button className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
                 </ul>
             </div>
@@ -37,19 +37,19 @@ const PhotographMain = (props) => {
                         <ul className={`flex flex-row justify-between align-middle overflow-hidden mt-10 bg-white px-96`}>
                             <div className={` flex flex-col place-content-center self-center overflow-hidden place-items-center`} >
                                 <Cropicon fill={OnCropSelect ? '#1D2939' : '#888888'} />
-                                <button onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false); setdeleteBorderLeft(false) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnCropSelect ? `text-[#1D2939]` : `text-[#888888] `}  `}>Düzenle</button>
+                                <button onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false); setdeleteBorderLeft(false) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnCropSelect ? ` text-text-color-0` : ` text-bar-offline-0 `}  `}>Düzenle</button>
                             </div>
                             <div className={` flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
                                 <Arkaplanicon fill={OnBackgroundSelect ? '#1D2939' : '#888888'} />
-                                <button onClick={() => { setOnBackgroundSelect(true); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(false); setdeleteBorderLeft(false) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnBackgroundSelect ? `text-[#1D2939]` : `text-[#888888]`}`}>Arka Plan </button>
+                                <button onClick={() => { setOnBackgroundSelect(true); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(false); setdeleteBorderLeft(false) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnBackgroundSelect ? ` text-text-color-0` : ` text-bar-offline-0`}`}>Arka Plan </button>
                             </div>
                             <div className={` flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
                                 <Colors fill={OnColorsSelect ? '#1D2939' : '#888888'} />
-                                <button onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(true); setOnAddTXTselect(false); setdeleteBorderLeft(false) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnColorsSelect ? `text-[#1D2939]` : `text-[#888888]`}   `}>Renk Ayarları</button>
+                                <button onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(true); setOnAddTXTselect(false); setdeleteBorderLeft(false) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnColorsSelect ? ` text-text-color-0` : ` text-bar-offline-0`}   `}>Renk Ayarları</button>
                             </div>
                             <div className={` flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
                                 <TXT fill={OnAddTXTselect ? '#1D2939' : '#888888'} />
-                                <button onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(true); setdeleteBorderLeft(true) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnAddTXTselect ? `text-[#1D2939]` : `text-[#888888]`}`}>Metin Ekle</button>
+                                <button onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(true); setdeleteBorderLeft(true) }} className={` pt-2 hover:text-gray-600 text-pop60016 ${OnAddTXTselect ? ` text-text-color-0` : ` text-bar-offline-0`}`}>Metin Ekle</button>
                             </div>
                         </ul>
                     </div>

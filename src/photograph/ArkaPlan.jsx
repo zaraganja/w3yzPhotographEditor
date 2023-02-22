@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import img from '../assets/images/backgroundimg.jpg';
-import FlatList from "flatlist-react/lib";
+
 
 
 
