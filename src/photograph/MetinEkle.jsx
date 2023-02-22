@@ -4,9 +4,76 @@ import { ReactComponent as Phone } from '../assets/icons/smartphone.svg';
 import { ReactComponent as Back } from '../assets/icons/reply.svg';
 import { ReactComponent as Forward } from '../assets/icons/forward.svg';
 import { ReactComponent as Expand } from '../assets/icons/expand_more.svg';
+import { ReactComponent as Bold } from '../assets/icons/bold.svg';
+import { ReactComponent as Italic } from '../assets/icons/italic.svg';
+import { ReactComponent as Strick } from '../assets/icons/strick.svg';
+import { ReactComponent as Underline } from '../assets/icons/underline.svg';
+import one from '../assets/images/one.png';
+import two from '../assets/images/two.png';
+import three from '../assets/images/three.png';
+import four from '../assets/images/four.png';
+import five from '../assets/images/five.png';
+import six from '../assets/images/six.png';
+import seven from '../assets/images/seven.png';
+import eight from '../assets/images/eight.png';
+import nine from '../assets/images/nine.png';
+import ten from '../assets/images/ten.png';
+import eleven from '../assets/images/eleven.png';
+import twelve from '../assets/images/twelve.png';
 
 
 const MetinEkle = (props) => {
+    const etiketler = [
+        {
+            id: 1,
+            image:one,
+
+        },
+        {
+            id: 2,
+            image:two,
+        },
+        {
+            id: 3,
+            image:three
+        },
+        {
+            id: 4,
+            image:four
+        },
+        {
+            id: 5,
+            image:five
+        },
+        {
+            id: 6,
+            image:six
+        },
+        {
+            id: 7,
+            image:seven
+        },
+        {
+            id: 8,
+            image:eight
+        },
+        {
+            id: 9,
+            image:nine
+        },
+        {
+            id: 10,
+            image:ten
+        },
+        {
+            id: 11,
+            image:eleven
+        },
+        {
+            id: 12,
+            image:twelve
+        }
+    ]
     const [DropdpwnFont, setDropdpwnFont] = useState(false);
     const [DropdpwnFontSize, setDropdpwnFontSize] = useState(false);
     const [SelectedFont, setSelectedFont] = useState('Poppins');
@@ -15,7 +82,7 @@ const MetinEkle = (props) => {
     const [PcSelected, setPcSelected] = useState(true);
     return (
         <section >
-            <div className={` relative flex flex-row h-11  self-center mt-[9.5px] place-items-center border-l-2 place-content-between mb-[28px]`}>
+            <div className={` relative flex flex-row h-11  self-center mt-[9.5px] place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className=" mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
                     <Phone fill={PhoneIconSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPhoneIconSelected(true); setPcSelected(false) }} className="bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -76,6 +143,23 @@ const MetinEkle = (props) => {
                             <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">24</a>
                         </li>
                     </ul>
+                </div>
+                <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[39px]`}>
+                    <h className={` text-bar-offline-0 text-popNormal12`}>stil</h>
+                    <div className={` flex flex-row `}>
+                        <Bold className=" mr-[23.5px] " />
+                        <Italic className=" mr-[23.5px] " />
+                        <Strick className=" mr-[23.5px] " />
+                        <Underline />
+                    </div>
+                </div>
+                <h className={` text-popNormal12 text-text-color-0`}>Etiket  Ekle</h>
+                <div className="grid grid-cols-3 gap-[26.5px] bg-white mt-4">
+                    {etiketler.map((item) => (
+                        <div>
+                            <img src={item.image} className="" />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
