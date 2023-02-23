@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import img from '../assets/images/backgroundimg.jpg';
+import { SketchPicker, SliderPicker, HuePicker } from 'react-color';
 
 
 
 
 const ArkaPlan = (props) => {
+
+    const [Background, setBackground] = useState('#233CF5');
+    const handleChangeComplete = (color) => {
+        // this.setState({ background: color.hex });
+        // console.log(color.hex);
+        setBackground(color.hex);
+        console.log(Background);
+    };
 
     const backlist = [
         {
@@ -56,8 +65,8 @@ const ArkaPlan = (props) => {
     useEffect(() => {
         if (checked) {
             getSliderRange1();
-        }
-
+        };
+        
         getSliderRange2();
 
     })
@@ -119,10 +128,23 @@ const ArkaPlan = (props) => {
                     <p id="transparencydisplay" className=" text-popNormal12 text-bar-offline-0" >%0</p>
                 </div>
             </div>
-            <div className="grid grid-cols-4 gap-4 bg-white px-6 mt-6">
-            {backlist.map((item)=>(
-                 <img src={item.image} className=" bg-blue-300 w-[45px] h-[45px] rounded "/>
-            ))}
+
+            <div className="mx-4 mt-[22px] flex flex-row place-items-end place-content-between ">
+                <div className={`w-[45px] h-[45px] rounded  `} style={{backgroundColor:Background}} />
+                <HuePicker
+                    width="200px"
+                    color={Background}
+                    onChangeComplete={(color) => handleChangeComplete(color)}
+                    onChange={(color) => handleChangeComplete(color)}
+                // onChange={(color)=>handleChangeComplete(color)}
+                />
+
+            </div>
+
+            <div className="grid grid-cols-4 gap-4 bg-white px-3 mt-[22px] place-items-center ">
+                {backlist.map((item) => (
+                    <img src={item.image} className=" bg-blue-300 w-[45px] h-[45px] rounded " />
+                ))}
             </div>
         </div>
     )

@@ -8,6 +8,10 @@ import { ReactComponent as Bold } from '../assets/icons/bold.svg';
 import { ReactComponent as Italic } from '../assets/icons/italic.svg';
 import { ReactComponent as Strick } from '../assets/icons/strick.svg';
 import { ReactComponent as Underline } from '../assets/icons/underline.svg';
+import { ReactComponent as Left } from '../assets/icons/left.svg';
+import { ReactComponent as Center } from '../assets/icons/center.svg';
+import { ReactComponent as Right } from '../assets/icons/right.svg';
+import { ReactComponent as Justify } from '../assets/icons/justify.svg';
 import one from '../assets/images/one.png';
 import two from '../assets/images/two.png';
 import three from '../assets/images/three.png';
@@ -20,58 +24,65 @@ import nine from '../assets/images/nine.png';
 import ten from '../assets/images/ten.png';
 import eleven from '../assets/images/eleven.png';
 import twelve from '../assets/images/twelve.png';
-
+import { SketchPicker, SliderPicker, HuePicker } from 'react-color';
 
 const MetinEkle = (props) => {
+    const [Background, setBackground] = useState('#233CF5');
+    const handleChangeComplete = (color) => {
+        // this.setState({ background: color.hex });
+        // console.log(color.hex);
+        setBackground(color.hex);
+        console.log(Background);
+    };
     const etiketler = [
         {
             id: 1,
-            image:one,
+            image: one,
 
         },
         {
             id: 2,
-            image:two,
+            image: two,
         },
         {
             id: 3,
-            image:three
+            image: three
         },
         {
             id: 4,
-            image:four
+            image: four
         },
         {
             id: 5,
-            image:five
+            image: five
         },
         {
             id: 6,
-            image:six
+            image: six
         },
         {
             id: 7,
-            image:seven
+            image: seven
         },
         {
             id: 8,
-            image:eight
+            image: eight
         },
         {
             id: 9,
-            image:nine
+            image: nine
         },
         {
             id: 10,
-            image:ten
+            image: ten
         },
         {
             id: 11,
-            image:eleven
+            image: eleven
         },
         {
             id: 12,
-            image:twelve
+            image: twelve
         }
     ]
     const [DropdpwnFont, setDropdpwnFont] = useState(false);
@@ -80,6 +91,7 @@ const MetinEkle = (props) => {
     const [SelectedFontSize, setSelectedFontSize] = useState('16');
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
     const [PcSelected, setPcSelected] = useState(true);
+    const [Hizalama,setHizalama]=useState('left');
     return (
         <section >
             <div className={` relative flex flex-row h-11  self-center mt-[9.5px] place-items-center place-content-between mb-[28px]`}>
@@ -144,13 +156,44 @@ const MetinEkle = (props) => {
                         </li>
                     </ul>
                 </div>
-                <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[39px]`}>
+                <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[20.5px]`}>
                     <h className={` text-bar-offline-0 text-popNormal12`}>stil</h>
                     <div className={` flex flex-row `}>
                         <Bold className=" mr-[23.5px] " />
                         <Italic className=" mr-[23.5px] " />
                         <Strick className=" mr-[23.5px] " />
                         <Underline />
+                    </div>
+                </div>
+                <div className={` bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[18px]`}>
+                    <h className={` text-bar-offline-0 text-popNormal12`}>Hizalama</h>
+                    <div className={` flex flex-row place-content-between w-32 bg-bar-section-0 py-1 px-[5px] `}>
+                        <div onClick={()=> setHizalama('left')} className={`${ Hizalama === 'left' ? ` bg-white` :` bg-transparent`} p-1 hover:cursor-pointer`} >
+                            <Left fill={ Hizalama === 'left' ? '#1D2939' : '#888888'}  />
+                        </div>
+                        <div onClick={()=> setHizalama('center')}  className={`${ Hizalama === 'center' ? ` bg-white` :` bg-transparent`} p-1 hover:cursor-pointer`}>
+                            <Center fill={ Hizalama === 'center' ? '#1D2939' : '#888888'}  />
+                        </div>
+                        <div onClick={()=>setHizalama('right')}   className={`${ Hizalama === 'right' ? ` bg-white` :` bg-transparent`} p-1 hover:cursor-pointer`}>
+                            <Right fill={ Hizalama === 'right' ? '#1D2939' : '#888888'} />
+                        </div>
+                        <div onClick={()=> setHizalama('justify')} className={`${ Hizalama === 'justify' ? ` bg-white` :` bg-transparent`} p-1 hover:cursor-pointer`}>
+                            <Justify fill={ Hizalama === 'justify' ? '#1D2939' : '#888888'} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="   mb-[39px] flex flex-col  pr-10 ">
+                    <h className=" text-bar-offline-0 text-popNormal12">Yazı rengi</h>
+                    <div className=" flex flex-row place-items-end place-content-between mt-4">
+                        <div className={`w-[45px] h-[45px] rounded  `} style={{ backgroundColor: Background }} />
+                        <HuePicker
+                            width="170px"
+                            color={Background}
+                            onChangeComplete={(color) => handleChangeComplete(color)}
+                            onChange={(color) => handleChangeComplete(color)}
+                        // onChange={(color)=>handleChangeComplete(color)}
+                        />
                     </div>
                 </div>
                 <h className={` text-popNormal12 text-text-color-0`}>Etiket  Ekle</h>
