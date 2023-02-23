@@ -32,6 +32,7 @@ const PhotographMain = (props) => {
                     <div className={`w-5/6 flex flex-col `}>
                         <div className={` bg-myBackImage bg-cover ml-5 mt-5 mb-5 mr-[3px] z-0 flex place-content-center `}>
                             <img src={yummphoto} className={` object-fill  w-1/3`} />
+                            <textarea placeholder="METİN EKLE" rows="4" cols="50"  class=" border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-border-color-0 "></textarea>
                         </div>
                         <div className={` justify-center justify-items-center  overflow-hidden `}>
                             {/* bottom buttons */}
