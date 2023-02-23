@@ -96,8 +96,8 @@ const MetinEkle = (props) => {
         <section >
             <div className={` relative flex flex-row h-11  self-center mt-[9.5px] place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
-                    <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className=" mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
-                    <Phone fill={PhoneIconSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPhoneIconSelected(true); setPcSelected(false) }} className="bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
+                    <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
+                    <Phone fill={PhoneIconSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPhoneIconSelected(true); setPcSelected(false) }} className="hover:cursor-pointer bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
                 </div>
                 <div className=" border-l-2 flex flex-row h-full place-items-center w-2/3 justify-center">
                     <Back fill="#888888" className=" mr-[8.5px] " />
@@ -159,10 +159,10 @@ const MetinEkle = (props) => {
                 <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[20.5px]`}>
                     <h className={` text-bar-offline-0 text-popNormal12`}>stil</h>
                     <div className={` flex flex-row `}>
-                        <Bold className=" mr-[23.5px] " />
-                        <Italic className=" mr-[23.5px] " />
-                        <Strick className=" mr-[23.5px] " />
-                        <Underline />
+                        <Bold className=" mr-[23.5px] hover:cursor-pointer" />
+                        <Italic className=" mr-[23.5px] hover:cursor-pointer" />
+                        <Strick className=" mr-[23.5px] hover:cursor-pointer" />
+                        <Underline className="hover:cursor-pointer" />
                     </div>
                 </div>
                 <div className={` bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[18px]`}>
