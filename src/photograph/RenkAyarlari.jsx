@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import img2 from '../assets/images/Rectangle2.png';
 import img1 from '../assets/images/Rectangle1.png';
+import { ReactComponent as Pc } from '../assets/icons/computer.svg';
+import { ReactComponent as Phone } from '../assets/icons/smartphone.svg';
+import { ReactComponent as Back } from '../assets/icons/reply.svg';
+import { ReactComponent as Forward } from '../assets/icons/forward.svg';
 
 
 const RenkAyarlari = (props) => {
@@ -42,8 +46,22 @@ const RenkAyarlari = (props) => {
             image: img2
         }
     ];
+    const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
+    const [PcSelected, setPcSelected] = useState(true);
     return (
         <div className={` mt-4 flex flex-col`}>
+            <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
+                <div className=" flex flex-row place-items-center w-1/3 justify-center">
+                    <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
+                    <Phone fill={PhoneIconSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPhoneIconSelected(true); setPcSelected(false) }} className="hover:cursor-pointer bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
+                </div>
+                <div className=" border-l-2 flex flex-row h-full place-items-center w-2/3 justify-center">
+                    <Back fill="#888888" className=" mr-[8.5px] " />
+                    <button className=" mr-3 text-bar-offline-0  ">Geri</button>
+                    <Forward fill="#888888" className=" mr-[7.5px] " />
+                    <button className=" text-bar-offline-0 ">İleri</button>
+                </div>
+            </div>
             <h className={` ml-4 text-popNormal12 text-text-color-0`} >Renk Ayarları</h>
             <button className={` text-bar-offline-0 text-popNormal12 border border-box-stroke-0 place-items-center w-[263px] h-[32px] self-center mt-[15px] rounded hover:bg-gray-200`}>ayarları sıfırla</button>
 

@@ -106,8 +106,8 @@ const MetinEkle = (props) => {
                     <button className=" text-bar-offline-0 ">İleri</button>
                 </div>
             </div>
-            <h className="text-text-color-0 text-popNormal12 ml-7">Yazı Ekle</h>
-            <div className=" ml-7 mt-3">
+            <h className="text-text-color-0 text-popNormal12 ml-4">Yazı Ekle</h>
+            <div className=" ml-4 mt-3">
                 <h className=" text-bar-offline-0 text-popNormal12">Yazı Fontu</h>
                 <button onClick={() => setDropdpwnFont(!DropdpwnFont)} className={` flex flex-row place-content-between place-items-center w-56 h-8 bg-[#F2F4F7] px-2 mt-1 hover:bg-gray-200 text-text-color-0 text-popNormal12`}>
                     {SelectedFont}
@@ -183,7 +183,7 @@ const MetinEkle = (props) => {
                     </div>
                 </div>
 
-                <div className="   mb-[39px] flex flex-col  pr-10 ">
+                <div className="   mb-[39px] flex flex-col  pr-4 ">
                     <h className=" text-bar-offline-0 text-popNormal12">Yazı rengi</h>
                     <div className=" flex flex-row place-items-end place-content-between mt-4">
                         <div className={`w-[45px] h-[45px] rounded  `} style={{ backgroundColor: Background }} />
