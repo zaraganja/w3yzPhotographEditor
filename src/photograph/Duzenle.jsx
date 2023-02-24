@@ -17,14 +17,27 @@ const Duzenle = (props) => {
     const [imageHeight, setImageHeight] = useState(0)
     const [isImageScaleChange, setIsImageScaleChange] = useState(false);
 
+    const removeImageCanvas = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+     
+            photo_image.style.width = '392px';
+            photo_image.style.height = '630px';
+            photo_maindiv.style.display='default';
+            photo_maindiv.style.placeContent= 'default';
+            photo_div.style.borderRadius = '0%';
+            photo_div.style.width= '100%';
+      
+    }
+
     const removeImageScale = () =>{
         var photo_image = document.getElementById('photo_image');
         var photo_div = document.getElementById('photo_div');
-        if(isImageScaleChange)
-        {
-            photo_image.style.width = 'auto';
-            photo_image.style.height = 'auto';
-        }
+     
+            photo_image.style.width = '392px';
+            photo_image.style.height = '630px';
+      
     }
 
     const coverImage = () =>{
@@ -36,9 +49,10 @@ const Duzenle = (props) => {
             setImageHeight(photo_image.style.height);
         }
 
-        photo_image.style.width = '100%';
-        photo_image.style.height = '100%';
-        // photo_div.style.height = '100%';
+         photo_image.style.width = '1280px';
+         photo_image.style.height = '630px';
+       
+       
         setIsCover(true);
         setIsImageScaleChange(true);
     }
@@ -54,9 +68,10 @@ const Duzenle = (props) => {
         }
 
         console.log(imageWidth+' '+imageHeight);
-        photo_image.style.width = '100%';
-        photo_image.style.height = 'auto';
+         photo_image.style.width = '1280px';
+         photo_image.style.maxHeight = '630px';
         // photo_div.style.height = 'auto';
+       
         setIsCover(true);
         setIsImageScaleChange(true);
     }
@@ -64,9 +79,12 @@ const Duzenle = (props) => {
     const circleImage = () =>{
         var photo_image = document.getElementById('photo_image');
         var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
 
-        photo_div.style.width = '400px';
-        photo_div.style.height = '400px';
+        photo_div.style.width = '630px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
         photo_div.style.borderRadius = '100%';
 
         // photo_image.style.borderRadius = '100%';
@@ -74,6 +92,116 @@ const Duzenle = (props) => {
 
     }
 
+    const border4px = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+
+        photo_div.style.width = '700px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
+        photo_div.style.borderRadius = '4px';
+
+        // photo_image.style.borderRadius = '100%';
+
+
+    }
+
+  
+
+    const Triangle = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+
+        photo_div.style.width = '1000px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
+        photo_div.style.borderRadius = '4px';
+
+        // photo_image.style.borderRadius = '100%';
+
+
+    }
+    const border16px = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+
+        photo_div.style.width = '700px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
+        photo_div.style.borderRadius = '16px';
+
+        // photo_image.style.borderRadius = '100%';
+
+
+    }
+
+    const Triangle16px = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+
+        photo_div.style.width = '1000px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
+        photo_div.style.borderRadius = '16px';
+
+        // photo_image.style.borderRadius = '100%';
+
+
+    }
+    const border200px = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+
+        photo_div.style.width = '700px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
+        photo_div.style.borderRadius = '200px';
+
+        // photo_image.style.borderRadius = '100%';
+
+
+    }
+
+    const Triangle500px = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+
+        photo_div.style.width = '1000px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
+        photo_div.style.borderRadius = '500px';
+
+        // photo_image.style.borderRadius = '100%';
+
+
+    }
+    const border700px = () =>{
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        var photo_maindiv =document.getElementById('photo_maindiv');
+
+        photo_div.style.width = '400px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display='flex';
+        photo_maindiv.style.placeContent= 'center';
+        photo_div.style.borderRadius = '600px';
+
+        // photo_image.style.borderRadius = '100%';
+
+
+    }
     return (
         <div className={` mt-4 flex flex-col`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center  place-items-center place-content-between mb-[28px]`}>
@@ -90,42 +218,42 @@ const Duzenle = (props) => {
             </div>
             <label className={` ml-5 text-popNormal12`} >Tuval Ölçüsü</label>
             <span className="inline-grid grid-cols-3 gap-3 mt-4 place-content-center place-items-center mx-5">
-                <span className={`box-border border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer  rounded-[4px]`}>
-                    <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
+                <span onClick={()=> removeImageCanvas()} className={`box-border border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer  rounded-[4px]`}>
+                    <div  className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Block />
                     </div>
                 </span>
-                <span className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer  rounded-[4px]`}>
+                <span onClick={()=> border4px()} className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer  rounded-[4px]`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Panorama />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer box-border border-r-8 border-l-8 border-t-[16px] border-b-[16px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`}>
+                <span onClick={()=> Triangle()} className={`hover:cursor-pointer box-border border-r-8 border-l-8 border-t-[16px] border-b-[16px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Panorama />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer border-[#F2F4F7] box-border border-8 w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px]`}>
+                <span onClick={()=>border16px()} className={`hover:cursor-pointer border-[#F2F4F7] box-border border-8 w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px]`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex  rounded-[4px]">
                         <Panorama />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer border-[#F2F4F7] box-border border-r-8 border-l-8 border-t-[17px] border-b-[15px] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`}>
+                <span onClick={()=>Triangle16px()} className={`hover:cursor-pointer border-[#F2F4F7] box-border border-r-8 border-l-8 border-t-[17px] border-b-[15px] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex  rounded-[4px]">
                         <Panorama />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer border-[#F2F4F7] box-border border-r-[7px] border-l-[7px] border-t-8 border-b-8 w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]  bg-[#F2F4F7]`}>
+                <span onClick={()=> border200px()} className={`hover:cursor-pointer border-[#F2F4F7] box-border border-r-[7px] border-l-[7px] border-t-8 border-b-8 w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]  bg-[#F2F4F7]`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex  rounded-[20px] bg-[#fff]">
                         <Panorama />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`} >
+                <span onClick={()=> Triangle500px()} className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`} >
                     <div className=" w-[56px] h-[40px] rounded-[100px] bg-white border-[#D0D5DD] border place-content-center place-items-center flex" >
                         <Panorama />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`} >
+                <span onClick={()=> border700px()} className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center  rounded-[4px]`} >
                     <div className=" w-[40px] h-[56px] rounded-[100px] bg-white border-[#D0D5DD] border place-content-center place-items-center flex" >
                         <Panorama />
                     </div>

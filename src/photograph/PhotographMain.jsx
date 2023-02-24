@@ -32,23 +32,25 @@ const PhotographMain = (props) => {
                 <div className={`h-20  flex flex-row justify-between bg-white items-center pr-5 pl-5 devide-y border-b border-border-color-0`}>
                     <label className=" text-popNormal16 text-text-color-0">İmaj Düzenle</label>
                     <ul>
-                        <button onClick={()=> props.onClose()} className={`mr-7 hover:text-zinc-500 text-pop14 text-text-color-0`}>Vazgeç</button>
+                        <button onClick={() => props.onClose()} className={`mr-7 hover:text-zinc-500 text-pop14 text-text-color-0`}>Vazgeç</button>
                         <button className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
                     </ul>
                 </div>
                 <div className={`flex flex-row h-screen`}>
                     <div className={`w-5/6 flex flex-col `}>
-                        <div className={` bg-myBackImage bg-cover ml-5 mt-5 mb-5 mr-[3px] z-0 flex place-content-center overflow-hidden `} 
-                            id="photo_div">
-                            <img src={yummphoto} className={` object-fill  w-1/3`} id="photo_image"/>
-                            {/* <div rows="4" cols="50" contentEditable={true} draggable={true} 
+                        <div id="photo_maindiv" className=" w-[1280px] h-importantHeight ml-5 mt-5 mr-[3px]">
+                            <div className={` bg-myBackImage bg-cover  z-0 flex place-content-center overflow-hidden place-items-center  `}
+                                id="photo_div">
+                                <img src={yummphoto} className={`object-fit w-[392px] self-center`} id="photo_image" />
+                                {/* <div rows="4" cols="50" contentEditable={true} draggable={true} 
                             onDragStart={()=>console.log('asdasdas')}
                             className=" border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-border-color-0 "
                                 >METİN EKLE</div> */}
+                            </div>
                         </div>
-                        <div className={` justify-center justify-items-center  overflow-hidden `}>
+                        <div className={` justify-center justify-items-center  overflow-hidden`}>
                             {/* bottom buttons */}
-                            <ul className={`flex flex-row justify-between align-middle overflow-hidden mt-10 bg-white px-96`}>
+                            <ul className={`flex flex-row justify-between align-middle overflow-hidden mt-[190px] bg-white px-96`}>
                                 <div onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`} >
                                     <Cropicon fill={OnCropSelect ? '#1D2939' : '#888888'} />
                                     <button className={` pt-2 hover:text-gray-600 text-pop60016 ${OnCropSelect ? ` text-text-color-0` : ` text-bar-offline-0 `}  `}>Düzenle</button>

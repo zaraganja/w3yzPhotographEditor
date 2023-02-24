@@ -26,7 +26,8 @@ module.exports = {
         '400':'400px'
       },
       height:{
-        ' 626.43': ' 626.43px'
+        ' 626.43': ' 626.43px',
+        'importantHeight': '500px' 
       },
       fontSize:{
         'popNormal12' : ['12px',{
