@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+
 import { ReactComponent as Cropicon } from '../assets/icons/crop.svg';
 import { ReactComponent as Arkaplanicon } from '../assets/icons/arkaplan.svg';
 import { ReactComponent as Colors } from '../assets/icons/tune.svg';
 import { ReactComponent as TXT } from '../assets/icons/format_color_text.svg';
+// import {
+//     crop as Cropicon,
+//     arkaplan as Arkaplanicon ,
+//     tune as Colors,
+//     format_color_text as TXT
+// } from '../assets/icons';
+
 import yummphoto from "../assets/images/yummyphoto.jpg";
 import Duzenle from "./Duzenle";
 import ArkaPlan from "./ArkaPlan";
@@ -22,7 +30,7 @@ const PhotographMain = (props) => {
         <div className=" place-items-center place-content-center justify-center align-middle  flex bg-gray-200 w-screen h-screen ">
             <section className={` overflow-hidden font-pop w-[1600px] h-[920px] border-gray-200 border shadow-md bg-white  `}>
                 <div className={`h-20  flex flex-row justify-between bg-white items-center pr-5 pl-5 devide-y border-b border-border-color-0`}>
-                    <h className=" text-popNormal16 text-text-color-0">İmaj Düzenle</h>
+                    <label className=" text-popNormal16 text-text-color-0">İmaj Düzenle</label>
                     <ul>
                         <button onClick={()=> props.onClose()} className={`mr-7 hover:text-zinc-500 text-pop14 text-text-color-0`}>Vazgeç</button>
                         <button className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
@@ -30,9 +38,13 @@ const PhotographMain = (props) => {
                 </div>
                 <div className={`flex flex-row h-screen`}>
                     <div className={`w-5/6 flex flex-col `}>
-                        <div className={` bg-myBackImage bg-cover ml-5 mt-5 mb-5 mr-[3px] z-0 flex place-content-center `}>
-                            <img src={yummphoto} className={` object-fill  w-1/3`} />
-                            <textarea placeholder="METİN EKLE" rows="4" cols="50"  class=" border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-border-color-0 "></textarea>
+                        <div className={` bg-myBackImage bg-cover ml-5 mt-5 mb-5 mr-[3px] z-0 flex place-content-center overflow-hidden `} 
+                            id="photo_div">
+                            <img src={yummphoto} className={` object-fill  w-1/3`} id="photo_image"/>
+                            {/* <div rows="4" cols="50" contentEditable={true} draggable={true} 
+                            onDragStart={()=>console.log('asdasdas')}
+                            className=" border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-border-color-0 "
+                                >METİN EKLE</div> */}
                         </div>
                         <div className={` justify-center justify-items-center  overflow-hidden `}>
                             {/* bottom buttons */}

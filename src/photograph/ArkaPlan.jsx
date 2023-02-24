@@ -16,7 +16,9 @@ const ArkaPlan = (props) => {
         // this.setState({ background: color.hex });
         // console.log(color.hex);
         setBackground(color.hex);
-        console.log(Background);
+        var photo_div = document.getElementById('photo_div');
+        photo_div.style.backgroundImage = 'none';
+        photo_div.style.backgroundColor = color.hex;
     };
 
     const backlist = [
@@ -48,6 +50,18 @@ const ArkaPlan = (props) => {
 
     const [checked, setchecked] = useState(false);
     const [colorhex, setcolorhex] = useState();
+
+    const handleSetChecked = (state) =>{
+        setchecked(state);
+        var photo_image = document.getElementById('photo_image');
+        var photo_div = document.getElementById('photo_div');
+        if(!checked)
+        {
+            photo_div.style.backgroundImage = 'url(' + photo_image.src + ')';
+        }else{
+            photo_div.style.backgroundImage = "url('http://localhost:3000/static/media/backgroundimg.9a582df1eb22e5096422.jpg')";
+        }
+    }
 
     const getSliderRange1 = () => {
         const prc = document.getElementById('volume');
@@ -98,28 +112,29 @@ const ArkaPlan = (props) => {
                     <button className=" text-bar-offline-0 ">İleri</button>
                 </div>
             </div>
-            <h className={` ml-4 text-popNormal12`} >Arka Plan</h>
+            <label className={` ml-4 text-popNormal12`} >Arka Plan</label>
             <div className={` flex flex-row mt-5 place-content-between px-4 place-items-center`}>
-                <h className={` text-pop40012 text-bar-offline-0`}>Görseli Arka plana Ekle</h>
+                <label className={` text-pop40012 text-bar-offline-0`}>Görseli Arka plana Ekle</label>
                 {/* Toggle checkbox */}
-                <label class="relative inline-flex items-center cursor-pointer">
-                    <input defaultChecked onClick={() => { setchecked(!checked); console.log(checked) }} type="checkbox" value="" class="sr-only peer" checked={checked} />
-                    <div class="w-11 h-6 bg-gray-200 rounded-full peer    dark:bg-[#EAECF0] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1163FA] "></div>
+                <label className="relative inline-flex items-center cursor-pointer">
+                    <input defaultChecked onClick={() =>handleSetChecked(!checked)} type="checkbox" value="" 
+                        className="sr-only peer" checked={checked} />
+                    <div className="w-11 h-6 bg-gray-200 rounded-full peer    dark:bg-[#EAECF0] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1163FA] "></div>
                 </label>
                 {/*  */}
 
             </div>
-            <h className={` text-pop40010 text-bar-offline-0 px-4 mt-1`}>Orijinal Fotoğrafı arkaplana yayar <br />
-                ve fotoğrafa bulanıklaştırır</h>
+            <label className={` text-pop40010 text-bar-offline-0 px-4 mt-1`}>Orijinal Fotoğrafı arkaplana yayar <br />
+                ve fotoğrafa bulanıklaştırır</label>
             {checked ?
                 <div className={` mx-4 mt-[14px] flex flex-col`}>
-                    <h className={` text-pop40012 text-bar-offline-0`}>Bulanıklık</h>
+                    <label className={` text-pop40012 text-bar-offline-0`}>Bulanıklık</label>
                     <div className={`flex place-content-between place-items-center justify-between overflow-hidden h-8 w-full bg-bar-section-0  rounded mt-[3px] pl-[4px] pr-[6px] `}>
 
                         <input type="range" id="volume" name="volume"
                             min="0" max="100" step="1" className="w-[180px] h-[5px] accent-btn-blue-0 cursor-pointer bg-white rounded-lg" />
                         {/* <label for="volume" className=" text-popNormal12 text-bar-offline-0" ></label> */}
-                        <p id="volumdisplay" class=" text-popNormal12 text-bar-offline-0">%0</p>
+                        <p id="volumdisplay" className=" text-popNormal12 text-bar-offline-0">%0</p>
 
                     </div>
                 </div>
@@ -130,10 +145,10 @@ const ArkaPlan = (props) => {
 
 
             <div className={` mx-4 mt-[14px] `}>
-                <h className={` text-pop40012 text-bar-offline-0`}>Saydamlık</h>
+                <label className={` text-pop40012 text-bar-offline-0`}>Saydamlık</label>
                 <div className={` h-8 w-full bg-bar-section-0 rounded mt-[3px] flex place-content-between place-items-center pr-[6px] pl-[4.5px]`}>
                     {/* left grid  */}
-                    <div class="grid grid-cols-2 gap-0 place-content-center h-[23px] w-[23px] ">
+                    <div className="grid grid-cols-2 gap-0 place-content-center h-[23px] w-[23px] ">
                         <div className={` h-[11px] w-[11px] bg-bar-offline-0`}></div>
                         <div className={` h-[11px] w-[11px] bg-[#EBEBEB]`}></div>
                         <div className={` h-[11px] w-[11px] bg-[#EBEBEB]`}></div>

@@ -109,62 +109,62 @@ const MetinEkle = (props) => {
             </div>
 
             <div onClick={()=> setAddTXTbTN(!AddTXTbTN)} className=" w-[233px] h-[44px] border border-box-stroke-0 rounded self-center ml-4 mb-[11px] flex place-items-center place-content-center hover:cursor-pointer ">
-                <h className=" text-text-color-0 text-popNormal12">Metin  Ekle</h>
+                <label className=" text-text-color-0 text-popNormal12">Metin  Ekle</label>
             </div>
-            <h className={`text-text-color-0 text-popNormal12 ml-4 ${AddTXTbTN? ` flex`:` hidden`}`}>Yazı  Stili</h>
+            <label className={`text-text-color-0 text-popNormal12 ml-4 ${AddTXTbTN? ` flex`:` hidden`}`}>Yazı  Stili</label>
             <div className={` ${AddTXTbTN? ` flex`:` hidden`} place-items-center`}>
-                {/* <h className="text-text-color-0 text-popNormal12">Yazı  Stili</h> */}
+                {/* <label className="text-text-color-0 text-popNormal12">Yazı  Stili</label> */}
                 <div className=" ml-4 mt-3">
-                    <h className=" text-bar-offline-0 text-popNormal12">Yazı Fontu</h>
+                    <label className=" text-bar-offline-0 text-popNormal12">Yazı Fontu</label>
                     <button onClick={() => setDropdpwnFont(!DropdpwnFont)} className={` flex flex-row place-content-between place-items-center w-56 h-8 bg-[#F2F4F7] px-2 mt-1 hover:bg-gray-200 text-text-color-0 text-popNormal12`}>
                         {SelectedFont}
                         <Expand />
                     </button>
 
                     <div className={` ${DropdpwnFont ? 'flex' : 'hidden'} z-10 bg-[#F2F4F7] mt-[2px] divide-y divide-gray-100 rounded shadow w-56`}  >
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" >
+                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" >
                             <li onClick={() => { setSelectedFont('Poppins'); setDropdpwnFont(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400 w-56">Poppins</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400 w-56">Poppins</a>
                             </li>
                             <li onClick={() => { setSelectedFont('Sans serif'); setDropdpwnFont(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Sans serif</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Sans serif</a>
                             </li>
                             <li onClick={() => { setSelectedFont('Font3'); setDropdpwnFont(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Font3</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Font3</a>
                             </li>
                             <li onClick={() => { setSelectedFont('Font4'); setDropdpwnFont(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Font4</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Font4</a>
                             </li>
                         </ul>
                     </div>
                     <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center`}>
-                        <h className={` text-bar-offline-0 text-popNormal12`}>Font büyüklüğü</h>
+                        <label className={` text-bar-offline-0 text-popNormal12`}>Font büyüklüğü</label>
                         <button onClick={() => setDropdpwnFontSize(!DropdpwnFontSize)} className={` flex flex-row place-content-between place-items-center w-[60px] h-8 bg-[#F2F4F7] hover:bg-gray-200 text-text-color-0 text-popNormal12 px-2`}>
                             {SelectedFontSize}
                             <Expand />
                         </button>
                     </div>
                     <div className={` ${DropdpwnFontSize ? 'flex' : 'hidden'} z-10 bg-[#F2F4F7] mt-[2px] divide-y divide-gray-100 rounded shadow w-[60px] ml-[164px]`}  >
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" >
+                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" >
                             <li onClick={() => { setSelectedFontSize('14'); setDropdpwnFontSize(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400 w-[60px] ">14</a>
+                                <a clasName="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400 w-[60px] ">14</a>
                             </li>
                             <li onClick={() => { setSelectedFontSize('16'); setDropdpwnFontSize(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">16</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">16</a>
                             </li>
                             <li onClick={() => { setSelectedFontSize('18'); setDropdpwnFontSize(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">18</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">18</a>
                             </li>
                             <li onClick={() => { setSelectedFontSize('22'); setDropdpwnFontSize(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">22</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">22</a>
                             </li>
                             <li onClick={() => { setSelectedFontSize('24'); setDropdpwnFontSize(false) }}>
-                                <a class="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">24</a>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">24</a>
                             </li>
                         </ul>
                     </div>
                     <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[20.5px]`}>
-                        <h className={` text-bar-offline-0 text-popNormal12`}>stil</h>
+                        <label className={` text-bar-offline-0 text-popNormal12`}>stil</label>
                         <div className={` flex flex-row `}>
                             <Bold className=" mr-[23.5px] hover:cursor-pointer" />
                             <Italic className=" mr-[23.5px] hover:cursor-pointer" />
@@ -173,7 +173,7 @@ const MetinEkle = (props) => {
                         </div>
                     </div>
                     <div className={` bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[18px]`}>
-                        <h className={` text-bar-offline-0 text-popNormal12`}>Hizalama</h>
+                        <label className={` text-bar-offline-0 text-popNormal12`}>Hizalama</label>
                         <div className={` flex flex-row place-content-between w-32 bg-bar-section-0 py-1 px-[5px] `}>
                             <div onClick={() => setHizalama('left')} className={`${Hizalama === 'left' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`} >
                                 <Left fill={Hizalama === 'left' ? '#1D2939' : '#888888'} />
@@ -191,7 +191,7 @@ const MetinEkle = (props) => {
                     </div>
 
                     <div className="   mb-[39px] flex flex-col  pr-4 ">
-                        <h className=" text-bar-offline-0 text-popNormal12">Yazı rengi</h>
+                        <label className=" text-bar-offline-0 text-popNormal12">Yazı rengi</label>
                         <div className=" flex flex-row place-items-end place-content-between mt-4">
                             <div className={`w-[45px] h-[45px] rounded mr-[17px] `} style={{ backgroundColor: Background }} />
                             <HuePicker
@@ -205,7 +205,7 @@ const MetinEkle = (props) => {
                     </div>
                 </div>
             </div>
-            <h className={` text-popNormal12 text-text-color-0 ml-4`}>Etiket  Ekle</h>
+            <label className={` text-popNormal12 text-text-color-0 ml-4`}>Etiket  Ekle</label>
             <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 ">
                 {etiketler.map((item) => (
                     <div>

@@ -62,50 +62,50 @@ const RenkAyarlari = (props) => {
                     <button className=" text-bar-offline-0 ">İleri</button>
                 </div>
             </div>
-            <h className={` ml-4 text-popNormal12 text-text-color-0`} >Renk Ayarları</h>
+            <label className={` ml-4 text-popNormal12 text-text-color-0`} >Renk Ayarları</label>
             <button className={` text-bar-offline-0 text-popNormal12 border border-box-stroke-0 place-items-center w-[263px] h-[32px] self-center mt-[15px] rounded hover:bg-gray-200`}>ayarları sıfırla</button>
 
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-7`}>
-                <h className={` self-start text-bar-offline-0 text-popNormal12`}>Parlaklık</h>
+                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Parlaklık</label>
                 <input type="range" id="volume" name="volume"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <h className={` self-start text-bar-offline-0 text-popNormal12`}>Kontrast</h>
+                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Kontrast</label>
                 <input type="range" id="volume" name="volume"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <h className={` self-start text-bar-offline-0 text-popNormal12`}>Keskinlik</h>
+                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Keskinlik</label>
                 <input type="range" id="volume" name="volume"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <h className={` self-start text-bar-offline-0 text-popNormal12`}>Sıcaklık</h>
+                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Sıcaklık</label>
                 <input type="range" id="volume" name="volume"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <h className={` self-start text-bar-offline-0 text-popNormal12`}>Doygunluk</h>
+                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Doygunluk</label>
                 <input type="range" id="volume" name="volume"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <h className={` self-start text-bar-offline-0 text-popNormal12`}>Vinyet</h>
+                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Vinyet</label>
                 <input type="range" id="volume" name="volume"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <h className={` self-start text-bar-offline-0 text-popNormal12`}>Bulanıklık</h>
+                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Bulanıklık</label>
                 <input type="range" id="volume" name="volume"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
-            <h className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</h>
+            <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
             <div className="grid grid-cols-3 gap-9 bg-white place-items-center mx-4 mt-4">
                 {filters.map((item) => (
                     <div>
                         <img src={item.image} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
-                        <h className={` text-pop40012 text-bar-offline-0`}>Sepya</h>
+                        <label className={` text-pop40012 text-bar-offline-0`}>Sepya</label>
                     </div>
                 ))}
             </div>
