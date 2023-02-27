@@ -134,8 +134,15 @@ const MetinEkle = (props) => {
         setHizalama(align);
     }
 
+    const AddSticker =(sticker)=>{
+        var StickerDraggable = document.getElementById("StickerDraggable");
+        var StickerImg= document.getElementById("StickerImg");
+        StickerDraggable.style.display='flex';
+        StickerImg.src=sticker;
+    }
+
     return (
-        <section className=" w-[300px]" >
+        <section className={`w-[300px] h-screen overflow-scroll ${AddTXTbTN ? `mb-[200px]` : `mb-0` }`}   >
             <div className={` relative flex flex-row h-11  self-center mt-[9.5px] place-items-center place-content-between mb-[16.5px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -250,7 +257,7 @@ const MetinEkle = (props) => {
             <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden ">
                 {etiketler.map((item) => (
                     <div>
-                        <img src={item.image} className=" overflow-hidden" />
+                        <img onClick={()=> AddSticker(item.image)} src={item.image} className=" overflow-hidden hover:cursor-pointer" />
                     </div>
                 ))}
             </div>

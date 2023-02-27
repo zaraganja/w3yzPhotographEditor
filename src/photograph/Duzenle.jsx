@@ -203,7 +203,7 @@ const Duzenle = (props) => {
 
     }
     return (
-        <div className={` mt-4 flex flex-col`}>
+        <div className={` mt-4 flex flex-col overflow-scroll`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center  place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />

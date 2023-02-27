@@ -29,6 +29,12 @@ const PhotographMain = (props) => {
         draggable.style.display = 'none';
     }
 
+    const CloseSticker =()=> {
+        var draggable = document.getElementById("StickerDraggable");
+        draggable.style.display = 'none';
+    }
+
+
     const DragMetinEkle = () => {
         //Make the DIV element draggagle:
         dragElement(document.getElementById("draggable"));
@@ -81,8 +87,61 @@ const PhotographMain = (props) => {
 
     }
 
+    const DragSticker = () => {
+        //Make the DIV element draggagle:
+        dragElement(document.getElementById("StickerDraggable"));
+
+        function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                /* if present, the header is where you move the DIV from:*/
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                /* otherwise, move the DIV from anywhere inside the DIV:*/
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                var container = document.body;
+                if (elmnt.offsetLeft - pos1 >= 0 && elmnt.offsetLeft - pos1 + elmnt.offsetWidth <= container.offsetWidth) {
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+                if (elmnt.offsetTop - pos2 >= 0 && elmnt.offsetTop - pos2 + elmnt.offsetHeight <= container.offsetHeight) {
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                }
+            }
+
+            function closeDragElement() {
+                /* stop moving when mouse button is released:*/
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+    }
+
     useEffect(() => {
         DragMetinEkle();
+        DragSticker();
     })
 
 
@@ -114,17 +173,29 @@ const PhotographMain = (props) => {
 
                                 {/* ADD TEXT PART */}
                                 <div id="draggable" rows="4" cols="50" contentEditable={true} draggable={true}
-                                    onDragStart={() => console.log('asdasdas')} className=" border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-black  hidden w-[214px] min-h-[60px] max-h-[260px]  " >
-                                    <div id="draggableheader" className=" cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px] flex place-items-center bg-[#667085] ">
+                                    onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-black  hidden w-[214px] min-h-[60px] max-h-[260px]   " >
+                                    <div id="draggableheader" className=" cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px]  place-items-center bg-[#667085]  ">
                                         <CursorMove />
                                     </div>
 
                                     <label id="AddTextTXT" className=" mt-2 max-h-[260px] max-w-[214px] ">METİN EKLE</label>
-                                    <div onClick={() => CloseAddText()} id="draggableheader" className=" ml-[205px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
+                                    <div onClick={() => CloseAddText()}  className=" ml-[205px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085]  ">
                                         <CloseTxt />
                                     </div>
                                 </div>
 
+
+                                {/* sticker  */}
+                                <div id="StickerDraggable"  contentEditable={true} draggable={true}
+                                    onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center  w-[75px] h-[75px] hidden  " >
+                                    <div id="draggableheader" className=" z-10 cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px] flex place-items-center bg-[#667085]">
+                                        <CursorMove />
+                                    </div>
+                                    <img id="StickerImg" ></img>  
+                                    <div onClick={() => CloseSticker()}  className=" z-10 ml-[67px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
+                                        <CloseTxt />
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -159,7 +230,7 @@ const PhotographMain = (props) => {
                         {/* </div> */}
                     </div>
                     {/* right menue */}
-                    <div className={`w-1.5/6 bg-white border-border-color-0 border-l `}>
+                    <div className={`w-1.5/6 bg-white border-border-color-0 border-l overflow-scroll h-screen  `}>
                         {OnCropSelect ?
                             <Duzenle />
                             :

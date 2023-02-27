@@ -61,12 +61,12 @@ const RenkAyarlari = (props) => {
         var vignetteContainer = document.getElementById('vignetteContainer');
         var VGT = document.getElementById('vignette');
         VGT.addEventListener('input', () => {
-        //    photo_image.style.border=  `5px`;
-            vignetteContainer.style.boxShadow= '10px 10px 2000px rgba(0,0,0,1.5) inset';
-             photo_image.style.borderRadius= `${VGT.value+''}px`;
-             if(VGT.value == 0){
-                photo_image.style.padding= '0';
-             }
+            //    photo_image.style.border=  `5px`;
+            vignetteContainer.style.boxShadow = '10px 10px 2000px rgba(0,0,0,1.5) inset';
+            photo_image.style.borderRadius = `${VGT.value + ''}px`;
+            if (VGT.value === 0) {
+                photo_image.style.padding = '0';
+            }
         })
     }
 
@@ -77,6 +77,24 @@ const RenkAyarlari = (props) => {
             var pixel = prc.value * 0.100;
             photo_image.style.filter = `blur(${pixel + ''}px)`;
         })
+    }
+
+    const ResetSettings = () => {
+        var photo_image = document.getElementById('photo_image');
+
+        document.getElementById('blurimg').value = "50";
+        document.getElementById('vignette').value = "50";
+        document.getElementById('saturation').value = "50";
+        document.getElementById('temprature').value = "50";
+        document.getElementById('sharpness').value = "110";
+        document.getElementById('contrast').value = "50";
+        document.getElementById('brightness').value = "50";
+
+        photo_image.style.filter = `none`;
+        photo_image.style.borderRadius = `0px`;
+        photo_image.style.padding = '0'
+
+
     }
     const filters = [
         {
@@ -128,11 +146,12 @@ const RenkAyarlari = (props) => {
         Saturation();
         Vignette();
         BlurBackground();
+
     })
 
 
     return (
-        <div className={` mt-4 flex flex-col`}>
+        <div className={` mt-4 flex flex-col h-screen overflow-scroll mb-[300px]`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -146,7 +165,7 @@ const RenkAyarlari = (props) => {
                 </div>
             </div>
             <label className={` ml-4 text-popNormal12 text-text-color-0`} >Renk Ayarları</label>
-            <button className={` text-bar-offline-0 text-popNormal12 border border-box-stroke-0 place-items-center w-[263px] h-[32px] self-center mt-[15px] rounded hover:bg-gray-200`}>ayarları sıfırla</button>
+            <button onClick={() => ResetSettings()} className={` text-bar-offline-0 text-popNormal12 border border-box-stroke-0 place-items-center w-[263px] h-[32px] self-center mt-[15px] rounded hover:bg-gray-200`}>ayarları sıfırla</button>
 
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-7`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Parlaklık</label>
@@ -184,9 +203,9 @@ const RenkAyarlari = (props) => {
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
-            <div className="grid grid-cols-3 gap-9 bg-white place-items-center mx-4 mt-4">
+            <div className="grid grid-cols-3 gap-8 bg-white place-items-center mx-4 mt-4 mb-5 ">
                 {filters.map((item) => (
-                    <div>
+                    <div >
                         <img src={item.image} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
                         <label className={` text-pop40012 text-bar-offline-0`}>Sepya</label>
                     </div>
