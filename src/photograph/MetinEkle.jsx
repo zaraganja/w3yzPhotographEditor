@@ -32,6 +32,8 @@ const MetinEkle = (props) => {
         // this.setState({ background: color.hex });
         // console.log(color.hex);
         setBackground(color.hex);
+        var AddTextTXT = document.getElementById("AddTextTXT");
+        AddTextTXT.style.color= color.hex;
         console.log(Background);
     };
     const etiketler = [
@@ -93,8 +95,47 @@ const MetinEkle = (props) => {
     const [PcSelected, setPcSelected] = useState(true);
     const [Hizalama, setHizalama] = useState('left');
     const [AddTXTbTN, setAddTXTbTN] = useState(false);
+    const [FontStyle, setFontStyle]=useState();
+
+    const AddText =()=> {
+        setAddTXTbTN(true);
+        var draggable = document.getElementById('draggable');
+        draggable.style.display= 'flex';
+    }
+
+
+    const HandleFontFamily =(fontFamily)=>{
+        setDropdpwnFont(false);
+        var AddTextTXT = document.getElementById("AddTextTXT");
+        AddTextTXT.style.fontFamily= fontFamily;
+        setSelectedFont(fontFamily);
+    }
+
+    const HandleFontSize = (size)=>{
+        setSelectedFontSize(size);
+         setDropdpwnFontSize(false);
+         var AddTextTXT = document.getElementById("AddTextTXT");
+        AddTextTXT.style.fontSize= size+'px';
+
+    }
+
+    const HandleFontStyle =(txtstyle)=>{
+        var AddTextTXT = document.getElementById("AddTextTXT");
+        AddTextTXT.style.fontWeight= txtstyle;
+        AddTextTXT.style.fontStyle= txtstyle;
+        AddTextTXT.style.textDecorationLine= txtstyle;
+        setFontStyle(txtstyle);
+
+    }
+
+    const HandleTextAlign =(align)=>{
+        var AddTextTXT = document.getElementById("AddTextTXT");
+        AddTextTXT.style.textAlign= align;
+        setHizalama(align);
+    }
+
     return (
-        <section >
+        <section className=" w-[300px]" >
             <div className={` relative flex flex-row h-11  self-center mt-[9.5px] place-items-center place-content-between mb-[16.5px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -108,94 +149,94 @@ const MetinEkle = (props) => {
                 </div>
             </div>
 
-            <div onClick={()=> setAddTXTbTN(!AddTXTbTN)} className=" w-[233px] h-[44px] border border-box-stroke-0 rounded self-center ml-4 mb-[11px] flex place-items-center place-content-center hover:cursor-pointer ">
+            <div onClick={()=> AddText() } className=" w-[240px] h-[44px] border border-box-stroke-0 rounded self-center ml-6 mb-[11px] flex place-items-center place-content-center hover:cursor-pointer ">
                 <label className=" text-text-color-0 text-popNormal12">Metin  Ekle</label>
             </div>
-            <label className={`text-text-color-0 text-popNormal12 ml-4 ${AddTXTbTN? ` flex`:` hidden`}`}>Yazı  Stili</label>
+            <label className={`text-text-color-0 text-popNormal12 ml-6 ${AddTXTbTN? ` flex`:` hidden`}`}>Yazı  Stili</label>
             <div className={` ${AddTXTbTN? ` flex`:` hidden`} place-items-center`}>
                 {/* <label className="text-text-color-0 text-popNormal12">Yazı  Stili</label> */}
-                <div className=" ml-4 mt-3">
+                <div className=" ml-6 mt-3">
                     <label className=" text-bar-offline-0 text-popNormal12">Yazı Fontu</label>
-                    <button onClick={() => setDropdpwnFont(!DropdpwnFont)} className={` flex flex-row place-content-between place-items-center w-56 h-8 bg-[#F2F4F7] px-2 mt-1 hover:bg-gray-200 text-text-color-0 text-popNormal12`}>
+                    <button onClick={() => setDropdpwnFont(!DropdpwnFont)} className={` flex flex-row place-content-between place-items-center w-[240px] h-8 bg-[#F2F4F7] px-2 mt-1 hover:bg-gray-200 text-text-color-0 text-popNormal12`}>
                         {SelectedFont}
                         <Expand />
                     </button>
 
-                    <div className={` ${DropdpwnFont ? 'flex' : 'hidden'} z-10 bg-[#F2F4F7] mt-[2px] divide-y divide-gray-100 rounded shadow w-56`}  >
+                    <div className={` ${DropdpwnFont ? 'flex' : 'hidden'} z-10 bg-[#F2F4F7] mt-[2px] divide-y divide-gray-100 rounded shadow w-[240px]`}  >
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" >
-                            <li onClick={() => { setSelectedFont('Poppins'); setDropdpwnFont(false) }}>
+                            <li onClick={() => {  HandleFontFamily('Poppins') }}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400 w-56">Poppins</a>
                             </li>
-                            <li onClick={() => { setSelectedFont('Sans serif'); setDropdpwnFont(false) }}>
+                            <li onClick={() => {  HandleFontFamily('Sans serif')}}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Sans serif</a>
                             </li>
-                            <li onClick={() => { setSelectedFont('Font3'); setDropdpwnFont(false) }}>
+                            <li onClick={() => {  HandleFontFamily('Font3')}}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Font3</a>
                             </li>
-                            <li onClick={() => { setSelectedFont('Font4'); setDropdpwnFont(false) }}>
+                            <li onClick={() => {  HandleFontFamily('Font4')}}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">Font4</a>
                             </li>
                         </ul>
                     </div>
-                    <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center`}>
+                    <div className={` mt-4 bg-white w-[240px] h-8 flex flex-row place-content-between place-items-center`}>
                         <label className={` text-bar-offline-0 text-popNormal12`}>Font büyüklüğü</label>
                         <button onClick={() => setDropdpwnFontSize(!DropdpwnFontSize)} className={` flex flex-row place-content-between place-items-center w-[60px] h-8 bg-[#F2F4F7] hover:bg-gray-200 text-text-color-0 text-popNormal12 px-2`}>
                             {SelectedFontSize}
                             <Expand />
                         </button>
                     </div>
-                    <div className={` ${DropdpwnFontSize ? 'flex' : 'hidden'} z-10 bg-[#F2F4F7] mt-[2px] divide-y divide-gray-100 rounded shadow w-[60px] ml-[164px]`}  >
+                    <div className={` ${DropdpwnFontSize ? 'flex' : 'hidden'} z-10 bg-[#F2F4F7] mt-[2px] divide-y divide-gray-100 rounded shadow w-[60px] ml-[180px]`}  >
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" >
-                            <li onClick={() => { setSelectedFontSize('14'); setDropdpwnFontSize(false) }}>
-                                <a clasName="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400 w-[60px] ">14</a>
+                            <li onClick={() => {HandleFontSize('14') }}>
+                                <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400 w-[60px]">14</a>
                             </li>
-                            <li onClick={() => { setSelectedFontSize('16'); setDropdpwnFontSize(false) }}>
+                            <li onClick={() => {HandleFontSize('16')}}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">16</a>
                             </li>
-                            <li onClick={() => { setSelectedFontSize('18'); setDropdpwnFontSize(false) }}>
+                            <li onClick={() => {  HandleFontSize('18')}}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">18</a>
                             </li>
-                            <li onClick={() => { setSelectedFontSize('22'); setDropdpwnFontSize(false) }}>
+                            <li onClick={() => { HandleFontSize('22')}}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">22</a>
                             </li>
-                            <li onClick={() => { setSelectedFontSize('24'); setDropdpwnFontSize(false) }}>
+                            <li onClick={() => {  HandleFontSize('24')}}>
                                 <a className="block text-text-color-0 px-4 py-2 hover:bg-gray-200 hover:text-gray-400">24</a>
                             </li>
                         </ul>
                     </div>
-                    <div className={` mt-4 bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[20.5px]`}>
+                    <div className={` mt-4 bg-white w-[240px] h-8 flex flex-row place-content-between place-items-center mb-[20.5px]`}>
                         <label className={` text-bar-offline-0 text-popNormal12`}>stil</label>
                         <div className={` flex flex-row `}>
-                            <Bold className=" mr-[23.5px] hover:cursor-pointer" />
-                            <Italic className=" mr-[23.5px] hover:cursor-pointer" />
-                            <Strick className=" mr-[23.5px] hover:cursor-pointer" />
-                            <Underline className="hover:cursor-pointer" />
+                            <Bold fill={FontStyle === 'bold' ? '#1D2939' : '#888888'} onClick={()=> HandleFontStyle('bold')} className=" mr-[23.5px] hover:cursor-pointer" />
+                            <Italic fill={FontStyle === 'italic' ? '#1D2939' : '#888888'} onClick={()=> HandleFontStyle('italic')} className=" mr-[23.5px] hover:cursor-pointer" />
+                            <Strick fill={FontStyle === 'line-through' ? '#1D2939' : '#888888'} onClick={()=> HandleFontStyle('line-through')} className=" mr-[23.5px] hover:cursor-pointer" />
+                            <Underline fill={FontStyle === 'underline' ? '#1D2939' : '#888888'} onClick={()=> HandleFontStyle('underline')} className="hover:cursor-pointer" />
                         </div>
                     </div>
-                    <div className={` bg-white w-56 h-8 flex flex-row place-content-between place-items-center mb-[18px]`}>
+                    <div className={` bg-white w-[240px] h-8 flex flex-row place-content-between place-items-center mb-[18px]`}>
                         <label className={` text-bar-offline-0 text-popNormal12`}>Hizalama</label>
                         <div className={` flex flex-row place-content-between w-32 bg-bar-section-0 py-1 px-[5px] `}>
-                            <div onClick={() => setHizalama('left')} className={`${Hizalama === 'left' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`} >
+                            <div onClick={() =>  HandleTextAlign('left')} className={`${Hizalama === 'left' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`} >
                                 <Left fill={Hizalama === 'left' ? '#1D2939' : '#888888'} />
                             </div>
-                            <div onClick={() => setHizalama('center')} className={`${Hizalama === 'center' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`}>
+                            <div onClick={() => HandleTextAlign('center')} className={`${Hizalama === 'center' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`}>
                                 <Center fill={Hizalama === 'center' ? '#1D2939' : '#888888'} />
                             </div>
-                            <div onClick={() => setHizalama('right')} className={`${Hizalama === 'right' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`}>
+                            <div onClick={() =>  HandleTextAlign('right')} className={`${Hizalama === 'right' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`}>
                                 <Right fill={Hizalama === 'right' ? '#1D2939' : '#888888'} />
                             </div>
-                            <div onClick={() => setHizalama('justify')} className={`${Hizalama === 'justify' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`}>
+                            <div onClick={() =>  HandleTextAlign('justify')} className={`${Hizalama === 'justify' ? ` bg-white` : ` bg-transparent`} p-1 hover:cursor-pointer`}>
                                 <Justify fill={Hizalama === 'justify' ? '#1D2939' : '#888888'} />
                             </div>
                         </div>
                     </div>
 
-                    <div className="   mb-[39px] flex flex-col  pr-4 ">
+                    <div className="   mb-[39px] flex flex-col   ">
                         <label className=" text-bar-offline-0 text-popNormal12">Yazı rengi</label>
                         <div className=" flex flex-row place-items-end place-content-between mt-4">
                             <div className={`w-[45px] h-[45px] rounded mr-[17px] `} style={{ backgroundColor: Background }} />
                             <HuePicker
-                                width="160px"
+                                width="170px"
                                 color={Background}
                                 onChangeComplete={(color) => handleChangeComplete(color)}
                                 onChange={(color) => handleChangeComplete(color)}
@@ -206,10 +247,10 @@ const MetinEkle = (props) => {
                 </div>
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4`}>Etiket  Ekle</label>
-            <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 ">
+            <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden ">
                 {etiketler.map((item) => (
                     <div>
-                        <img src={item.image} className="" />
+                        <img src={item.image} className=" overflow-hidden" />
                     </div>
                 ))}
             </div>

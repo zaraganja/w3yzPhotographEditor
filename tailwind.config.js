@@ -15,7 +15,7 @@ module.exports = {
         'bar-section' : ['#F2F4F7'],
         'mygradient': ['linear-gradient(90deg, #FF0000 0%, #FAFF00 10.94%, #00FB37 28.65%, #00F0FF 47.92%, #000AFF 65.1%, #FF00E5 83.33%, #FF0000 100%)'],
         'box-stroke' :['#D0D5DD'],
-        'text-color' : ['#1D2939']
+        'text-color' : ['#1D2939'],
       
       },
       backgroundImage:{
@@ -27,7 +27,7 @@ module.exports = {
       },
       height:{
         ' 626.43': ' 626.43px',
-        'importantHeight': '500px' 
+        'importantHeight': '650px' 
       },
       fontSize:{
         'popNormal12' : ['12px',{

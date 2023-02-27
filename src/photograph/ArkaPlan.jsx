@@ -11,6 +11,24 @@ import { ReactComponent as Forward } from '../assets/icons/forward.svg';
 
 const ArkaPlan = (props) => {
 
+    const BlurBackground = () => {
+        var photo_div = document.getElementById('photo_div');
+        var prc = document.getElementById('volume');
+        prc.addEventListener('input', () => {
+            var pixel = prc.value * 0.100;
+            photo_div.style.filter = `blur(${pixel + ''}px)`;
+        })
+    }
+
+    const TansparencyOpacityBackground = () => {
+        var photo_div = document.getElementById('photo_div');
+        const prc2 = document.getElementById('transparency');
+        prc2.addEventListener('input', () => { 
+            var pixel = prc2.value /100;
+            photo_div.style.opacity = `${pixel}`;
+        })
+    }
+
     const [Background, setBackground] = useState('#233CF5');
     const handleChangeComplete = (color) => {
         // this.setState({ background: color.hex });
@@ -51,14 +69,13 @@ const ArkaPlan = (props) => {
     const [checked, setchecked] = useState(false);
     const [colorhex, setcolorhex] = useState();
 
-    const handleSetChecked = (state) =>{
+    const handleSetChecked = (state) => {
         setchecked(state);
         var photo_image = document.getElementById('photo_image');
         var photo_div = document.getElementById('photo_div');
-        if(!checked)
-        {
+        if (!checked) {
             photo_div.style.backgroundImage = 'url(' + photo_image.src + ')';
-        }else{
+        } else {
             photo_div.style.backgroundImage = "url('http://localhost:3000/static/media/backgroundimg.9a582df1eb22e5096422.jpg')";
         }
     }
@@ -68,6 +85,7 @@ const ArkaPlan = (props) => {
         const Display = document.getElementById('volumdisplay');
         prc.addEventListener('input', () => {
             Display.innerHTML = `%${prc.value}`;
+
         })
     };
 
@@ -83,9 +101,11 @@ const ArkaPlan = (props) => {
     useEffect(() => {
         if (checked) {
             getSliderRange1();
+            BlurBackground();
         };
 
         getSliderRange2();
+        TansparencyOpacityBackground();
 
     })
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
@@ -117,7 +137,7 @@ const ArkaPlan = (props) => {
                 <label className={` text-pop40012 text-bar-offline-0`}>Görseli Arka plana Ekle</label>
                 {/* Toggle checkbox */}
                 <label className="relative inline-flex items-center cursor-pointer">
-                    <input defaultChecked onClick={() =>handleSetChecked(!checked)} type="checkbox" value="" 
+                    <input defaultChecked onClick={() => handleSetChecked(!checked)} type="checkbox" value=""
                         className="sr-only peer" checked={checked} />
                     <div className="w-11 h-6 bg-gray-200 rounded-full peer    dark:bg-[#EAECF0] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1163FA] "></div>
                 </label>

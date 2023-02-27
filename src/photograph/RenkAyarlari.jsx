@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img2 from '../assets/images/Rectangle2.png';
 import img1 from '../assets/images/Rectangle1.png';
 import { ReactComponent as Pc } from '../assets/icons/computer.svg';
@@ -8,6 +8,76 @@ import { ReactComponent as Forward } from '../assets/icons/forward.svg';
 
 
 const RenkAyarlari = (props) => {
+
+    const Brightness = () => {
+        var photo_image = document.getElementById('photo_image');
+        var BRI = document.getElementById('brightness');
+        BRI.addEventListener('input', () => {
+            photo_image.style.filter = `brightness(${BRI.value}%)`;
+        })
+    }
+
+    const Contrast = () => {
+        var photo_image = document.getElementById('photo_image');
+        var CRT = document.getElementById('contrast');
+        CRT.addEventListener('input', () => {
+            photo_image.style.filter = `contrast(${CRT.value}%)`;
+        })
+    }
+
+    const Sharpness = () => {
+        var photo_image = document.getElementById('photo_image');
+        var SHRP = document.getElementById('sharpness');
+        SHRP.addEventListener('input', () => {
+            photo_image.style.filter = `contrast(${SHRP.value}%)`;
+            photo_image.style.filter = `brightness(${SHRP.value}%)`;
+            photo_image.style.filter = `saturate(${SHRP.value}%)`;
+
+
+        })
+    }
+
+    const Temprature = () => {
+        var photo_image = document.getElementById('photo_image');
+        var TMP = document.getElementById('temprature');
+        TMP.addEventListener('input', () => {
+            photo_image.style.filter = `hue-rotate(${-TMP.value}deg)`;
+            //  photo_image.style.filter = `brightness(${TMP.value}%)`;
+            //  photo_image.style.filter= `contrast(${TMP.value}%)`;
+
+        })
+    }
+
+    const Saturation = () => {
+        var photo_image = document.getElementById('photo_image');
+        var STR = document.getElementById('saturation');
+        STR.addEventListener('input', () => {
+            photo_image.style.filter = `saturate(${STR.value}%)`;
+        })
+    }
+
+    const Vignette = () => {
+        var photo_image = document.getElementById('photo_image');
+        var vignetteContainer = document.getElementById('vignetteContainer');
+        var VGT = document.getElementById('vignette');
+        VGT.addEventListener('input', () => {
+        //    photo_image.style.border=  `5px`;
+            vignetteContainer.style.boxShadow= '10px 10px 2000px rgba(0,0,0,1.5) inset';
+             photo_image.style.borderRadius= `${VGT.value+''}px`;
+             if(VGT.value == 0){
+                photo_image.style.padding= '0';
+             }
+        })
+    }
+
+    const BlurBackground = () => {
+        var photo_image = document.getElementById('photo_image');
+        var prc = document.getElementById('blurimg');
+        prc.addEventListener('input', () => {
+            var pixel = prc.value * 0.100;
+            photo_image.style.filter = `blur(${pixel + ''}px)`;
+        })
+    }
     const filters = [
         {
             id: 1,
@@ -48,6 +118,19 @@ const RenkAyarlari = (props) => {
     ];
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
     const [PcSelected, setPcSelected] = useState(true);
+
+
+    useEffect(() => {
+        Brightness();
+        Contrast();
+        Sharpness();
+        Temprature();
+        Saturation();
+        Vignette();
+        BlurBackground();
+    })
+
+
     return (
         <div className={` mt-4 flex flex-col`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
@@ -67,37 +150,37 @@ const RenkAyarlari = (props) => {
 
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-7`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Parlaklık</label>
-                <input type="range" id="volume" name="volume"
-                    min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                <input type="range" id="brightness" name="brightness"
+                    min="0" max="200" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Kontrast</label>
-                <input type="range" id="volume" name="volume"
-                    min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                <input type="range" id="contrast" name="contrast"
+                    min="0" max="200" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Keskinlik</label>
-                <input type="range" id="volume" name="volume"
-                    min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                <input type="range" id="sharpness" name="sharpness"
+                    min="110" max="300" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Sıcaklık</label>
-                <input type="range" id="volume" name="volume"
-                    min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                <input type="range" id="temprature" name="Temprature"
+                    min="-50" max="150" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Doygunluk</label>
-                <input type="range" id="volume" name="volume"
-                    min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                <input type="range" id="saturation" name="saturation"
+                    min="-100" max="200" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Vinyet</label>
-                <input type="range" id="volume" name="volume"
+                <input type="range" id="vignette" name="vignette"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
                 <label className={` self-start text-bar-offline-0 text-popNormal12`}>Bulanıklık</label>
-                <input type="range" id="volume" name="volume"
+                <input type="range" id="blurimg" name="blurimg"
                     min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
