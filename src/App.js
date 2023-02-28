@@ -1,6 +1,6 @@
 import React,{ useState} from "react";
 import PhotographMain from "./photograph/PhotographMain.jsx";
-
+import WindowFixer from './plugins/WindowFixer.jsx';
 
 
 const App=()=> {
@@ -9,7 +9,8 @@ const App=()=> {
     setOpenModal(value);
      }
   return (
-    <div className=" flex place-items-center place-content-center ">
+    <div className="flex w-[1920px] min-w-[1920px] max-w-[1920px] h-[100%] min-h-[1080px] content-center items-center  bg-[red]">
+    <WindowFixer />
     {OpenModal ?
       <PhotographMain onClose={() => ToggleModal(false)} />
       :

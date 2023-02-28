@@ -151,7 +151,7 @@ const PhotographMain = (props) => {
     const [OnAddTXTselect, setOnAddTXTselect] = useState(false);
 
     return (
-        <div className=" place-items-center place-content-center justify-center align-middle  flex bg-gray-200 w-screen h-screen ">
+        <div className="place-items-center place-content-center justify-center align-middle  flex bg-gray-200 w-full h-[100%] min-h-[1080px] ">
             <section className={` overflow-hidden font-pop w-[1600px] h-[880px] border-gray-200 border shadow-md bg-white  `}>
                 <div className={`h-20  flex flex-row justify-between bg-white items-center pr-5 pl-5 devide-y border-b border-border-color-0`}>
                     <label className=" text-popNormal16 text-text-color-0">İmaj Düzenle</label>
@@ -172,7 +172,7 @@ const PhotographMain = (props) => {
                                 </div>
 
                                 {/* ADD TEXT PART */}
-                                <div id="draggable" rows="4" cols="50" contentEditable={true} draggable={true}
+                                <div id="draggable" rows="4" cols="50"  draggable={true}
                                     onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-black  hidden w-[214px] min-h-[60px] max-h-[260px]   " >
                                     <div id="draggableheader" className=" cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px]  place-items-center bg-[#667085]  ">
                                         <CursorMove />
@@ -186,7 +186,7 @@ const PhotographMain = (props) => {
 
 
                                 {/* sticker  */}
-                                <div id="StickerDraggable"  contentEditable={true} draggable={true}
+                                <div id="StickerDraggable"  draggable={true}
                                     onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center  w-[75px] h-[75px] hidden  " >
                                     <div id="draggableheader" className=" z-10 cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px] flex place-items-center bg-[#667085]">
                                         <CursorMove />
@@ -246,7 +246,9 @@ const PhotographMain = (props) => {
                             :
                             <></>}
                         {OnAddTXTselect ?
-                            <MetinEkle />
+                            <MetinEkle 
+                                DragMetinEkle={DragMetinEkle}
+                                />
                             :
                             <></>}
                     </div>

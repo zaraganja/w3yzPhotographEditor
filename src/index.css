@@ -17,10 +17,10 @@ code {
 
 .AddTextStyle {
   resize: both;
-  border-width: 2px;
-  border-style: dotted;
+  /* border-width: 2px; */
+  /* border-style: dotted; */
   --tw-border-opacity: 1;
-    border-color: rgb(17 99 250 / var(--tw-border-opacity));
+    /* border-color: rgb(17 99 250 / var(--tw-border-opacity)); */
     position: absolute;
     background-color: transparent;
     align-self: center;
@@ -29,3 +29,31 @@ code {
     width: auto;
     height: auto;
 } 
+
+.textOver{
+  border: solid 2px rgb(60, 60, 255);
+  box-sizing: border-box;
+}
+.textClick{
+  border: solid 2px rgb(85, 159, 255);
+  box-sizing: border-box;
+  outline: none !important;
+}
+.textClick .move{
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  background: aliceblue;
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+}
+.textClick .remove{
+  background: red;
+  padding: 2px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  cursor: pointer;
+}

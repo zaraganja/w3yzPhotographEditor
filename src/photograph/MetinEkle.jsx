@@ -102,10 +102,47 @@ const MetinEkle = (props) => {
         var myArea = document.getElementById("photo_div");
         var draggablediv = document.createElement('div');
         draggablediv.setAttribute('id','draggable');
+        draggablediv.onmouseenter = function(event) {
+            event.stopPropagation()
+            event.target.classList.add('textOver');
+        }
+        draggablediv.onmouseleave = function(event) {
+            event.stopPropagation()
+            event.target.classList.remove('textOver')
+        }
+        draggablediv.onclick = function(event) {
+            event.stopPropagation()
+            document.querySelectorAll('.w3yzmovingbtns').forEach((item)=>{
+                item.remove();
+            })
+            event.target.setAttribute('contenteditable',true);
+            event.target.classList.add('textClick')
+            event.target.focus()
+            var menuItems = document.createElement('div');
+            menuItems.classList.add('w3yzmovingbtns');
+            menuItems.innerHTML =  `
+            <svg 
+                id="draggableheader"
+                class="move" width="15px" height="15px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><polygon fill="var(--ci-primary-color, #000000)" points="130.412 323.98 78.529 272.098 240 272.098 240 433.568 188.118 381.687 165.49 404.313 256 494.823 346.51 404.313 323.882 381.687 272 433.568 272 272.098 432.667 272.098 380.784 323.98 403.412 346.607 493.921 256.098 403.412 165.588 380.784 188.215 432.667 240.098 272 240.098 272 79.432 323.882 131.313 346.51 108.687 256 18.177 165.49 108.687 188.118 131.313 240 79.432 240 240.098 78.529 240.098 130.412 188.215 107.784 165.588 17.274 256.098 107.785 346.608 130.412 323.98" class="ci-primary"></polygon></svg>
+            <svg 
+                class="remove" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.99974 6.87818L1.77216 11.1057C1.65679 11.2211 1.51176 11.2802 1.33708 11.2828C1.16241 11.2855 1.01472 11.2265 0.893995 11.1057C0.773259 10.985 0.712891 10.8387 0.712891 10.6667C0.712891 10.4947 0.773259 10.3483 0.893995 10.2276L5.12156 5.99999L0.893995 1.77241C0.778606 1.65703 0.719578 1.512 0.716911 1.33732C0.714231 1.16266 0.773259 1.01496 0.893995 0.894239C1.01472 0.773503 1.16108 0.713135 1.33308 0.713135C1.50508 0.713135 1.65144 0.773503 1.77216 0.894239L5.99974 5.1218L10.2273 0.894239C10.3427 0.778851 10.4877 0.719823 10.6624 0.717156C10.8371 0.714476 10.9848 0.773503 11.1055 0.894239C11.2262 1.01496 11.2866 1.16132 11.2866 1.33332C11.2866 1.50532 11.2262 1.65168 11.1055 1.77241L6.87793 5.99999L11.1055 10.2276C11.2209 10.3429 11.2799 10.488 11.2826 10.6627C11.2853 10.8373 11.2262 10.985 11.1055 11.1057C10.9848 11.2265 10.8384 11.2868 10.6664 11.2868C10.4944 11.2868 10.3481 11.2265 10.2273 11.1057L5.99974 6.87818Z" fill="#D0D5DD"></path></svg>
+            `
+            event.target.appendChild(menuItems)
+            props.DragMetinEkle();
+        }
+        draggablediv.onblur = function(event) {
+            document.querySelectorAll('.w3yzmovingbtns').forEach((item)=>{
+                item.remove();
+            })
+            event.target.removeAttribute('contenteditable');
+            event.target.classList.remove('textClick');
+        }
         myArea.appendChild(draggablediv);
         draggablediv.classList.add('AddTextStyle');
         draggablediv.innerText="Add Text";
-        draggablediv.setAttribute('contenteditable',true);
+
+
+
         // var draggable = document.getElementById('draggable');
         // draggable.style.display= 'flex';
     }
@@ -264,8 +301,8 @@ const MetinEkle = (props) => {
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4`}>Etiket  Ekle</label>
             <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden ">
-                {etiketler.map((item) => (
-                    <div>
+                {etiketler.map((item,index) => (
+                    <div key={index}>
                         <img onClick={()=> AddSticker(item.image)} src={item.image} className=" overflow-hidden hover:cursor-pointer" />
                     </div>
                 ))}
