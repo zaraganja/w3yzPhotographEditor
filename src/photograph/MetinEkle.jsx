@@ -99,8 +99,15 @@ const MetinEkle = (props) => {
 
     const AddText =()=> {
         setAddTXTbTN(true);
-        var draggable = document.getElementById('draggable');
-        draggable.style.display= 'flex';
+        var myArea = document.getElementById("photo_div");
+        var draggablediv = document.createElement('div');
+        draggablediv.setAttribute('id','draggable');
+        myArea.appendChild(draggablediv);
+        draggablediv.classList.add('AddTextStyle');
+        draggablediv.innerText="Add Text";
+        draggablediv.setAttribute('contenteditable',true);
+        // var draggable = document.getElementById('draggable');
+        // draggable.style.display= 'flex';
     }
 
 
@@ -140,6 +147,8 @@ const MetinEkle = (props) => {
         StickerDraggable.style.display='flex';
         StickerImg.src=sticker;
     }
+
+    
 
     return (
         <section className={`w-[300px] h-screen overflow-scroll ${AddTXTbTN ? `mb-[200px]` : `mb-0` }`}   >

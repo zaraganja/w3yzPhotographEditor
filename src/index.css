@@ -15,3 +15,17 @@ code {
     monospace;
 }
 
+.AddTextStyle {
+  resize: both;
+  border-width: 2px;
+  border-style: dotted;
+  --tw-border-opacity: 1;
+    border-color: rgb(17 99 250 / var(--tw-border-opacity));
+    position: absolute;
+    background-color: transparent;
+    align-self: center;
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+    width: auto;
+    height: auto;
+} 

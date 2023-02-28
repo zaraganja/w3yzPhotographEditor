@@ -151,7 +151,7 @@ const RenkAyarlari = (props) => {
 
 
     return (
-        <div className={` mt-4 flex flex-col h-screen overflow-scroll mb-[300px]`}>
+        <div className={` mt-4 flex flex-col h-screen overflow-scroll mb-[200px]`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -165,45 +165,45 @@ const RenkAyarlari = (props) => {
                 </div>
             </div>
             <label className={` ml-4 text-popNormal12 text-text-color-0`} >Renk Ayarları</label>
-            <button onClick={() => ResetSettings()} className={` text-bar-offline-0 text-popNormal12 border border-box-stroke-0 place-items-center w-[263px] h-[32px] self-center mt-[15px] rounded hover:bg-gray-200`}>ayarları sıfırla</button>
+            <button onClick={() => ResetSettings()} className={` text-bar-offline-0 text-popNormal12 border border-box-stroke-0 place-items-center w-[263px] h-12 self-center mt-[15px] rounded hover:bg-gray-200`}>ayarları sıfırla</button>
 
-            <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-7`}>
-                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Parlaklık</label>
+            <div className={`flex flex-col place-items-center  overflow-hidden h-16 bg-white self-center mt-7`}>
+                <label className={`mb-4 self-start text-bar-offline-0 text-popNormal12`}>Parlaklık</label>
                 <input type="range" id="brightness" name="brightness"
-                    min="0" max="200" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                    min="0" max="200" step="1" className="w-[263px] h-1  accent-btn-blue-0 cursor-pointer   bg-white rounded-lg " />
             </div>
-            <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Kontrast</label>
+            <div className={`flex flex-col place-items-center  overflow-hidden h-16 bg-white self-center mt-4`}>
+                <label className={`mb-4 self-start text-bar-offline-0 text-popNormal12`}>Kontrast</label>
                 <input type="range" id="contrast" name="contrast"
-                    min="0" max="200" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                    min="0" max="200" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer bg-white rounded-lg " />
             </div>
-            <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Keskinlik</label>
+            <div className={`flex flex-col place-items-center  overflow-hidden h-16 bg-white self-center mt-4`}>
+                <label className={`mb-4 self-start text-bar-offline-0 text-popNormal12`}>Keskinlik</label>
                 <input type="range" id="sharpness" name="sharpness"
-                    min="110" max="300" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                    min="110" max="300" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer   bg-white rounded-lg " />
             </div>
-            <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Sıcaklık</label>
+            <div className={`flex flex-col place-items-center  overflow-hidden h-16 bg-white self-center mt-4`}>
+                <label className={`mb-4 self-start text-bar-offline-0 text-popNormal12`}>Sıcaklık</label>
                 <input type="range" id="temprature" name="Temprature"
-                    min="-50" max="150" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                    min="-50" max="150" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer  bg-white rounded-lg " />
             </div>
-            <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Doygunluk</label>
+            <div className={`flex flex-col place-items-center  overflow-hidden h-16 bg-white self-center mt-4`}>
+                <label className={`mb-4 self-start text-bar-offline-0 text-popNormal12`}>Doygunluk</label>
                 <input type="range" id="saturation" name="saturation"
-                    min="-100" max="200" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                    min="-100" max="200" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer bg-white rounded-lg " />
             </div>
-            <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Vinyet</label>
+            <div className={`flex flex-col place-items-center  overflow-hidden h-16 bg-white self-center mt-4`}>
+                <label className={`mb-4 self-start text-bar-offline-0 text-popNormal12`}>Vinyet</label>
                 <input type="range" id="vignette" name="vignette"
-                    min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                    min="0" max="100" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer bg-white rounded-lg " />
             </div>
-            <div className={`flex flex-col place-items-center  overflow-hidden h-11 bg-white self-center mt-4`}>
-                <label className={` self-start text-bar-offline-0 text-popNormal12`}>Bulanıklık</label>
+            <div className={`flex flex-col place-items-center  overflow-hidden h-16 bg-white self-center mt-4`}>
+                <label className={` self-start text-bar-offline-0 text-popNormal12 mb-4`}>Bulanıklık</label>
                 <input type="range" id="blurimg" name="blurimg"
-                    min="0" max="100" step="1" className="w-[263px] h-[3px] accent-btn-blue-0 cursor-pointer mt-4  bg-white rounded-lg " />
+                    min="0" max="100" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer  bg-white rounded-lg " />
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
-            <div className="grid grid-cols-3 gap-8 bg-white place-items-center mx-4 mt-4 mb-5 ">
+            <div className="grid grid-cols-3 gap-4 bg-white place-items-center mx-4 mt-4 mb-5 ">
                 {filters.map((item) => (
                     <div >
                         <img src={item.image} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
