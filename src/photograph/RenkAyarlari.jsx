@@ -92,7 +92,7 @@ const RenkAyarlari = (props) => {
 
         photo_image.style.filter = `none`;
         photo_image.style.borderRadius = `0px`;
-        photo_image.style.padding = '0'
+        photo_image.style.padding = '0';
 
 
     }

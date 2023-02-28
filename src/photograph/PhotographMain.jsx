@@ -162,7 +162,7 @@ const PhotographMain = (props) => {
                 </div>
                 <div className={`flex flex-row h-screen`}>
                     <div className={`w-5/6 flex flex-col `}>
-                        <div id="photo_maindiv" className=" w-[1280px] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden ">
+                        <div id="photo_maindiv" className=" w-[97%] max-w-[97%] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden ">
 
                             <div className={` bg-myBackImage bg-cover  flex place-content-center overflow-hidden place-items-center`}
                                 id="photo_div">
@@ -210,22 +210,22 @@ const PhotographMain = (props) => {
                         {/* <div className={` bg-black justify-center justify-items-center  overflow-hidden`}> */}
                         {/* bottom buttons */}
                         <ul className={`flex flex-row justify-between align-middle overflow-hidden mt-[30px] bg-white px-96`}>
-                            <div onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`} >
+                            <li onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`} >
                                 <Cropicon fill={OnCropSelect ? '#1D2939' : '#888888'} />
                                 <button className={` pt-2 hover:text-gray-600 text-pop60016 ${OnCropSelect ? ` text-text-color-0` : ` text-bar-offline-0 `}  `}>Düzenle</button>
-                            </div>
-                            <div onClick={() => { setOnBackgroundSelect(true); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
+                            </li>
+                            <li onClick={() => { setOnBackgroundSelect(true); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
                                 <Arkaplanicon fill={OnBackgroundSelect ? '#1D2939' : '#888888'} />
                                 <button className={` pt-2 hover:text-gray-600 text-pop60016 ${OnBackgroundSelect ? ` text-text-color-0` : ` text-bar-offline-0`}`}>Arka Plan </button>
-                            </div>
-                            <div onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(true); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
+                            </li>
+                            <li onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(true); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
                                 <Colors fill={OnColorsSelect ? '#1D2939' : '#888888'} />
                                 <button className={` pt-2 hover:text-gray-600 text-pop60016 ${OnColorsSelect ? ` text-text-color-0` : ` text-bar-offline-0`}   `}>Renk Ayarları</button>
-                            </div>
-                            <div onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(true) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
+                            </li>
+                            <li onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(false); setOnColorsSelect(false); setOnAddTXTselect(true) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center`}>
                                 <TXT fill={OnAddTXTselect ? '#1D2939' : '#888888'} />
                                 <button className={` pt-2 hover:text-gray-600 text-pop60016 ${OnAddTXTselect ? ` text-text-color-0` : ` text-bar-offline-0`}`}>Metin Ekle</button>
-                            </div>
+                            </li>
                         </ul>
                         {/* </div> */}
                     </div>
