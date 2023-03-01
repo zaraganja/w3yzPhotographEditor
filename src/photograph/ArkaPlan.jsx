@@ -194,8 +194,8 @@ const ArkaPlan = (props) => {
             </div>
 
             <div className="grid grid-cols-4 gap-4 bg-white px-3 mt-[22px] place-items-center ">
-                {backlist.map((item) => (
-                    <img src={item.image} className=" bg-blue-300 w-[45px] h-[45px] rounded " />
+                {backlist.map((item,index) => (
+                    <img key={index} src={item.image} className=" bg-blue-300 w-[45px] h-[45px] rounded " />
                 ))}
             </div>
         </div>

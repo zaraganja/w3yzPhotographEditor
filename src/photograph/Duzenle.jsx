@@ -34,10 +34,15 @@ const Duzenle = (props) => {
     const removeImageScale = () =>{
         var photo_image = document.getElementById('photo_image');
         var photo_div = document.getElementById('photo_div');
+        var vignetteContainer =document.getElementById('vignetteContainer');
+        var photo_maindiv =document.getElementById('photo_maindiv');
      
             photo_image.style.width = '392px';
             photo_image.style.height = '630px';
-      
+            photo_image.style.alignSelf= 'center';
+            vignetteContainer.style.display= 'contents';
+            photo_maindiv.style.placeContent= 'default';
+            photo_maindiv.style.display='default';
     }
 
     const coverImage = () =>{
@@ -59,6 +64,7 @@ const Duzenle = (props) => {
 
     const containImage = () =>{
         var photo_image = document.getElementById('photo_image');
+        var vignetteContainer =document.getElementById('vignetteContainer');
         var photo_div = document.getElementById('photo_div');
 
         if(!isImageScaleChange)
@@ -68,9 +74,13 @@ const Duzenle = (props) => {
         }
 
         console.log(imageWidth+' '+imageHeight);
-         photo_image.style.width = '1280px';
-         photo_image.style.maxHeight = '630px';
-        // photo_div.style.height = 'auto';
+        photo_image.style.width= '100%';
+        photo_image.style.height='auto';
+        vignetteContainer.style.width = '100%';
+        vignetteContainer.style.height='auto';
+        // photo_image.style.marginTop= '-35%';
+        //  photo_image.style.height = 'auto';
+        //  photo_div.style.height = 'auto';
        
         setIsCover(true);
         setIsImageScaleChange(true);

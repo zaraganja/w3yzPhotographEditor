@@ -24,20 +24,108 @@ import MetinEkle from "./MetinEkle";
 
 const PhotographMain = (props) => {
 
-    const CloseAddText = () => {
-        var draggable = document.getElementById("draggable");
+    const [divs, setDivs] = useState([]);
+    const [SelectedTXT, setSelectedTXT] = useState();
+    const [Stickers, setStickers] = useState([]);
+
+    const AddTextdiv = () => {
+        console.log(`draggable${divs.length}`);
+        const newDiv =
+            <div key={divs.length} draggable={true} id={`draggable${divs.length + 1}`} className={` outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `} style={{ top: `${divs.length + 25}%` }}>
+                <div key={divs.length} id={`draggable${divs.length + 1}header`} className=" cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085]  ">
+                    <CursorMove />
+                </div>
+
+                <div onClick={() => setSelectedTXT(divs.length + 1)} contentEditable id={`AddTextTXT${divs.length + 1}`} className=" mt-2 max-h-[260px] max-w-[214px] ">METİN EKLE</div>
+                <div onClick={() => CloseAddText(divs.length + 1)} className="  -top-[7px] -right-[7px]  w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085]  ">
+                    <CloseTxt />
+                </div></div>
+        setDivs(prevDivs => [...prevDivs, newDiv]);
+    }
+
+    const AddSticker = (img) => {
+        const newstickerdiv =
+            <div key={Stickers.length} id={`StickerDraggable${Stickers.length + 1}`} draggable={true} style={{ top: `${Stickers.length + 25}%` }}
+                onDragStart={() => console.log('asdasdas')} className=" resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
+                <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] flex place-items-center bg-[#667085] ">
+                    <CursorMove />
+                </div>
+                <img src={img} id={`StickerImg${Stickers.length + 1}`} ></img>
+                <div onClick={() => CloseSticker(Stickers.length + 1)} className=" z-10 -top-[7px] -right-[7px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
+                    <CloseTxt />
+                </div>
+            </div>
+        setStickers(previDivs => [...previDivs, newstickerdiv])
+    }
+
+    const CloseAddText = (elemnt) => {
+        var draggable = document.getElementById("draggable" + elemnt);
         draggable.style.display = 'none';
     }
 
-    const CloseSticker =()=> {
-        var draggable = document.getElementById("StickerDraggable");
+    const CloseSticker = (elmnt) => {
+        var draggable = document.getElementById("StickerDraggable" + elmnt);
         draggable.style.display = 'none';
     }
 
-
-    const DragMetinEkle = () => {
+    const DragMetinEkle = (leng) => {
+        console.log("draggable" + leng);
         //Make the DIV element draggagle:
-        dragElement(document.getElementById("draggable"));
+        dragElement(document.getElementById("draggable" + leng));
+
+        function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                /* if present, the header is where you move the DIV from:*/
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                /* otherwise, move the DIV from anywhere inside the DIV:*/
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                var container = document.body;
+                if (elmnt.offsetLeft - pos1 >= 0 && elmnt.offsetLeft - pos1 + elmnt.offsetWidth <= container.offsetWidth) {
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+                if (elmnt.offsetTop - pos2 >= 0 && elmnt.offsetTop - pos2 + elmnt.offsetHeight <= container.offsetHeight) {
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                }
+            }
+
+            function closeDragElement() {
+                /* stop moving when mouse button is released:*/
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+
+
+    }
+
+    const DragSticker = (leng) => {
+        //Make the DIV element draggagle:
+        dragElement(document.getElementById("StickerDraggable" + leng));
 
         function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -87,62 +175,34 @@ const PhotographMain = (props) => {
 
     }
 
-    const DragSticker = () => {
-        //Make the DIV element draggagle:
-        dragElement(document.getElementById("StickerDraggable"));
-
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-                /* if present, the header is where you move the DIV from:*/
-                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-                /* otherwise, move the DIV from anywhere inside the DIV:*/
-                elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                var container = document.body;
-                if (elmnt.offsetLeft - pos1 >= 0 && elmnt.offsetLeft - pos1 + elmnt.offsetWidth <= container.offsetWidth) {
-                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                }
-                if (elmnt.offsetTop - pos2 >= 0 && elmnt.offsetTop - pos2 + elmnt.offsetHeight <= container.offsetHeight) {
-                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                }
-            }
-
-            function closeDragElement() {
-                /* stop moving when mouse button is released:*/
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
-        }
-
+    const CreateCnvasImage = () => {
+        const myDiv = document.getElementById("photo_div");
+        const myImg = myDiv.querySelector("photo_image");
+        const canvas = document.createElement("canvas");
+        canvas.width = myDiv.offsetWidth;
+        canvas.height = myDiv.offsetHeight;
+        const context = canvas.getContext("2d");
+        context.drawImage(myDiv, 0, 0, canvas.width, canvas.height);
+        const dataURL = canvas.toDataURL("image/png");
+        myImg.src = dataURL;
+        console.log(dataURL);
     }
+
+
+
 
     useEffect(() => {
-        DragMetinEkle();
-        DragSticker();
+        if (divs.length !== 0) {
+            DragMetinEkle(divs.length);
+        }
+        if (Stickers.length !== 0) {
+            DragSticker(Stickers.length);
+        }
+
+
+
     })
+
 
 
     const [OnCropSelect, setOnCropSelect] = useState(true);
@@ -157,7 +217,7 @@ const PhotographMain = (props) => {
                     <label className=" text-popNormal16 text-text-color-0">İmaj Düzenle</label>
                     <ul>
                         <button onClick={() => props.onClose()} className={`mr-7 hover:text-zinc-500 text-pop14 text-text-color-0`}>Vazgeç</button>
-                        <button className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
+                        <button onClick={() => CreateCnvasImage()} className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
                     </ul>
                 </div>
                 <div className={`flex flex-row h-screen`}>
@@ -172,30 +232,35 @@ const PhotographMain = (props) => {
                                 </div>
 
                                 {/* ADD TEXT PART */}
-                                <div id="draggable" rows="4" cols="50"  draggable={true}
+                                {/* <div id="draggable" rows="4" cols="50" draggable={true}
                                     onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-black  hidden w-[214px] min-h-[60px] max-h-[260px]   " >
                                     <div id="draggableheader" className=" cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px]  place-items-center bg-[#667085]  ">
                                         <CursorMove />
                                     </div>
 
                                     <label id="AddTextTXT" className=" mt-2 max-h-[260px] max-w-[214px] ">METİN EKLE</label>
-                                    <div onClick={() => CloseAddText()}  className=" ml-[205px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085]  ">
+                                    <div onClick={() => CloseAddText()} className=" ml-[205px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085]  ">
                                         <CloseTxt />
                                     </div>
-                                </div>
+                                </div> */}
+
+                                {divs.map(div => div)}
 
 
                                 {/* sticker  */}
-                                <div id="StickerDraggable"  draggable={true}
+                                {/* <div id="StickerDraggable" draggable={true}
                                     onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center  w-[75px] h-[75px] hidden  " >
                                     <div id="draggableheader" className=" z-10 cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px] flex place-items-center bg-[#667085]">
                                         <CursorMove />
                                     </div>
-                                    <img id="StickerImg" ></img>  
-                                    <div onClick={() => CloseSticker()}  className=" z-10 ml-[67px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
+                                    <img id="StickerImg" ></img>
+                                    <div onClick={() => CloseSticker()} className=" z-10 ml-[67px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
                                         <CloseTxt />
                                     </div>
-                                </div>
+                                </div> */}
+
+                                {Stickers.map(div => div)}
+
                             </div>
 
 
@@ -246,9 +311,8 @@ const PhotographMain = (props) => {
                             :
                             <></>}
                         {OnAddTXTselect ?
-                            <MetinEkle 
-                                DragMetinEkle={DragMetinEkle}
-                                />
+                            <MetinEkle AddTextdiv={AddTextdiv} SelectedTXT={SelectedTXT} AddSticker={AddSticker} Stickerlength={Stickers.length + 1}
+                            />
                             :
                             <></>}
                     </div>
