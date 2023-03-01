@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef,useCallback } from "react";
 
 import { ReactComponent as Cropicon } from '../assets/icons/crop.svg';
 import { ReactComponent as Arkaplanicon } from '../assets/icons/arkaplan.svg';
@@ -18,11 +18,32 @@ import Duzenle from "./Duzenle";
 import ArkaPlan from "./ArkaPlan";
 import RenkAyarlari from "./RenkAyarlari";
 import MetinEkle from "./MetinEkle";
+import { toPng } from 'html-to-image';
 
 
 
 
 const PhotographMain = (props) => {
+    const ref = useRef()
+
+    const GetFinalImage = useCallback(() => {
+      if (ref.current === null) {
+        return
+      }
+  
+      toPng(ref.current, { cacheBust: true, })
+        .then((dataUrl) => {
+          const link = document.createElement('a')
+          link.download = 'my-image-name.png'
+          link.href = dataUrl
+          link.click()
+          console.log(dataUrl)
+          console.log(link)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }, [ref])
 
     const [divs, setDivs] = useState([]);
     const [SelectedTXT, setSelectedTXT] = useState();
@@ -175,18 +196,7 @@ const PhotographMain = (props) => {
 
     }
 
-    const CreateCnvasImage = () => {
-        const myDiv = document.getElementById("photo_div");
-        const myImg = myDiv.querySelector("photo_image");
-        const canvas = document.createElement("canvas");
-        canvas.width = myDiv.offsetWidth;
-        canvas.height = myDiv.offsetHeight;
-        const context = canvas.getContext("2d");
-        context.drawImage(myDiv, 0, 0, canvas.width, canvas.height);
-        const dataURL = canvas.toDataURL("image/png");
-        myImg.src = dataURL;
-        console.log(dataURL);
-    }
+
 
 
 
@@ -217,18 +227,17 @@ const PhotographMain = (props) => {
                     <label className=" text-popNormal16 text-text-color-0">İmaj Düzenle</label>
                     <ul>
                         <button onClick={() => props.onClose()} className={`mr-7 hover:text-zinc-500 text-pop14 text-text-color-0`}>Vazgeç</button>
-                        <button onClick={() => CreateCnvasImage()} className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
+                        <button onClick={() => GetFinalImage()} className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
                     </ul>
                 </div>
                 <div className={`flex flex-row h-screen`}>
                     <div className={`w-[80%] min-w-[80%] flex flex-col pr-[0.5%] `}>
                         <div id="photo_maindiv" className=" w-[97%] max-w-[97%] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden ">
 
-                            <div className={` bg-myBackImage bg-cover  flex place-content-center overflow-hidden place-items-center`}
+                            <div ref={ref} className={` bg-myBackImage bg-cover  flex place-content-center overflow-hidden place-items-center`}
                                 id="photo_div">
                                 <div id="vignetteContainer" className=" ">
                                     <img src={yummphoto} className={`object-fit w-[392px] self-center`} id="photo_image" />
-
                                 </div>
 
                                 {/* ADD TEXT PART */}
