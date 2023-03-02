@@ -8,6 +8,7 @@ import { ReactComponent as Pc } from '../assets/icons/computer.svg';
 import { ReactComponent as Phone } from '../assets/icons/smartphone.svg';
 import { ReactComponent as Back } from '../assets/icons/reply.svg';
 import { ReactComponent as Forward } from '../assets/icons/forward.svg';
+import FormData from "form-data";
 
 const Duzenle = (props) => {
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
@@ -47,6 +48,7 @@ const Duzenle = (props) => {
 
     const coverImage = () =>{
         var photo_image = document.getElementById('photo_image');
+        var vignetteContainer =document.getElementById('vignetteContainer');
         var photo_div = document.getElementById('photo_div');
         if(!isImageScaleChange)
         {
@@ -56,7 +58,8 @@ const Duzenle = (props) => {
 
          photo_image.style.width = '1280px';
          photo_image.style.height = '630px';
-       
+         vignetteContainer.style.width = '1280px';
+         vignetteContainer.style.height = '630px';
        
         setIsCover(true);
         setIsImageScaleChange(true);
@@ -78,6 +81,7 @@ const Duzenle = (props) => {
         photo_image.style.height='auto';
         vignetteContainer.style.width = '100%';
         vignetteContainer.style.height='auto';
+        vignetteContainer.style.marginTop= '-30%'
         // photo_image.style.marginTop= '-35%';
         //  photo_image.style.height = 'auto';
         //  photo_div.style.height = 'auto';
@@ -207,8 +211,32 @@ const Duzenle = (props) => {
         photo_maindiv.style.display='flex';
         photo_maindiv.style.placeContent= 'center';
         photo_div.style.borderRadius = '600px';
+    }
 
-        // photo_image.style.borderRadius = '100%';
+    const TransparentBackgroud=()=>{
+        console.log("http://localhost:3000"+props.imageURI);
+        var mydata = new FormData();
+        mydata.append('file',
+        {
+            uri: "http://localhost:3000"+props.imageURI,
+              name: "pexels-photo",
+              type: "image/jpeg",
+             
+        });
+    fetch("http://5.75.182.66:5000/upload", {
+        method: 'post',
+        body: JSON.stringify(mydata)  ,
+        mode: 'no-cors',
+        
+       
+    }).then(response => {
+        console.log(JSON.stringify(response));
+        
+
+    })
+        .catch(error => {
+           
+        });
 
 
     }
@@ -284,7 +312,7 @@ const Duzenle = (props) => {
                         <Block />
                     </div>
                 </span>
-                <span className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
+                <span onClick={()=> TransparentBackgroud()} className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Back_Replace />
                     </div>

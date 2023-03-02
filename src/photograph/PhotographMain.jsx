@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef,useCallback } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 
 import { ReactComponent as Cropicon } from '../assets/icons/crop.svg';
 import { ReactComponent as Arkaplanicon } from '../assets/icons/arkaplan.svg';
@@ -13,12 +13,13 @@ import { ReactComponent as CloseTxt } from '../assets/icons/closetxt.svg';
 //     format_color_text as TXT
 // } from '../assets/icons';
 
-import yummphoto from "../assets/images/yummyphoto.jpg";
+import yummphoto from "../assets/images/IMG_9864.jpeg";
 import Duzenle from "./Duzenle";
 import ArkaPlan from "./ArkaPlan";
 import RenkAyarlari from "./RenkAyarlari";
 import MetinEkle from "./MetinEkle";
 import { toPng } from 'html-to-image';
+import { Resizable } from 'react-resizable';
 
 
 
@@ -27,22 +28,22 @@ const PhotographMain = (props) => {
     const ref = useRef()
 
     const GetFinalImage = useCallback(() => {
-      if (ref.current === null) {
-        return
-      }
-  
-      toPng(ref.current, { cacheBust: true, })
-        .then((dataUrl) => {
-          const link = document.createElement('a')
-          link.download = 'my-image-name.png'
-          link.href = dataUrl
-          link.click()
-          console.log(dataUrl)
-          console.log(link)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+        if (ref.current === null) {
+            return
+        }
+
+        toPng(ref.current, { cacheBust: true, })
+            .then((dataUrl) => {
+                const link = document.createElement('a')
+                link.download = 'my-image-name.png'
+                link.href = dataUrl
+                link.click()
+                console.log(dataUrl)
+                console.log(link)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }, [ref])
 
     const [divs, setDivs] = useState([]);
@@ -53,7 +54,7 @@ const PhotographMain = (props) => {
         console.log(`draggable${divs.length}`);
         const newDiv =
             <div key={divs.length} draggable={true} id={`draggable${divs.length + 1}`} className={` outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `} style={{ top: `${divs.length + 25}%` }}>
-                <div key={divs.length} id={`draggable${divs.length + 1}header`} className=" cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085]  ">
+                <div key={divs.length} id={`draggable${divs.length + 1}header`} className=" hover:resize cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085]  ">
                     <CursorMove />
                 </div>
 
@@ -64,18 +65,19 @@ const PhotographMain = (props) => {
         setDivs(prevDivs => [...prevDivs, newDiv]);
     }
 
+
     const AddSticker = (img) => {
-        const newstickerdiv =
+        const newstickerdiv =  
             <div key={Stickers.length} id={`StickerDraggable${Stickers.length + 1}`} draggable={true} style={{ top: `${Stickers.length + 25}%` }}
-                onDragStart={() => console.log('asdasdas')} className=" resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
-                <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] flex place-items-center bg-[#667085] ">
-                    <CursorMove />
+                    onDragStart={() => console.log('asdasdas')} className="  rounded hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
+                    <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] flex place-items-center bg-[#667085] ">
+                        <CursorMove />
+                    </div>
+                    <img src={img} id={`StickerImg${Stickers.length + 1}`}   ></img>
+                    <div onClick={() => CloseSticker(Stickers.length + 1)} className=" z-10 -top-[7px] -right-[7px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
+                        <CloseTxt />
+                    </div>
                 </div>
-                <img src={img} id={`StickerImg${Stickers.length + 1}`} ></img>
-                <div onClick={() => CloseSticker(Stickers.length + 1)} className=" z-10 -top-[7px] -right-[7px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
-                    <CloseTxt />
-                </div>
-            </div>
         setStickers(previDivs => [...previDivs, newstickerdiv])
     }
 
@@ -236,8 +238,8 @@ const PhotographMain = (props) => {
 
                             <div ref={ref} className={` bg-myBackImage bg-cover  flex place-content-center overflow-hidden place-items-center`}
                                 id="photo_div">
-                                <div id="vignetteContainer" className=" ">
-                                    <img src={yummphoto} className={`object-fit w-[392px] self-center`} id="photo_image" />
+                                <div id="vignetteContainer" className=" w-[392px] h-[626.43px] place-items-center flex ">
+                                    <img src={yummphoto} className={` object-fill w-[392px] h-[626.43px] self-center`} id="photo_image" />
                                 </div>
 
                                 {/* ADD TEXT PART */}
@@ -252,7 +254,7 @@ const PhotographMain = (props) => {
                                         <CloseTxt />
                                     </div>
                                 </div> */}
-
+                                    
                                 {divs.map(div => div)}
 
 
@@ -306,7 +308,7 @@ const PhotographMain = (props) => {
                     {/* right menue */}
                     <div className={` w-[20%] min-w-[20%] bg-white border-border-color-0 border-l overflow-scroll h-screen  `}>
                         {OnCropSelect ?
-                            <Duzenle />
+                            <Duzenle imageURI={yummphoto} />
                             :
                             <></>
                         }

@@ -5,6 +5,8 @@ import { ReactComponent as Pc } from '../assets/icons/computer.svg';
 import { ReactComponent as Phone } from '../assets/icons/smartphone.svg';
 import { ReactComponent as Back } from '../assets/icons/reply.svg';
 import { ReactComponent as Forward } from '../assets/icons/forward.svg';
+import { HueSelector } from 'react-color-range';
+import axios from "axios";
 
 
 
@@ -39,32 +41,39 @@ const ArkaPlan = (props) => {
         photo_div.style.backgroundColor = color.hex;
     };
 
-    const backlist = [
-        {
-            id: 1,
-            image: img
-        },
-        {
-            id: 2,
-            image: img
-        },
-        {
-            id: 3,
-            image: img
-        },
-        {
-            id: 4,
-            image: img
-        },
-        {
-            id: 5,
-            image: img
-        },
-        {
-            id: 6,
-            image: img
-        }
-    ];
+    const [backlist,setbacklist]=useState([]);
+    const GetBackgroundList =()=>{
+        axios.get('https://w3yzdev.com/api/react/editor/background').then((res)=>{
+        setbacklist(res.data);
+        })
+    }
+
+    // const backlist = [
+    //     {
+    //         id: 1,
+    //         image: img
+    //     },
+    //     {
+    //         id: 2,
+    //         image: img
+    //     },
+    //     {
+    //         id: 3,
+    //         image: img
+    //     },
+    //     {
+    //         id: 4,
+    //         image: img
+    //     },
+    //     {
+    //         id: 5,
+    //         image: img
+    //     },
+    //     {
+    //         id: 6,
+    //         image: img
+    //     }
+    // ];
 
     const [checked, setchecked] = useState(false);
     const [colorhex, setcolorhex] = useState();
@@ -97,6 +106,11 @@ const ArkaPlan = (props) => {
         })
     };
 
+    const ChangeBackground=(image)=>{
+      var photo_div= document.getElementById("photo_div");
+        photo_div.style.backgroundImage='url('+image+')';
+    }
+
 
     useEffect(() => {
         if (checked) {
@@ -106,6 +120,7 @@ const ArkaPlan = (props) => {
 
         getSliderRange2();
         TansparencyOpacityBackground();
+        GetBackgroundList();
 
     })
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
@@ -119,7 +134,7 @@ const ArkaPlan = (props) => {
 
     return (
 
-        <div className={` mt-4 flex flex-col`}>
+        <div className={` mt-4 flex flex-col h-screen overflow-scroll mb-[30%]`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -137,7 +152,7 @@ const ArkaPlan = (props) => {
                 <label className={` text-pop40012 text-bar-offline-0`}>Görseli Arka plana Ekle</label>
                 {/* Toggle checkbox */}
                 <label className="relative inline-flex items-center cursor-pointer">
-                    <input defaultChecked onClick={() => handleSetChecked(!checked)} type="checkbox" value=""
+                    <input  onChange={() => handleSetChecked(!checked)} type="checkbox" value=""
                         className="sr-only peer" checked={checked} />
                     <div className="w-11 h-6 bg-gray-200 rounded-full peer    dark:bg-[#EAECF0] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1163FA] "></div>
                 </label>
@@ -152,7 +167,7 @@ const ArkaPlan = (props) => {
                     <div className={`flex place-content-between place-items-center justify-between overflow-hidden h-8 w-full bg-bar-section-0  rounded mt-[3px] pl-[4px] pr-[6px] `}>
 
                         <input type="range" id="volume" name="volume"
-                            min="0" max="100" step="1" className="w-[180px] h-[5px] accent-btn-blue-0 cursor-pointer bg-white rounded-lg" />
+                            min="0" max="100" step="1" className="w-[85%] h-[5px] accent-btn-blue-0 cursor-pointer bg-white rounded-lg" />
                         {/* <label for="volume" className=" text-popNormal12 text-bar-offline-0" ></label> */}
                         <p id="volumdisplay" className=" text-popNormal12 text-bar-offline-0">%0</p>
 
@@ -183,19 +198,19 @@ const ArkaPlan = (props) => {
 
             <div className="mx-4 mt-[22px] flex flex-row place-items-end place-content-between ">
                 <div className={`w-[45px] h-[45px] rounded  `} style={{ backgroundColor: Background }} />
-                <HuePicker
-                    width="200px"
-                    color={Background}
-                    onChangeComplete={(color) => handleChangeComplete(color)}
+                <HueSelector
+                    // width="200px"
+                    value={Background}
+                    // onChangeComplete={(color) => handleChangeComplete(color)}
                     onChange={(color) => handleChangeComplete(color)}
                 // onChange={(color)=>handleChangeComplete(color)}
                 />
 
             </div>
 
-            <div className="grid grid-cols-4 gap-4 bg-white px-3 mt-[22px] place-items-center ">
+            <div className="grid grid-cols-4 gap-4 bg-white px-3 mt-[22px] place-items-center overflow-hidden mb-[60%] ">
                 {backlist.map((item,index) => (
-                    <img key={index} src={item.image} className=" bg-blue-300 w-[45px] h-[45px] rounded " />
+                    <img onClick={()=> ChangeBackground(item)} key={index} src={item} className=" bg-blue-300 w-[45px] h-[45px] rounded hover:cursor-pointer " />
                 ))}
             </div>
         </div>

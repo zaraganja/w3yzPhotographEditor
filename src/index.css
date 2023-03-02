@@ -57,3 +57,40 @@ code {
   right: -8px;
   cursor: pointer;
 }
+.jb-color-picker {
+  margin-top: 22.5px;
+  display: block;
+  border-radius: 5px;
+  height: 10px;
+  width: 70%;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.jb-color-picker::-webkit-slider-thumb {
+  border-radius: 50%;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  box-shadow: #0004 0 0 6px;
+  background: transparent;
+  backdrop-filter: blur(4px);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.jb-color-picker::-moz-range-thumb {
+  border-radius: 1px;
+  width: 18px;
+  height: 36px;
+  border: 2px solid white;
+  box-shadow: #0004 0 0 6px;
+  background: transparent;
+  backdrop-filter: blur(4px);
+  appearance: none;
+}

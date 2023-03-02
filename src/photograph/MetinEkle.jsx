@@ -25,10 +25,23 @@ import ten from '../assets/images/ten.png';
 import eleven from '../assets/images/eleven.png';
 import twelve from '../assets/images/twelve.png';
 import { SketchPicker, SliderPicker, HuePicker } from 'react-color';
-import { ReactComponent as CursorMove } from '../assets/icons/cursormove.svg';
+import { HueSelector } from 'react-color-range';
+import axios from "axios";
+
 
 
 const MetinEkle = (props) => {
+
+    const [etiketler,setetiketler]=useState([]);
+    const GetStickersList =()=>{
+        axios.get('https://w3yzdev.com/api/react/editor/sticker').then((res)=>{
+            console.log(JSON.stringify(res.data[0]));
+            setetiketler(res.data);
+
+        }).catch((err)=> console.log(err))
+    }
+
+
     const [Background, setBackground] = useState('#233CF5');
     const handleChangeComplete = (color) => {
         // this.setState({ background: color.hex });
@@ -38,57 +51,57 @@ const MetinEkle = (props) => {
         AddTextTXT.style.color = color.hex;
         console.log(Background);
     };
-    const etiketler = [
-        {
-            id: 1,
-            image: one,
+    // const etiketler = [
+    //     {
+    //         id: 1,
+    //         image: one,
 
-        },
-        {
-            id: 2,
-            image: two,
-        },
-        {
-            id: 3,
-            image: three
-        },
-        {
-            id: 4,
-            image: four
-        },
-        {
-            id: 5,
-            image: five
-        },
-        {
-            id: 6,
-            image: six
-        },
-        {
-            id: 7,
-            image: seven
-        },
-        {
-            id: 8,
-            image: eight
-        },
-        {
-            id: 9,
-            image: nine
-        },
-        {
-            id: 10,
-            image: ten
-        },
-        {
-            id: 11,
-            image: eleven
-        },
-        {
-            id: 12,
-            image: twelve
-        }
-    ]
+    //     },
+    //     {
+    //         id: 2,
+    //         image: two,
+    //     },
+    //     {
+    //         id: 3,
+    //         image: three
+    //     },
+    //     {
+    //         id: 4,
+    //         image: four
+    //     },
+    //     {
+    //         id: 5,
+    //         image: five
+    //     },
+    //     {
+    //         id: 6,
+    //         image: six
+    //     },
+    //     {
+    //         id: 7,
+    //         image: seven
+    //     },
+    //     {
+    //         id: 8,
+    //         image: eight
+    //     },
+    //     {
+    //         id: 9,
+    //         image: nine
+    //     },
+    //     {
+    //         id: 10,
+    //         image: ten
+    //     },
+    //     {
+    //         id: 11,
+    //         image: eleven
+    //     },
+    //     {
+    //         id: 12,
+    //         image: twelve
+    //     }
+    // ]
     const [DropdpwnFont, setDropdpwnFont] = useState(false);
     const [DropdpwnFontSize, setDropdpwnFontSize] = useState(false);
     const [SelectedFont, setSelectedFont] = useState('Poppins');
@@ -221,13 +234,15 @@ const MetinEkle = (props) => {
     // }
 
     
-    
+    useEffect(()=>{
+        GetStickersList();
+    },[])
 
 
 
 
     return (
-        <section className={`w-[300px] h-screen overflow-scroll ${AddTXTbTN ? `mb-[200px]` : `mb-0`}`}   >
+        <section  className={`w-[300px] h-screen overflow-scroll mb-[50%]`}   >
             <div className={` relative flex flex-row h-11  self-center mt-[9.5px] place-items-center place-content-between mb-[16.5px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -327,10 +342,10 @@ const MetinEkle = (props) => {
                         <label className=" text-bar-offline-0 text-popNormal12">Yazı rengi</label>
                         <div className=" flex flex-row place-items-end place-content-between mt-4">
                             <div className={`w-[45px] h-[45px] rounded mr-[17px] `} style={{ backgroundColor: Background }} />
-                            <HuePicker
-                                width="170px"
-                                color={Background}
-                                onChangeComplete={(color) => handleChangeComplete(color)}
+                            <HueSelector
+                                // width="30%"
+                                value={Background}
+                                // onChangeComplete={(color) => handleChangeComplete(color)}
                                 onChange={(color) => handleChangeComplete(color)}
                             // onChange={(color)=>handleChangeComplete(color)}
                             />
@@ -339,10 +354,10 @@ const MetinEkle = (props) => {
                 </div>
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4`}>Etiket  Ekle</label>
-            <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden ">
+            <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden mb-[50%] ">
                 {etiketler.map((item, index) => (
                     <div key={index}>
-                        <img onClick={() => props.AddSticker(item.image)} src={item.image} className=" overflow-hidden hover:cursor-pointer" />
+                        <img onClick={() => props.AddSticker(item)} src={item} className=" overflow-hidden hover:cursor-pointer" />
                     </div>
                 ))}
             </div>
