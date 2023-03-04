@@ -45,7 +45,8 @@ const ArkaPlan = (props) => {
     const GetBackgroundList =()=>{
         axios.get('https://w3yzdev.com/api/react/editor/background').then((res)=>{
         setbacklist(res.data);
-        })
+       
+        }).catch((err)=> console.log(err))
     }
 
     // const backlist = [
@@ -119,7 +120,7 @@ const ArkaPlan = (props) => {
         };
 
         getSliderRange2();
-        TansparencyOpacityBackground();
+        // TansparencyOpacityBackground();
         GetBackgroundList();
 
     })
@@ -196,7 +197,7 @@ const ArkaPlan = (props) => {
                 </div>
             </div>
 
-            <div className="mx-4 mt-[22px] flex flex-row place-items-end place-content-between ">
+            <div className="mx-4 mt-[22px] flex flex-row place-items-end place-content-between mb-[22px] ">
                 <div className={`w-[45px] h-[45px] rounded  `} style={{ backgroundColor: Background }} />
                 <HueSelector
                     // width="200px"
@@ -208,7 +209,7 @@ const ArkaPlan = (props) => {
 
             </div>
 
-            <div className="grid grid-cols-4 gap-4 bg-white px-3 mt-[22px] place-items-center overflow-hidden mb-[60%] ">
+            <div className="grid grid-cols-4 gap-4 bg-white px-3  place-items-center ">
                 {backlist.map((item,index) => (
                     <img onClick={()=> ChangeBackground(item)} key={index} src={item} className=" bg-blue-300 w-[45px] h-[45px] rounded hover:cursor-pointer " />
                 ))}

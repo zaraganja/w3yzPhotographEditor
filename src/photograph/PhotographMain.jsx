@@ -24,6 +24,7 @@ import { Resizable } from 'react-resizable';
 
 
 
+
 const PhotographMain = (props) => {
     const ref = useRef()
 
@@ -51,14 +52,14 @@ const PhotographMain = (props) => {
     const [Stickers, setStickers] = useState([]);
 
     const AddTextdiv = () => {
-        console.log(`draggable${divs.length}`);
+        console.log(`draggable${divs.length + 1}`);
         const newDiv =
-            <div key={divs.length} draggable={true} id={`draggable${divs.length + 1}`} className={` outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `} style={{ top: `${divs.length + 25}%` }}>
-                <div key={divs.length} id={`draggable${divs.length + 1}header`} className=" hover:resize cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085]  ">
+            <div key={divs.length} draggable={true} id={`draggable${divs.length + 1}`} className={` outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `} style={{ top: `${divs.length + 25}%`, left: `${divs.length + 50}%` }}>
+                <div key={divs.length} id={`draggable${divs.length + 1}header`} className=" z-10 hover:resize cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085]  ">
                     <CursorMove />
                 </div>
 
-                <div onClick={() => setSelectedTXT(divs.length + 1)} contentEditable id={`AddTextTXT${divs.length + 1}`} className=" mt-2 max-h-[260px] max-w-[214px] ">METİN EKLE</div>
+                <div onClick={() => setSelectedTXT(divs.length + 1)} id={`AddTextTXT${divs.length + 1}`} className=" mt-2 max-h-[260px] max-w-[214px] ">METİN EKLE</div>
                 <div onClick={() => CloseAddText(divs.length + 1)} className="  -top-[7px] -right-[7px]  w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085]  ">
                     <CloseTxt />
                 </div></div>
@@ -67,17 +68,22 @@ const PhotographMain = (props) => {
 
 
     const AddSticker = (img) => {
-        const newstickerdiv =  
+        console.log(`StickerDraggable${Stickers.length + 1}`);
+        const newstickerdiv =
             <div key={Stickers.length} id={`StickerDraggable${Stickers.length + 1}`} draggable={true} style={{ top: `${Stickers.length + 25}%` }}
-                    onDragStart={() => console.log('asdasdas')} className="  rounded hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
-                    <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] flex place-items-center bg-[#667085] ">
-                        <CursorMove />
-                    </div>
-                    <img src={img} id={`StickerImg${Stickers.length + 1}`}   ></img>
-                    <div onClick={() => CloseSticker(Stickers.length + 1)} className=" z-10 -top-[7px] -right-[7px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
-                        <CloseTxt />
-                    </div>
+                onDragStart={() => console.log('asdasdas')} className=" rounded hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
+                <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] flex place-items-center bg-[#667085] ">
+                    <CursorMove />
                 </div>
+                <div id={`StickerImg${Stickers.length + 1}`} style={{
+                    background: 'url(' + img + ')', height: 'auto', width: 'auto', minHeight: '100px', minWidth: '100px', backgroundRepeat: 'no-repeat', justifyContent: 'center', alignItems: 'center',
+                    backgroundSize: 'contain'
+                }} > </div>
+                {/* <img src={img} id={`StickerImg${Stickers.length + 1}`}  ></img> */}
+                <div onClick={() => CloseSticker(Stickers.length + 1)} className=" z-10 -top-[7px] -right-[7px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
+                    <CloseTxt />
+                </div>
+            </div>
         setStickers(previDivs => [...previDivs, newstickerdiv])
     }
 
@@ -92,110 +98,113 @@ const PhotographMain = (props) => {
     }
 
     const DragMetinEkle = (leng) => {
-        console.log("draggable" + leng);
-        //Make the DIV element draggagle:
-        dragElement(document.getElementById("draggable" + leng));
+        console.log(leng);
+        if (leng !== 0) {
+            //Make the DIV element draggagle:
+            dragElement(document.getElementById("draggable" + leng));
 
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-                /* if present, the header is where you move the DIV from:*/
-                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-                /* otherwise, move the DIV from anywhere inside the DIV:*/
-                elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                var container = document.body;
-                if (elmnt.offsetLeft - pos1 >= 0 && elmnt.offsetLeft - pos1 + elmnt.offsetWidth <= container.offsetWidth) {
-                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            function dragElement(elmnt) {
+                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                if (document.getElementById(elmnt.id + "header")) {
+                    /* if present, the header is where you move the DIV from:*/
+                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+                } else {
+                    /* otherwise, move the DIV from anywhere inside the DIV:*/
+                    elmnt.onmousedown = dragMouseDown;
                 }
-                if (elmnt.offsetTop - pos2 >= 0 && elmnt.offsetTop - pos2 + elmnt.offsetHeight <= container.offsetHeight) {
-                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    var container = document.body;
+                    if (elmnt.offsetLeft - pos1 >= 0 && elmnt.offsetLeft - pos1 + elmnt.offsetWidth <= container.offsetWidth) {
+                        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                    }
+                    if (elmnt.offsetTop - pos2 >= 0 && elmnt.offsetTop - pos2 + elmnt.offsetHeight <= container.offsetHeight) {
+                        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    }
+                }
+
+                function closeDragElement() {
+                    /* stop moving when mouse button is released:*/
+                    document.onmouseup = null;
+                    document.onmousemove = null;
                 }
             }
 
-            function closeDragElement() {
-                /* stop moving when mouse button is released:*/
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
         }
-
-
 
     }
 
     const DragSticker = (leng) => {
+        console.log(leng);
         //Make the DIV element draggagle:
-        dragElement(document.getElementById("StickerDraggable" + leng));
+        if (leng !== 0) {
+            dragElement(document.getElementById("StickerDraggable" + leng));
 
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-                /* if present, the header is where you move the DIV from:*/
-                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-                /* otherwise, move the DIV from anywhere inside the DIV:*/
-                elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                var container = document.body;
-                if (elmnt.offsetLeft - pos1 >= 0 && elmnt.offsetLeft - pos1 + elmnt.offsetWidth <= container.offsetWidth) {
-                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            function dragElement(elmnt) {
+                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                if (document.getElementById(elmnt.id + "header")) {
+                    /* if present, the header is where you move the DIV from:*/
+                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+                } else {
+                    /* otherwise, move the DIV from anywhere inside the DIV:*/
+                    elmnt.onmousedown = dragMouseDown;
                 }
-                if (elmnt.offsetTop - pos2 >= 0 && elmnt.offsetTop - pos2 + elmnt.offsetHeight <= container.offsetHeight) {
-                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                }
-            }
 
-            function closeDragElement() {
-                /* stop moving when mouse button is released:*/
-                document.onmouseup = null;
-                document.onmousemove = null;
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    var container = document.body;
+                    if (elmnt.offsetLeft - pos1 >= 0 && elmnt.offsetLeft - pos1 + elmnt.offsetWidth <= container.offsetWidth) {
+                        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                    }
+                    if (elmnt.offsetTop - pos2 >= 0 && elmnt.offsetTop - pos2 + elmnt.offsetHeight <= container.offsetHeight) {
+                        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    }
+                }
+
+                function closeDragElement() {
+                    /* stop moving when mouse button is released:*/
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
             }
         }
-
     }
 
 
@@ -204,13 +213,9 @@ const PhotographMain = (props) => {
 
 
     useEffect(() => {
-        if (divs.length !== 0) {
-            DragMetinEkle(divs.length);
-        }
-        if (Stickers.length !== 0) {
-            DragSticker(Stickers.length);
-        }
 
+        DragMetinEkle(divs.length);
+        DragSticker(Stickers.length);
 
 
     })
@@ -254,8 +259,12 @@ const PhotographMain = (props) => {
                                         <CloseTxt />
                                     </div>
                                 </div> */}
-                                    
+                                {Stickers.map(div => div)}
                                 {divs.map(div => div)}
+
+
+
+
 
 
                                 {/* sticker  */}
@@ -270,7 +279,7 @@ const PhotographMain = (props) => {
                                     </div>
                                 </div> */}
 
-                                {Stickers.map(div => div)}
+
 
                             </div>
 

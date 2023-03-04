@@ -22,13 +22,17 @@ const Duzenle = (props) => {
         var photo_image = document.getElementById('photo_image');
         var photo_div = document.getElementById('photo_div');
         var photo_maindiv =document.getElementById('photo_maindiv');
-     
+        var vignetteContainer =document.getElementById('vignetteContainer');
+        vignetteContainer.style.justifyContent='center';
+        vignetteContainer.style.alignItems='center';
             photo_image.style.width = '392px';
             photo_image.style.height = '630px';
             photo_maindiv.style.display='default';
-            photo_maindiv.style.placeContent= 'default';
+            photo_maindiv.style.placeContent= 'center';
             photo_div.style.borderRadius = '0%';
             photo_div.style.width= '100%';
+            photo_image.style.marginTop= '0%';
+            photo_image.style.alignSelf= 'center';
       
     }
 
@@ -44,6 +48,7 @@ const Duzenle = (props) => {
             vignetteContainer.style.display= 'contents';
             photo_maindiv.style.placeContent= 'default';
             photo_maindiv.style.display='default';
+            photo_image.style.marginTop= '0%';
     }
 
     const coverImage = () =>{
@@ -55,7 +60,7 @@ const Duzenle = (props) => {
             setImageWidth(photo_image.style.width);
             setImageHeight(photo_image.style.height);
         }
-
+        photo_image.style.marginTop= '0%';
          photo_image.style.width = '1280px';
          photo_image.style.height = '630px';
          vignetteContainer.style.width = '1280px';
@@ -80,9 +85,11 @@ const Duzenle = (props) => {
         photo_image.style.width= '100%';
         photo_image.style.height='auto';
         vignetteContainer.style.width = '100%';
-        vignetteContainer.style.height='auto';
-        vignetteContainer.style.marginTop= '-30%'
-        // photo_image.style.marginTop= '-35%';
+         vignetteContainer.style.height='auto';
+    
+    
+
+     photo_image.style.marginTop= '-35%';
         //  photo_image.style.height = 'auto';
         //  photo_div.style.height = 'auto';
        
@@ -213,33 +220,33 @@ const Duzenle = (props) => {
         photo_div.style.borderRadius = '600px';
     }
 
-    const TransparentBackgroud=()=>{
-        console.log("http://localhost:3000"+props.imageURI);
-        var mydata = new FormData();
-        mydata.append('file',
-        {
-            uri: "http://localhost:3000"+props.imageURI,
-              name: "pexels-photo",
-              type: "image/jpeg",
+    // const TransparentBackgroud=()=>{
+    //     console.log("http://localhost:3000"+props.imageURI);
+    //     var mydata = new FormData();
+    //     mydata.append('file',
+    //     {
+    //         uri: "http://localhost:3000"+props.imageURI,
+    //           name: "pexels-photo",
+    //           type: "image/jpeg",
              
-        });
-    fetch("http://5.75.182.66:5000/upload", {
-        method: 'post',
-        body: JSON.stringify(mydata)  ,
-        mode: 'no-cors',
+    //     });
+    // fetch("http://5.75.182.66:5000/upload", {
+    //     method: 'post',
+    //     body: JSON.stringify(mydata)  ,
+    //     mode: 'no-cors',
         
        
-    }).then(response => {
-        console.log(JSON.stringify(response));
+    // }).then(response => {
+    //     console.log(JSON.stringify(response));
         
 
-    })
-        .catch(error => {
+    // })
+    //     .catch(error => {
            
-        });
+    //     });
 
 
-    }
+    // }
     return (
         <div className={` mt-4 flex flex-col overflow-x-hidden overflow-auto w-[100%] min-w-[100%] h-[100%]`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center  place-items-center place-content-between mb-[28px]`}>
@@ -312,7 +319,7 @@ const Duzenle = (props) => {
                         <Block />
                     </div>
                 </span>
-                <span onClick={()=> TransparentBackgroud()} className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
+                <span  className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Back_Replace />
                     </div>

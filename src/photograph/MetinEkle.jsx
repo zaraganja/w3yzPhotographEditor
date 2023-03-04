@@ -256,7 +256,7 @@ const MetinEkle = (props) => {
                 </div>
             </div>
 
-            <div onClick={() => {props.AddTextdiv();setAddTXTbTN(true);}} className=" w-[240px] h-[44px] border border-box-stroke-0 rounded self-center ml-6 mb-[11px] flex place-items-center place-content-center hover:cursor-pointer ">
+            <div onClick={() => {props.AddTextdiv();setAddTXTbTN(true)}} className=" w-[240px] h-[44px] border border-box-stroke-0 rounded self-center ml-6 mb-[11px] flex place-items-center place-content-center hover:cursor-pointer ">
                 <label className=" text-text-color-0 text-popNormal12 hover:cursor-pointer">Metin  Ekle</label>
             </div>
             <label className={`text-text-color-0 text-popNormal12 ml-6 ${AddTXTbTN ? ` flex` : ` hidden`}`}>Yazı  Stili</label>
@@ -357,7 +357,7 @@ const MetinEkle = (props) => {
             <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden mb-[50%] ">
                 {etiketler.map((item, index) => (
                     <div key={index}>
-                        <img onClick={() => props.AddSticker(item)} src={item} className=" overflow-hidden hover:cursor-pointer" />
+                        <img onClick={() => {props.AddSticker(item)}} src={item}  />
                     </div>
                 ))}
             </div>

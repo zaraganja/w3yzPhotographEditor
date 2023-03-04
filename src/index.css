@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -93,4 +94,10 @@ code {
   background: transparent;
   backdrop-filter: blur(4px);
   appearance: none;
+}
+
+.stickerstyle {
+  background-image: url('https://thumbs.dreamstime.com/z/imge-mint-image-green-leaves-79631310.jpg');
+  height: 100px;
+  width: 100px;
 }
