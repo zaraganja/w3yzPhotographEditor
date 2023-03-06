@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img2 from '../assets/images/Rectangle2.png';
 import img1 from '../assets/images/Rectangle1.png';
+import defaultimg from '../assets/images/yummyphoto.jpg';
 import { ReactComponent as Pc } from '../assets/icons/computer.svg';
 import { ReactComponent as Phone } from '../assets/icons/smartphone.svg';
 import { ReactComponent as Back } from '../assets/icons/reply.svg';
@@ -99,39 +100,110 @@ const RenkAyarlari = (props) => {
     const filters = [
         {
             id: 1,
-            image: img1
+           class:"",
+           filtername:"Normal"
+
         },
         {
             id: 2,
-            image: img2
+            class:"filter-1977",
+            filtername:"1977"
         },
         {
             id: 3,
-            image: img2
+            class:"filter-aden",
+            filtername:"Aden"
         },
         {
             id: 4,
-            image: img1
+            class:"filter-amaro",
+            filtername:"Amaro"
         },
         {
             id: 5,
-            image: img2
+            class:"filter-ashby",
+            filtername:"Ashby"
         },
         {
             id: 6,
-            image: img2
+            class:"filter-brannan",
+            filtername:"Brannan"
         },
         {
             id: 7,
-            image: img1
+            class: "filter-brooklyn",
+            filtername:"Broklyn"
         },
         {
             id: 8,
-            image: img2
+            class:"filter-charmes",
+            filtername:"Charmes"
         },
+
         {
             id: 9,
-            image: img2
+            class:"filter-clarendon",
+            filtername:"Clarendon"
+        },
+        {
+            id: 10,
+            class:"filter-crema",
+            filtername:"Crema"
+        },
+        {
+            id: 11,
+            class:"filter-dogpatch",
+            filtername:"Dogpatch"
+        },
+        {
+            id: 12,
+            class:"filter-earlybird",
+            filtername:"Earlybird"
+        },
+        {
+            id: 13,
+            class:"filter-gingham",
+            filtername:"Gingham"
+        },
+        {
+            id: 14,
+            class:"filter-ginza",
+            filtername:"Ginza"
+        },
+        {
+            id: 15,
+            class:"filter-hefe",
+            filtername:"Hefe"
+        },
+        {
+            id: 16,
+            class:"filter-clarendon",
+            filtername:"Clarendon"
+        },
+        {
+            id: 17,
+            class:"filter-helena",
+            filtername:"Helena"
+        },
+        {
+            id: 18,
+            class:"filter-hudson",
+            filtername:"Hudson"
+        },
+        {
+            id: 19,
+            class:"filter-inkwell",
+            filtername:"Inkwell"
+        },
+        {
+            id: 20,
+            class:"filter-kelvin",
+            filtername:"Kelvin"
+        },
+        {
+            id: 21,
+            class:"filter-juno",
+            filtername:"Juno"
         }
     ];
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
@@ -151,7 +223,7 @@ const RenkAyarlari = (props) => {
 
 
     return (
-        <div className={` mt-4 flex flex-col min-h-[122%] overflow-scroll `}>
+        <div className={` mt-4 flex flex-col min-h-[122%] overflow-scroll mb-[20%]`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -203,12 +275,14 @@ const RenkAyarlari = (props) => {
                     min="0" max="100" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer  bg-white rounded-lg " />
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
-            <div className="grid grid-cols-3 gap-4 bg-white place-items-center mx-4 mt-4 mb-5 ">
+            <div className="grid grid-cols-3 gap-4 bg-white place-items-center mx-4 mt-4  overflow-scroll mb-[5%] ">
                 {filters.map((item,index) => (
-                    <div key={index} >
-                        <img src={item.image} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
-                        <label className={` text-pop40012 text-bar-offline-0`}>Sepya</label>
-                    </div>
+                 <div onClick={()=> props.Applyfilterclass(item.class) } key={index} className=" hover:cursor-pointer" >
+                         <figure  class={item.class} >
+                        <img  src={defaultimg} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
+                        </figure>
+                        <label className={` text-pop40012 text-bar-offline-0`}>{item.filtername}</label>
+                   </div>
                 ))}
             </div>
         </div>

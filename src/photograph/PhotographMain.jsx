@@ -14,12 +14,14 @@ import { ReactComponent as CloseTxt } from '../assets/icons/closetxt.svg';
 // } from '../assets/icons';
 
 import yummphoto from "../assets/images/IMG_9864.jpeg";
+import insta from "../assets/images/instagram.jpg";
 import Duzenle from "./Duzenle";
 import ArkaPlan from "./ArkaPlan";
 import RenkAyarlari from "./RenkAyarlari";
 import MetinEkle from "./MetinEkle";
 import { toPng } from 'html-to-image';
 import { Resizable } from 'react-resizable';
+
 
 
 
@@ -207,6 +209,10 @@ const PhotographMain = (props) => {
         }
     }
 
+    const [filterclass,setfilterclass]=useState();
+     const Applyfilterclass=(item)=>{
+    setfilterclass(item);
+ }
 
 
 
@@ -244,9 +250,13 @@ const PhotographMain = (props) => {
                             <div ref={ref} className={` bg-myBackImage bg-cover  flex place-content-center overflow-hidden place-items-center`}
                                 id="photo_div">
                                 <div id="vignetteContainer" className=" w-[392px] h-[626.43px] place-items-center flex ">
-                                    <img src={yummphoto} className={` object-fill w-[392px] h-[626.43px] self-center`} id="photo_image" />
+                                <figure class={filterclass} >
+                                    <img  src={yummphoto} className={` object-fill w-[392px] h-[626.43px] self-center`} id="photo_image" />
+                                    </figure>
                                 </div>
-
+                                {/* <figure >
+                                    <img  src={insta}/>
+                                </figure> */}
                                 {/* ADD TEXT PART */}
                                 {/* <div id="draggable" rows="4" cols="50" draggable={true}
                                     onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-black  hidden w-[214px] min-h-[60px] max-h-[260px]   " >
@@ -327,7 +337,7 @@ const PhotographMain = (props) => {
                             <></>
                         }
                         {OnColorsSelect ?
-                            <RenkAyarlari />
+                            <RenkAyarlari  Applyfilterclass={Applyfilterclass} />
                             :
                             <></>}
                         {OnAddTXTselect ?
