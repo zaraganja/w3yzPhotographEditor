@@ -106,9 +106,10 @@ const RenkAyarlari = (props) => {
         },
         {
             id: 2,
-            class:"filter-1977",
-            filtername:"1977"
+            class:"filter-inkwell",
+            filtername:"Inkwell"
         },
+       
         {
             id: 3,
             class:"filter-aden",
@@ -192,8 +193,8 @@ const RenkAyarlari = (props) => {
         },
         {
             id: 19,
-            class:"filter-inkwell",
-            filtername:"Inkwell"
+            class:"filter-1977",
+            filtername:"1977"
         },
         {
             id: 20,
@@ -223,7 +224,7 @@ const RenkAyarlari = (props) => {
 
 
     return (
-        <div className={` mt-4 flex flex-col min-h-[122%] overflow-scroll mb-[20%]`}>
+        <div className={` mt-4 flex flex-col overflow-scroll pb-[30%]`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -275,7 +276,7 @@ const RenkAyarlari = (props) => {
                     min="0" max="100" step="1" className="w-[263px] h-1 accent-btn-blue-0 cursor-pointer  bg-white rounded-lg " />
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
-            <div className="grid grid-cols-3 gap-4 bg-white place-items-center mx-4 mt-4  overflow-scroll mb-[5%] ">
+            <div className="grid grid-cols-3 gap-4 bg-white place-items-center mx-4 mt-4  overflow-scroll pb-[30%] ">
                 {filters.map((item,index) => (
                  <div onClick={()=> props.Applyfilterclass(item.class) } key={index} className=" hover:cursor-pointer" >
                          <figure  class={item.class} >

@@ -56,13 +56,16 @@ const PhotographMain = (props) => {
     const AddTextdiv = () => {
         console.log(`draggable${divs.length + 1}`);
         const newDiv =
-            <div key={divs.length} draggable={true} id={`draggable${divs.length + 1}`} className={` outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `} style={{ top: `${divs.length + 25}%`, left: `${divs.length + 50}%` }}>
-                <div key={divs.length} id={`draggable${divs.length + 1}header`} className=" z-10 hover:resize cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085]  ">
+            <div key={divs.length} id={`draggable${divs.length + 1}`} onClick={() => document.getElementById(`draggable${divs.length + 1}`).focus()} onDragStart={() => DragMetinEkle(`draggable${divs.length + 1}`)}  contentEditable={true}
+                draggable={true}  className={` select-text group outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `}
+                style={{ top: `${divs.length + 25}%`, left: `${divs.length + 50}%` }}
+                suppressContentEditableWarning={true}>
+                <div key={divs.length} id={`draggable${divs.length + 1}headerr`} className=" z-10 hover:resize cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085] hidden group-hover:flex  ">
                     <CursorMove />
                 </div>
 
                 <div onClick={() => setSelectedTXT(divs.length + 1)} id={`AddTextTXT${divs.length + 1}`} className=" mt-2 max-h-[260px] max-w-[214px] ">METİN EKLE</div>
-                <div onClick={() => CloseAddText(divs.length + 1)} className="  -top-[7px] -right-[7px]  w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085]  ">
+                <div onClick={() => CloseAddText(divs.length + 1)} className="  -top-[7px] -right-[7px]  w-4 h-4 absolute rounded-[100%] place-items-center place-content-center cursor-pointer bg-[#667085] hidden group-hover:flex  ">
                     <CloseTxt />
                 </div></div>
         setDivs(prevDivs => [...prevDivs, newDiv]);
@@ -73,8 +76,8 @@ const PhotographMain = (props) => {
         console.log(`StickerDraggable${Stickers.length + 1}`);
         const newstickerdiv =
             <div key={Stickers.length} id={`StickerDraggable${Stickers.length + 1}`} draggable={true} style={{ top: `${Stickers.length + 25}%` }}
-                onDragStart={() => console.log('asdasdas')} className=" rounded hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
-                <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] flex place-items-center bg-[#667085] ">
+                onDragStart={() => console.log('asdasdas')} className=" group rounded hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
+                <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] place-items-center bg-[#667085] hidden group-hover:flex ">
                     <CursorMove />
                 </div>
                 <div id={`StickerImg${Stickers.length + 1}`} style={{
@@ -82,7 +85,7 @@ const PhotographMain = (props) => {
                     backgroundSize: 'contain'
                 }} > </div>
                 {/* <img src={img} id={`StickerImg${Stickers.length + 1}`}  ></img> */}
-                <div onClick={() => CloseSticker(Stickers.length + 1)} className=" z-10 -top-[7px] -right-[7px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
+                <div onClick={() => CloseSticker(Stickers.length + 1)} className=" z-10 -top-[7px] -right-[7px] w-4 h-4 absolute rounded-[100%]  hidden group-hover:flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
                     <CloseTxt />
                 </div>
             </div>
@@ -100,16 +103,16 @@ const PhotographMain = (props) => {
     }
 
     const DragMetinEkle = (leng) => {
-        console.log(leng);
+        console.log('heyyyyyy');
         if (leng !== 0) {
             //Make the DIV element draggagle:
             dragElement(document.getElementById("draggable" + leng));
 
             function dragElement(elmnt) {
                 var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                if (document.getElementById(elmnt.id + "header")) {
+                if (document.getElementById(elmnt.id + "headerr")) {
                     /* if present, the header is where you move the DIV from:*/
-                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+                    document.getElementById(elmnt.id + "headerr").onmousedown = dragMouseDown;
                 } else {
                     /* otherwise, move the DIV from anywhere inside the DIV:*/
                     elmnt.onmousedown = dragMouseDown;
@@ -209,10 +212,10 @@ const PhotographMain = (props) => {
         }
     }
 
-    const [filterclass,setfilterclass]=useState();
-     const Applyfilterclass=(item)=>{
-    setfilterclass(item);
- }
+    const [filterclass, setfilterclass] = useState();
+    const Applyfilterclass = (item) => {
+        setfilterclass(item);
+    }
 
 
 
@@ -234,7 +237,7 @@ const PhotographMain = (props) => {
     const [OnAddTXTselect, setOnAddTXTselect] = useState(false);
 
     return (
-        <div className="place-items-center place-content-center justify-center align-middle  flex bg-gray-200 w-full h-[100%] min-h-[1080px] ">
+        <div className="place-items-center place-content-center justify-center align-middle  flex bg-gray-100 w-full h-screen  ">
             <section className={` overflow-hidden font-pop w-[1600px] h-[880px] border-gray-200 border shadow-md bg-white  `}>
                 <div className={`h-20  flex flex-row justify-between bg-white items-center pr-5 pl-5 devide-y border-b border-border-color-0`}>
                     <label className=" text-popNormal16 text-text-color-0">İmaj Düzenle</label>
@@ -249,9 +252,9 @@ const PhotographMain = (props) => {
 
                             <div ref={ref} className={` bg-myBackImage bg-cover  flex place-content-center overflow-hidden place-items-center`}
                                 id="photo_div">
-                                <div id="vignetteContainer" className=" w-[392px] h-[626.43px] place-items-center flex ">
-                                <figure class={filterclass} >
-                                    <img  src={yummphoto} className={` object-fill w-[392px] h-[626.43px] self-center`} id="photo_image" />
+                                <div id="vignetteContainer" className=" w-[392px] h-[636px] place-items-center flex ">
+                                    <figure className={filterclass} >
+                                        <img src={yummphoto} className={` object-fill w-[392px] h-[636px] self-center`} id="photo_image" />
                                     </figure>
                                 </div>
                                 {/* <figure >
@@ -337,7 +340,7 @@ const PhotographMain = (props) => {
                             <></>
                         }
                         {OnColorsSelect ?
-                            <RenkAyarlari  Applyfilterclass={Applyfilterclass} />
+                            <RenkAyarlari Applyfilterclass={Applyfilterclass} />
                             :
                             <></>}
                         {OnAddTXTselect ?

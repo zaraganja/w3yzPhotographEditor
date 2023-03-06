@@ -135,7 +135,7 @@ const ArkaPlan = (props) => {
 
     return (
 
-        <div className={` mt-4 flex flex-col h-screen overflow-scroll mb-[30%]`}>
+        <div className={` mt-4 flex flex-col w-full h-screen overflow-scroll pb-[60%]`}>
             <div className={` w-[300px] relative flex flex-row h-11  self-center place-items-center place-content-between mb-[28px]`}>
                 <div className=" flex flex-row place-items-center w-1/3 justify-center">
                     <Pc fill={PcSelected ? '#1163FA' : '#D0D5DD'} onClick={() => { setPcSelected(true); setPhoneIconSelected(false) }} className="hover:cursor-pointer mr-4 bg-['#E5EEFE'] hover:bg-['#E5EEFE'] " />
@@ -203,15 +203,15 @@ const ArkaPlan = (props) => {
                     // width="200px"
                     value={Background}
                     // onChangeComplete={(color) => handleChangeComplete(color)}
-                    onChange={(color) => handleChangeComplete(color)}
+                    onChange={(color) => {handleChangeComplete(color);setchecked(false)}}
                 // onChange={(color)=>handleChangeComplete(color)}
                 />
 
             </div>
 
-            <div className="grid grid-cols-4 gap-4 bg-white px-3  place-items-center ">
+            <div className="grid grid-cols-4 gap-4 bg-white px-3  place-items-center overflow-scroll pb-[20%] ">
                 {backlist.map((item,index) => (
-                    <img onClick={()=> ChangeBackground(item)} key={index} src={item} className=" bg-blue-300 w-[45px] h-[45px] rounded hover:cursor-pointer " />
+                    <img onClick={()=> {ChangeBackground(item);setchecked(false)}} key={index} src={item} className=" bg-blue-300 w-[45px] h-[45px] rounded hover:cursor-pointer " />
                 ))}
             </div>
         </div>

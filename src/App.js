@@ -9,7 +9,7 @@ const App=()=> {
     setOpenModal(value);
      }
   return (
-    <div className="flex w-[1920px] min-w-[1920px] max-w-[1920px] h-[100%] min-h-[1080px] content-center items-center  bg-[red]">
+    <div className="flex w-full h-screen overflow-hidden content-center items-center ">
     <WindowFixer />
     {OpenModal ?
       <PhotographMain onClose={() => ToggleModal(false)} />

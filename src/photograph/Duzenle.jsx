@@ -9,6 +9,8 @@ import { ReactComponent as Phone } from '../assets/icons/smartphone.svg';
 import { ReactComponent as Back } from '../assets/icons/reply.svg';
 import { ReactComponent as Forward } from '../assets/icons/forward.svg';
 import FormData from "form-data";
+import axios from "axios";
+import yummphoto from "../assets/images/IMG_9864.jpeg";
 
 const Duzenle = (props) => {
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
@@ -23,35 +25,29 @@ const Duzenle = (props) => {
         var photo_div = document.getElementById('photo_div');
         var photo_maindiv = document.getElementById('photo_maindiv');
         var vignetteContainer = document.getElementById('vignetteContainer');
-        if (isContain) {
 
-            removeImageScale();
-            vignetteContainer.style.justifyContent = 'center';
-            vignetteContainer.style.alignItems = 'center';
-            photo_image.style.width = '392px';
-            photo_image.style.height = '630px';
-            photo_maindiv.style.display = 'default';
-            photo_maindiv.style.placeContent = 'center';
-            photo_div.style.borderRadius = '0%';
-            photo_div.style.width = '100%';
-            // photo_image.style.top = '0px';
-            // photo_image.style.marginTop = '0px';
-            photo_image.style.alignSelf = 'center';
 
-        } else {
-          
-            vignetteContainer.style.justifyContent = 'center';
-            vignetteContainer.style.alignItems = 'center';
-            photo_image.style.width = '392px';
-            photo_image.style.height = '630px';
-            photo_maindiv.style.display = 'default';
-            photo_maindiv.style.placeContent = 'center';
-            photo_div.style.borderRadius = '0%';
-            photo_div.style.width = '100%';
-            // photo_image.style.top = '0px';
-            // photo_image.style.marginTop = '0px';
-            photo_image.style.alignSelf = 'center';
-        }
+
+        vignetteContainer.style.justifyContent = 'center';
+        vignetteContainer.style.alignItems = 'center';
+        photo_image.style.width = '392px';
+        photo_image.style.height = '640px';
+        photo_maindiv.style.display = 'default';
+        photo_maindiv.style.placeContent = 'center';
+        photo_div.style.borderRadius = '0%';
+        photo_div.style.width = '100%';
+        photo_image.style.alignSelf = 'center';
+        photo_image.style.marginTop = '0%';
+        // vignetteContainer.style.justifyContent = 'center';
+        // vignetteContainer.style.alignItems = 'center';
+        // photo_image.style.width = '392px';
+        // photo_image.style.height = '630px';
+        // photo_maindiv.style.display = 'default';
+        // photo_maindiv.style.placeContent = 'center';
+        // photo_div.style.borderRadius = '0%';
+        // photo_div.style.width = '100%';
+        // photo_image.style.alignSelf = 'center';
+
 
 
 
@@ -64,15 +60,20 @@ const Duzenle = (props) => {
         var photo_maindiv = document.getElementById('photo_maindiv');
 
         photo_image.style.width = '392px';
-        photo_image.style.height = '632px';
+        photo_image.style.height = '640px';
+        photo_div.style.height = "640px";
+        photo_div.style.width = "1280px";
+        vignetteContainer.style.height = '640px';
+        vignetteContainer.style.width = '1280px';
         photo_image.style.alignSelf = 'center';
         vignetteContainer.style.display = 'flex';
         vignetteContainer.style.placeContent = 'center';
         vignetteContainer.style.placeItems = 'center';
         photo_maindiv.style.placeContent = 'center';
         photo_maindiv.style.display = 'flex';
-        photo_image.style.top = '0px';
-        photo_image.style.marginTop = '0px';
+        photo_image.style.marginTop = '0%';
+        photo_div.style.borderRadius = '0%';
+
 
     }
 
@@ -84,11 +85,12 @@ const Duzenle = (props) => {
             setImageWidth(photo_image.style.width);
             setImageHeight(photo_image.style.height);
         }
-        photo_image.style.marginTop = '0%';
+
         photo_image.style.width = '1280px';
-        photo_image.style.height = '630px';
+        photo_image.style.height = '640px';
         vignetteContainer.style.width = '1280px';
-        vignetteContainer.style.height = '630px';
+        vignetteContainer.style.height = '640px';
+        photo_image.style.marginTop = '0px';
 
         // setIsCover(true);
         setIsImageScaleChange(true);
@@ -122,26 +124,18 @@ const Duzenle = (props) => {
         var photo_div = document.getElementById('photo_div');
         var photo_maindiv = document.getElementById('photo_maindiv');
         var vignetteContainer = document.getElementById('vignetteContainer');
-        if (isContain) {
-            removeImageScale();
-            photo_image.style.width = '100%';
-            photo_image.style.height = 'auto';
-            vignetteContainer.style.width = '100%';
-            vignetteContainer.style.height = 'auto';
-            photo_image.style.marginTop = '-35%';
-            photo_div.style.width = '900px';
-            photo_div.style.height = '800px';
-            photo_maindiv.style.display = 'flex';
-            photo_maindiv.style.placeContent = 'center';
-            photo_div.style.borderRadius = '100%';
-        }
-        else {
-            photo_div.style.width = '630px';
-            photo_div.style.height = '630px';
-            photo_maindiv.style.display = 'flex';
-            photo_maindiv.style.placeContent = 'center';
-            photo_div.style.borderRadius = '100%';
-        }
+
+        photo_div.style.width = '630px';
+        photo_div.style.height = '630px';
+        photo_maindiv.style.display = 'flex';
+        photo_maindiv.style.placeContent = 'center';
+        photo_div.style.borderRadius = '100%';
+        photo_image.style.height = "630px";
+        photo_image.style.marginTop = '0%';
+
+
+
+
 
 
         // photo_image.style.borderRadius = '100%';
@@ -153,20 +147,16 @@ const Duzenle = (props) => {
         var photo_image = document.getElementById('photo_image');
         var photo_div = document.getElementById('photo_div');
         var photo_maindiv = document.getElementById('photo_maindiv');
-        if (isContain) {
+        var vignetteContainer = document.getElementById('vignetteContainer');
 
-            photo_div.style.width = '900px';
-            photo_div.style.height = '800px';
-            photo_maindiv.style.display = 'flex';
-            photo_maindiv.style.placeContent = 'center';
-            photo_div.style.borderRadius = '4px';
-        } else {
-            photo_div.style.width = '700px';
-            photo_div.style.height = '630px';
-            photo_maindiv.style.display = 'flex';
-            photo_maindiv.style.placeContent = 'center';
-            photo_div.style.borderRadius = '4px';
-        }
+        photo_div.style.width = '700px';
+        photo_div.style.height = '630px';
+        photo_image.style.height = "630px";
+        photo_maindiv.style.display = 'flex';
+        photo_maindiv.style.placeContent = 'center';
+        photo_div.style.borderRadius = '4px';
+        photo_image.style.marginTop = '0%';
+
 
 
 
@@ -184,9 +174,11 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '1000px';
         photo_div.style.height = '630px';
+        photo_image.style.height = "630px";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '4px';
+        photo_image.style.marginTop = '0%';
 
         // photo_image.style.borderRadius = '100%';
 
@@ -199,10 +191,11 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '700px';
         photo_div.style.height = '630px';
+        photo_image.style.height = "630px";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '16px';
-
+        photo_image.style.marginTop = '0%';
         // photo_image.style.borderRadius = '100%';
 
 
@@ -215,10 +208,11 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '1000px';
         photo_div.style.height = '630px';
+        photo_image.style.height = "630px";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '16px';
-
+        photo_image.style.marginTop = '0%';
         // photo_image.style.borderRadius = '100%';
 
 
@@ -228,28 +222,15 @@ const Duzenle = (props) => {
         var photo_div = document.getElementById('photo_div');
         var photo_maindiv = document.getElementById('photo_maindiv');
         var vignetteContainer = document.getElementById('vignetteContainer');
-        if (isContain) {
-            removeImageScale();
-            photo_image.style.width = '100%';
-            photo_image.style.height = 'auto';
-            vignetteContainer.style.width = '100%';
-            vignetteContainer.style.height = 'auto';
-            photo_image.style.marginTop = 'auto';
-            photo_image.style.width = '700px';
-            photo_image.style.height = '630px';
-            photo_div.style.borderRadius = '200px';
-            //  photo_maindiv.style.display = 'flex';
-            //  photo_maindiv.style.placeContent = 'center';
 
-            photo_div.style.borderRadius = '600px';
-        }else{
-            photo_div.style.width = '700px';
-            photo_div.style.height = '630px';
-            photo_maindiv.style.display = 'flex';
-            photo_maindiv.style.placeContent = 'center';
-            photo_div.style.borderRadius = '200px';
-        }
-       
+        photo_div.style.width = '700px';
+        photo_div.style.height = '630px';
+        photo_image.style.height = "630px";
+        photo_maindiv.style.display = 'flex';
+        photo_maindiv.style.placeContent = 'center';
+        photo_div.style.borderRadius = '200px';
+        photo_image.style.marginTop = '0%';
+
 
         // photo_image.style.borderRadius = '100%';
 
@@ -263,10 +244,11 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '1000px';
         photo_div.style.height = '630px';
+        photo_image.style.height = "630px";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '500px';
-
+        photo_image.style.marginTop = '0%';
         // photo_image.style.borderRadius = '100%';
 
 
@@ -276,27 +258,68 @@ const Duzenle = (props) => {
         var photo_div = document.getElementById('photo_div');
         var photo_maindiv = document.getElementById('photo_maindiv');
         var vignetteContainer = document.getElementById('vignetteContainer');
-        if (isContain) {
-            removeImageScale();
-            photo_image.style.width = '100%';
-            photo_image.style.height = 'auto';
-            vignetteContainer.style.width = '100%';
-            vignetteContainer.style.height = 'auto';
-            photo_image.style.marginTop = '-35%';
-            photo_image.style.width = '2000px';
-            photo_image.style.height = '1000px';
+        // if (isContain) {
+        //     removeImageScale();
+        //     photo_image.style.width = '100%';
+        //     photo_image.style.height = 'auto';
+        //     vignetteContainer.style.width = '100%';
+        //     vignetteContainer.style.height = 'auto';
+        //     photo_image.style.marginTop = '-35%';
+        //     photo_image.style.width = '2000px';
+        //     photo_image.style.height = '1000px';
 
-            //  photo_maindiv.style.display = 'flex';
-            //  photo_maindiv.style.placeContent = 'center';
+        //     //  photo_maindiv.style.display = 'flex';
+        //     //  photo_maindiv.style.placeContent = 'center';
 
-            photo_div.style.borderRadius = '600px';
-        }
+        //     photo_div.style.borderRadius = '600px';
+        // }
+
         photo_div.style.width = '400px';
         photo_div.style.height = '630px';
+        photo_image.style.height = "630px";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '600px';
+        photo_image.style.marginTop = '0%';
     }
+
+
+    const getBase64StringFromDataURL = (dataURL) => dataURL.replace('data:', '').replace(/^.+,/, '');
+    const RemoveImageBack = () => {
+        const image = document.getElementById('photo_image');
+
+        // Get the remote image as a Blob with the fetch API
+        fetch(image.src)
+            .then((res) => res.blob())
+            .then((blob) => {
+                // Read the Blob as DataURL using the FileReader API
+                const reader = new FileReader();
+                reader.onloadend = () => {
+
+                    // Logs data:image/jpeg;base64,wL2dvYWwgbW9yZ...
+
+                    // Convert to Base64 string
+                    const base64 = getBase64StringFromDataURL(reader.result);
+
+                    axios.post('https://w3yzdev.com/api/react/editor/removebg', {
+                        'base64image': base64
+                    }).then((res) => {
+                        console.log(JSON.stringify(res.data));
+                        image.src = res.data.img;
+                    }).catch((error) => console.log(error))
+                    // Logs wL2dvYWwgbW9yZ...
+                };
+                reader.readAsDataURL(blob);
+            });
+    }
+
+    const ResetImageBack = () => {
+        const image = document.getElementById('photo_image');
+        image.src = yummphoto;
+
+    }
+
+
 
     // const TransparentBackgroud=()=>{
     //     console.log("http://localhost:3000"+props.imageURI);
@@ -392,12 +415,12 @@ const Duzenle = (props) => {
 
             <label className={` ml-5 text-popNormal12 mt-8`} >Arkaplan Kaldır</label>
             <span className="inline-grid grid-cols-3 gap-3 mt-4 place-content-center place-items-center mx-5 hover:cursor-pointer">
-                <span className={`box-border border-8  border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] `}>
+                <span onClick={() => ResetImageBack()} className={`box-border border-8  border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Block />
                     </div>
                 </span>
-                <span className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
+                <span onClick={() => { RemoveImageBack() }} className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Back_Replace />
                     </div>
