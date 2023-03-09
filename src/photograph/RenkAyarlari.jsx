@@ -101,49 +101,58 @@ const RenkAyarlari = (props) => {
         {
             id: 1,
            class:"",
+           classForBlurBackImage:"imageOfBlurBack",
            filtername:"Normal"
 
         },
         {
             id: 2,
             class:"filter-inkwell",
+            classForBlurBackImage:"filter-inkwell imageOfBlurBack",
             filtername:"Inkwell"
         },
        
         {
             id: 3,
             class:"filter-aden",
+            classForBlurBackImage:"filter-aden imageOfBlurBack",
             filtername:"Aden"
         },
         {
             id: 4,
             class:"filter-amaro",
+            classForBlurBackImage:"filter-amaro imageOfBlurBack",
             filtername:"Amaro"
         },
         {
             id: 5,
             class:"filter-ashby",
+            classForBlurBackImage:"filter-ashby imageOfBlurBack",
             filtername:"Ashby"
         },
         {
             id: 6,
             class:"filter-brannan",
+            classForBlurBackImage:"filter-brannan imageOfBlurBack",
             filtername:"Brannan"
         },
         {
             id: 7,
             class: "filter-brooklyn",
+            classForBlurBackImage:"filter-brooklyn imageOfBlurBack",
             filtername:"Broklyn"
         },
         {
             id: 8,
             class:"filter-charmes",
+            classForBlurBackImage:"filter-charmes imageOfBlurBack",
             filtername:"Charmes"
         },
 
         {
             id: 9,
             class:"filter-clarendon",
+            classForBlurBackImage:"filter-clarendon imageOfBlurBack",
             filtername:"Clarendon"
         },
         {
@@ -154,56 +163,67 @@ const RenkAyarlari = (props) => {
         {
             id: 11,
             class:"filter-dogpatch",
+            classForBlurBackImage:"filter-dogpatch imageOfBlurBack",
             filtername:"Dogpatch"
         },
         {
             id: 12,
             class:"filter-earlybird",
+            classForBlurBackImage:"filter-earlybird imageOfBlurBack",
             filtername:"Earlybird"
         },
         {
             id: 13,
             class:"filter-gingham",
+            classForBlurBackImage:"filter-gingham imageOfBlurBack",
             filtername:"Gingham"
         },
         {
             id: 14,
             class:"filter-ginza",
+            classForBlurBackImage:"filter-ginza imageOfBlurBack",
             filtername:"Ginza"
         },
         {
             id: 15,
             class:"filter-hefe",
+            classForBlurBackImage:"filter-hefe imageOfBlurBack",
             filtername:"Hefe"
         },
         {
             id: 16,
             class:"filter-clarendon",
+            classForBlurBackImage:"filter-clarendon imageOfBlurBack",
             filtername:"Clarendon"
         },
         {
             id: 17,
             class:"filter-helena",
+            classForBlurBackImage:"filter-helena imageOfBlurBack",
             filtername:"Helena"
         },
         {
             id: 18,
             class:"filter-hudson",
+            classForBlurBackImage:"filter-hudson imageOfBlurBack",
             filtername:"Hudson"
         },
         {
             id: 19,
             class:"filter-1977",
+            classForBlurBackImage:"filter-1977 imageOfBlurBack",
             filtername:"1977"
         },
         {
             id: 20,
             class:"filter-kelvin",
+            classForBlurBackImage:"filter-kelvin imageOfBlurBack",
             filtername:"Kelvin"
         },
         {
             id: 21,
             class:"filter-juno",
+            classForBlurBackImage:"filter-juno imageOfBlurBack",
             filtername:"Juno"
         }
     ];
@@ -278,9 +298,9 @@ const RenkAyarlari = (props) => {
             <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
             <div className="grid grid-cols-3 gap-4 bg-white place-items-center mx-4 mt-4  overflow-scroll pb-[30%] ">
                 {filters.map((item,index) => (
-                 <div onClick={()=> props.Applyfilterclass(item.class) } key={index} className=" hover:cursor-pointer" >
+                 <div onClick={()=> {props.Applyfilterclass(item.class); props.ApplyclassForBlurBackImage(item.classForBlurBackImage)} } key={index} className=" hover:cursor-pointer" >
                          <figure  class={item.class} >
-                        <img  src={defaultimg} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
+                        <img  src={props.imageURI} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
                         </figure>
                         <label className={` text-pop40012 text-bar-offline-0`}>{item.filtername}</label>
                    </div>

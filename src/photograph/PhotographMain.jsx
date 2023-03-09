@@ -13,7 +13,7 @@ import { ReactComponent as CloseTxt } from '../assets/icons/closetxt.svg';
 //     format_color_text as TXT
 // } from '../assets/icons';
 
-import yummphoto from "../assets/images/IMG_9864.jpeg";
+import yummphotoo from "../assets/images/instagram.jpg";
 import insta from "../assets/images/instagram.jpg";
 import Duzenle from "./Duzenle";
 import ArkaPlan from "./ArkaPlan";
@@ -28,6 +28,11 @@ import { Resizable } from 'react-resizable';
 
 
 const PhotographMain = (props) => {
+    const [yummphoto, setyummphoto] = useState(yummphotoo);
+    const SETimagePhoto = (image) => {
+        setyummphoto(image);
+    }
+
     const ref = useRef()
 
     const GetFinalImage = useCallback(() => {
@@ -35,7 +40,7 @@ const PhotographMain = (props) => {
             return
         }
 
-        toPng(ref.current, { cacheBust: true, })
+        toPng(ref.current, { cacheBust: true, backgroundColor: "#ffffff" })
             .then((dataUrl) => {
                 const link = document.createElement('a')
                 link.download = 'my-image-name.png'
@@ -45,7 +50,8 @@ const PhotographMain = (props) => {
                 console.log(link)
             })
             .catch((err) => {
-                console.log(err)
+                console.log(JSON.stringify(err));
+
             })
     }, [ref])
 
@@ -56,8 +62,8 @@ const PhotographMain = (props) => {
     const AddTextdiv = () => {
         console.log(`draggable${divs.length + 1}`);
         const newDiv =
-            <div key={divs.length} id={`draggable${divs.length + 1}`} onClick={() => document.getElementById(`draggable${divs.length + 1}`).focus()} onDragStart={() => DragMetinEkle(`draggable${divs.length + 1}`)}  contentEditable={true}
-                draggable={true}  className={` select-text group outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `}
+            <div key={divs.length} id={`draggable${divs.length + 1}`} onClick={() => document.getElementById(`draggable${divs.length + 1}`).focus()} onDragStart={() => DragMetinEkle(`draggable${divs.length + 1}`)} contentEditable={true}
+                draggable={true} className={` z-50 select-text group outline-none active:border-solid  active:border-2 focus:border-solid resize hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center text-black w-auto h-auto hover:box-border `}
                 style={{ top: `${divs.length + 25}%`, left: `${divs.length + 50}%` }}
                 suppressContentEditableWarning={true}>
                 <div key={divs.length} id={`draggable${divs.length + 1}headerr`} className=" z-10 hover:resize cursor-move w-4 h-4 absolute -top-[7px] -left-[7px]  place-items-center bg-[#667085] hidden group-hover:flex  ">
@@ -76,7 +82,7 @@ const PhotographMain = (props) => {
         console.log(`StickerDraggable${Stickers.length + 1}`);
         const newstickerdiv =
             <div key={Stickers.length} id={`StickerDraggable${Stickers.length + 1}`} draggable={true} style={{ top: `${Stickers.length + 25}%` }}
-                onDragStart={() => console.log('asdasdas')} className=" group rounded hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
+                onDragStart={() => console.log('asdasdas')} className=" z-50 group rounded hover:border-2 hover:border-dotted hover:border-btn-blue-0 absolute bg-transparent self-center w-auto h-auto " >
                 <div id={`draggable${Stickers.length + 1}header`} className=" z-10 cursor-move w-4 h-4 absolute -top-[7px] -left-[7px] place-items-center bg-[#667085] hidden group-hover:flex ">
                     <CursorMove />
                 </div>
@@ -212,12 +218,14 @@ const PhotographMain = (props) => {
         }
     }
 
-    const [filterclass, setfilterclass] = useState();
+    const [filterclass, setfilterclass] = useState("");
     const Applyfilterclass = (item) => {
         setfilterclass(item);
     }
-
-
+    const [classForBlurBackImage,setclassForBlurBackImage]=useState("imageOfBlurBack");
+    const ApplyclassForBlurBackImage=(item)=>{
+setclassForBlurBackImage(item);
+    }
 
 
 
@@ -248,60 +256,27 @@ const PhotographMain = (props) => {
                 </div>
                 <div className={`flex flex-row h-screen`}>
                     <div className={`w-[80%] min-w-[80%] flex flex-col pr-[0.5%] `}>
-                        <div id="photo_maindiv" className=" w-[97%] max-w-[97%] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden ">
 
-                            <div ref={ref} className={` bg-myBackImage bg-cover  flex place-content-center overflow-hidden place-items-center`}
-                                id="photo_div">
-                                <div id="vignetteContainer" className=" w-[392px] h-[636px] place-items-center flex ">
-                                    <figure className={filterclass} >
-                                        <img src={yummphoto} className={` object-fill w-[392px] h-[636px] self-center`} id="photo_image" />
+                        {/* hidden IMAGE */}   
+                       
+                        <img id="photo_image_hidden" src={yummphoto} className={classForBlurBackImage}   />  
+                   
+                        {/* HIDDEN İMAGE */}
+
+                        {Stickers.map(div => div)}
+                        {divs.map(div => div)}
+                        <div ref={ref} id="photo_maindiv" className=" z-10 w-[97%] max-w-[97%] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden flex place-items-center place-content-center justify-center align-middle ">
+
+                            <div className={` bg-myBackImage bg-cover h-[640px] w-[1280px] flex place-content-center overflow-hidden place-items-center`}
+                                id="photo_div" >
+                                <div id="vignetteContainer" className=" w-auto h-auto place-items-center flex ">
+                                    <figure className={filterclass}  >
+
+                                        <img src={yummphoto} className={` object-fill w-auto h-auto max-h-[636px] self-center flex`} id="photo_image" />
+
                                     </figure>
                                 </div>
-                                {/* <figure >
-                                    <img  src={insta}/>
-                                </figure> */}
-                                {/* ADD TEXT PART */}
-                                {/* <div id="draggable" rows="4" cols="50" draggable={true}
-                                    onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center text-black  hidden w-[214px] min-h-[60px] max-h-[260px]   " >
-                                    <div id="draggableheader" className=" cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px]  place-items-center bg-[#667085]  ">
-                                        <CursorMove />
-                                    </div>
-
-                                    <label id="AddTextTXT" className=" mt-2 max-h-[260px] max-w-[214px] ">METİN EKLE</label>
-                                    <div onClick={() => CloseAddText()} className=" ml-[205px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085]  ">
-                                        <CloseTxt />
-                                    </div>
-                                </div> */}
-                                {Stickers.map(div => div)}
-                                {divs.map(div => div)}
-
-
-
-
-
-
-                                {/* sticker  */}
-                                {/* <div id="StickerDraggable" draggable={true}
-                                    onDragStart={() => console.log('asdasdas')} className=" resize border-2 border-dotted border-btn-blue-0 absolute bg-transparent self-center  w-[75px] h-[75px] hidden  " >
-                                    <div id="draggableheader" className=" z-10 cursor-move w-4 h-4 absolute -mt-[12px] -ml-[12px] flex place-items-center bg-[#667085]">
-                                        <CursorMove />
-                                    </div>
-                                    <img id="StickerImg" ></img>
-                                    <div onClick={() => CloseSticker()} className=" z-10 ml-[67px] -mt-[10px] w-4 h-4 absolute rounded-[100%]  flex place-items-center place-content-center cursor-pointer bg-[#667085] ">
-                                        <CloseTxt />
-                                    </div>
-                                </div> */}
-
-
-
                             </div>
-
-
-                            {/* <div className={` bg-myBackImage bg-cover w-[1280px] h-importantHeight ml-5 mt-5 mr-[3px] flex place-content-center overflow-hidden place-items-center blur-md`}
-                                id="photo_div">
-                               
-                                 </div> 
-                                 <img src={yummphoto} className={`object-fit w-[392px] self-center  `} id="photo_image" />   */}
 
 
                         </div>
@@ -330,7 +305,7 @@ const PhotographMain = (props) => {
                     {/* right menue */}
                     <div className={` w-[20%] min-w-[20%] bg-white border-border-color-0 border-l overflow-scroll h-screen  `}>
                         {OnCropSelect ?
-                            <Duzenle imageURI={yummphoto} />
+                            <Duzenle imageURI={yummphotoo} SETimagePhoto={SETimagePhoto} />
                             :
                             <></>
                         }
@@ -340,7 +315,7 @@ const PhotographMain = (props) => {
                             <></>
                         }
                         {OnColorsSelect ?
-                            <RenkAyarlari Applyfilterclass={Applyfilterclass} />
+                            <RenkAyarlari Applyfilterclass={Applyfilterclass} ApplyclassForBlurBackImage={ApplyclassForBlurBackImage} imageURI={yummphotoo} />
                             :
                             <></>}
                         {OnAddTXTselect ?

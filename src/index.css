@@ -31,6 +31,7 @@ code {
     height: auto;
 } 
 
+
 .textOver{
   border: solid 2px rgb(60, 60, 255);
   box-sizing: border-box;
@@ -545,4 +546,16 @@ code {
   background: -webkit-radial-gradient(circle closest-corner, rgba(0, 91, 154, .35) 0, rgba(0, 0, 0, .65) 100%);
   content: "";
   mix-blend-mode: multiply;
+}
+.imageOfBlurBack {
+  z-index: 40;
+  object-fit: fill;
+  width: auto;
+  height: auto;
+  max-height: 636px;
+  top: 14%;
+  bottom: 0px;
+  align-self: center;
+  position: absolute;
+  display: none;
 }

@@ -19,6 +19,10 @@ const Duzenle = (props) => {
     const [imageWidth, setImageWidth] = useState(0);
     const [imageHeight, setImageHeight] = useState(0)
     const [isImageScaleChange, setIsImageScaleChange] = useState(false);
+    const [ActiveCanvasNum,setActiveCanvasNum]=useState('0');
+    const [ActiveScaleNum,setActiveScaleNum]=useState('0');
+    const [ActiveBackRemove,setActiveBackRemove]=useState(false);
+  
 
     const removeImageCanvas = () => {
         var photo_image = document.getElementById('photo_image');
@@ -30,12 +34,12 @@ const Duzenle = (props) => {
 
         vignetteContainer.style.justifyContent = 'center';
         vignetteContainer.style.alignItems = 'center';
-        photo_image.style.width = '392px';
-        photo_image.style.height = '640px';
+        photo_image.style.width = 'auto';
+        photo_image.style.height = 'auto';
         photo_maindiv.style.display = 'default';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '0%';
-        photo_div.style.width = '100%';
+        photo_div.style.width = '1280px';
         photo_image.style.alignSelf = 'center';
         photo_image.style.marginTop = '0%';
         // vignetteContainer.style.justifyContent = 'center';
@@ -59,20 +63,30 @@ const Duzenle = (props) => {
         var vignetteContainer = document.getElementById('vignetteContainer');
         var photo_maindiv = document.getElementById('photo_maindiv');
 
-        photo_image.style.width = '392px';
-        photo_image.style.height = '640px';
-        photo_div.style.height = "640px";
-        photo_div.style.width = "1280px";
-        vignetteContainer.style.height = '640px';
-        vignetteContainer.style.width = '1280px';
-        photo_image.style.alignSelf = 'center';
-        vignetteContainer.style.display = 'flex';
-        vignetteContainer.style.placeContent = 'center';
-        vignetteContainer.style.placeItems = 'center';
-        photo_maindiv.style.placeContent = 'center';
-        photo_maindiv.style.display = 'flex';
-        photo_image.style.marginTop = '0%';
-        photo_div.style.borderRadius = '0%';
+        // photo_image.style.width = 'auto';
+        // photo_image.style.height = 'auto';
+        // photo_div.style.height = "640px";
+        // photo_div.style.width = "1280px";
+        // vignetteContainer.style.height = 'auto';
+        // vignetteContainer.style.width = 'auto';
+        // photo_image.style.alignSelf = 'center';
+        // vignetteContainer.style.display = 'flex';
+        // vignetteContainer.style.placeContent = 'center';
+        // vignetteContainer.style.placeItems = 'center';
+        // photo_maindiv.style.placeContent = 'center';
+        // photo_maindiv.style.display = 'flex';
+        // photo_image.style.marginTop = '0%';
+        // photo_div.style.borderRadius = '0%';
+        // photo_image.style.maxHeight= '636px';
+        photo_image.style.height='auto';
+        photo_image.style.width='auto';
+        vignetteContainer.style.height='auto';
+        vignetteContainer.style.width='auto';
+        photo_image.style.maxHeight='636px'
+        // vignetteContainer.style.height='auto';
+        // vignetteContainer.style.width='auto';
+        // photo_div.style.height = "640px";
+        // photo_div.style.width = "1280px";
 
 
     }
@@ -87,7 +101,8 @@ const Duzenle = (props) => {
         }
 
         photo_image.style.width = '1280px';
-        photo_image.style.height = '640px';
+        photo_image.style.height = 'auto';
+        photo_image.style.maxHeight= '630px';
         vignetteContainer.style.width = '1280px';
         vignetteContainer.style.height = '640px';
         photo_image.style.marginTop = '0px';
@@ -100,6 +115,7 @@ const Duzenle = (props) => {
         var photo_image = document.getElementById('photo_image');
         var vignetteContainer = document.getElementById('vignetteContainer');
         var photo_div = document.getElementById('photo_div');
+        var photo_maindiv = document.getElementById('photo_maindiv');
 
         if (!isImageScaleChange) {
             setImageWidth(photo_image.style.width);
@@ -107,11 +123,28 @@ const Duzenle = (props) => {
         }
 
         console.log(imageWidth + ' ' + imageHeight);
-        photo_image.style.width = '100%';
-        photo_image.style.height = 'auto';
-        vignetteContainer.style.width = '100%';
-        vignetteContainer.style.height = 'auto';
-        photo_image.style.marginTop = '-35%';
+        // photo_image.style.width = 'auto';
+        // photo_image.style.height = 'auto';
+        //  vignetteContainer.style.width = 'auto';
+        //  vignetteContainer.style.height = 'auto';
+        photo_image.style.height='auto';
+        photo_image.style.width='500000px';
+        photo_image.style.maxHeight= '100%';
+        // vignetteContainer.style.height='auto';
+        // vignetteContainer.style.width='100%';
+        // photo_div.style.height='auto';
+        // photo_div.style.width='100%';
+        // photo_image.style.maxHeight= '100%';
+        // photo_image.style.alignSelf = 'center';
+        vignetteContainer.style.display = 'flex';
+        vignetteContainer.style.placeContent = 'center';
+        vignetteContainer.style.placeItems = 'center';
+        photo_maindiv.style.placeContent = 'center';
+        photo_maindiv.style.display = 'flex';
+        photo_image.style.marginTop = '0%';
+        
+       
+       
         //  photo_image.style.height = 'auto';
         //  photo_div.style.height = 'auto';
 
@@ -127,10 +160,11 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '630px';
         photo_div.style.height = '630px';
+        photo_image.style.maxHeight='auto';
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '100%';
-        photo_image.style.height = "630px";
+        // photo_image.style.height = "auto";
         photo_image.style.marginTop = '0%';
 
 
@@ -151,7 +185,7 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '700px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "630px";
+        photo_image.style.height = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '4px';
@@ -174,7 +208,7 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '1000px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "630px";
+        photo_image.style.height = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '4px';
@@ -191,7 +225,7 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '700px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "630px";
+        photo_image.style.height = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '16px';
@@ -208,7 +242,7 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '1000px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "630px";
+        photo_image.style.height = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '16px';
@@ -225,7 +259,7 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '700px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "630px";
+        photo_image.style.height = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '200px';
@@ -244,7 +278,7 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '1000px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "630px";
+        photo_image.style.height = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '500px';
@@ -276,7 +310,8 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '400px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "630px";
+        photo_image.style.height = "auto";
+        photo_image.style.width = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '600px';
@@ -305,7 +340,7 @@ const Duzenle = (props) => {
                         'base64image': base64
                     }).then((res) => {
                         console.log(JSON.stringify(res.data));
-                        image.src = res.data.img;
+                        props.SETimagePhoto(res.data.img);
                     }).catch((error) => console.log(error))
                     // Logs wL2dvYWwgbW9yZ...
                 };
@@ -315,7 +350,7 @@ const Duzenle = (props) => {
 
     const ResetImageBack = () => {
         const image = document.getElementById('photo_image');
-        image.src = yummphoto;
+        props.SETimagePhoto(props.imageURI);
 
     }
 
@@ -364,48 +399,48 @@ const Duzenle = (props) => {
             </div>
             <label className={` ml-5 text-popNormal12`} >Tuval Ölçüsü</label>
             <div className="inline-grid grid-cols-3 gap-3 mt-4 place-content-center place-items-center self-center bg-white w-[85%] h-[30%] ">
-                <span onClick={() => removeImageCanvas()} className={`w-[72px] h-[72px] box-border border-8 border-[#F2F4F7]  place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
+                <span onClick={() => {removeImageCanvas();setActiveCanvasNum('0');setActiveScaleNum('0')}} className={`w-[72px] h-[72px] box-border border-8  border-[#F2F4F7] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] ${ActiveCanvasNum === '0' ? ` ring-2 `: `ring-0`} `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Block />
                     </div>
                 </span>
-                <span onClick={() => border4px()} className={`w-[72px] h-[72px] border-8 border-[#F2F4F7]  place-items-center flex place-content-center hover:cursor-pointer  rounded-[4px]  `}>
+                <span onClick={() => {border4px();setActiveCanvasNum('1')}} className={`w-[72px] h-[72px] border-8 border-[#F2F4F7]  place-items-center flex place-content-center hover:cursor-pointer  rounded-[4px]  ${ActiveCanvasNum === '1' ? ` ring-2 `: `ring-0`}`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Panorama />
                     </div>
                 </span>
-                <span onClick={() => Triangle()} className={`w-[72px] h-[72px] hover:cursor-pointer box-border border-r-8 border-l-8 border-t-[16px] border-b-[16px] border-[#F2F4F7]  place-items-center flex place-content-center  rounded-[4px] `}>
+                <span onClick={() => {Triangle();setActiveCanvasNum('2')}} className={`w-[72px] h-[72px] hover:cursor-pointer box-border border-r-8 border-l-8 border-t-[16px] border-b-[16px] border-[#F2F4F7]  place-items-center flex place-content-center  rounded-[4px] ${ActiveCanvasNum === '2' ? ` ring-2 `: `ring-0`}`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Panorama />
                     </div>
                 </span>
-                <span onClick={() => border16px()} className={`w-[72px] h-[72px] hover:cursor-pointer border-[#F2F4F7] box-border border-8  place-items-center flex place-content-center rounded-[4px]  `}>
+                <span onClick={() => {border16px();setActiveCanvasNum('3')}} className={`w-[72px] h-[72px] hover:cursor-pointer border-[#F2F4F7] box-border border-8  place-items-center flex place-content-center rounded-[4px] ${ActiveCanvasNum === '3' ? ` ring-2 `: `ring-0`} `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex  rounded-[4px]">
                         <Panorama />
                     </div>
                 </span>
-                <span onClick={() => Triangle16px()} className={`w-[72px] h-[72px] hover:cursor-pointer border-[#F2F4F7] box-border border-r-8 border-l-8 border-t-[17px] border-b-[15px] place-items-center flex place-content-center  rounded-[4px]`}>
+                <span onClick={() => {Triangle16px();setActiveCanvasNum('4')}} className={`w-[72px] h-[72px] hover:cursor-pointer border-[#F2F4F7] box-border border-r-8 border-l-8 border-t-[17px] border-b-[15px] place-items-center flex place-content-center  rounded-[4px] ${ActiveCanvasNum === '4' ? ` ring-2 `: `ring-0`}`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex  rounded-[4px]">
                         <Panorama />
                     </div>
                 </span>
-                <span onClick={() => border200px()} className={`w-[72px] h-[72px] hover:cursor-pointer border-[#F2F4F7] box-border border-r-[7px] border-l-[7px] border-t-8 border-b-8  place-items-center flex place-content-center  rounded-[4px]  bg-[#F2F4F7]`}>
+                <span onClick={() => {border200px();setActiveCanvasNum('5')}} className={`w-[72px] h-[72px] hover:cursor-pointer border-[#F2F4F7] box-border border-r-[7px] border-l-[7px] border-t-8 border-b-8  place-items-center flex place-content-center  rounded-[4px]  bg-[#F2F4F7] ${ActiveCanvasNum === '5' ? ` ring-2 `: `ring-0`}`}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex  rounded-[20px] bg-[#fff]">
                         <Panorama />
                     </div>
                 </span>
-                <span onClick={() => Triangle500px()} className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px]  place-items-center flex place-content-center  rounded-[4px]`} >
+                <span onClick={() => {Triangle500px();setActiveCanvasNum('6')}} className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px]  place-items-center flex place-content-center  rounded-[4px] ${ActiveCanvasNum === '6' ? ` ring-2 `: `ring-0`}`} >
                     <div className=" w-[56px] h-[40px] rounded-[100px] bg-white border-[#D0D5DD] border place-content-center place-items-center flex" >
                         <Panorama />
                     </div>
                 </span>
-                <span onClick={() => border700px()} className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px]   place-items-center flex place-content-center  rounded-[4px]`} >
+                <span onClick={() => {border700px();setActiveCanvasNum('7')}} className={`hover:cursor-pointer bg-[#F2F4F7] w-[72px] h-[72px]   place-items-center flex place-content-center  rounded-[4px] ${ActiveCanvasNum === '7' ? ` ring-2 `: `ring-0`}`} >
                     <div className=" w-[40px] h-[56px] rounded-[100px] bg-white border-[#D0D5DD] border place-content-center place-items-center flex" >
                         <Panorama />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer box-border border-8 border-[#F2F4F7] w-[72px] h-[72px]  place-items-center flex place-content-center bg-[#F2F4F7]`}
-                    onClick={() => circleImage()}>
+                <span className={`hover:cursor-pointer box-border border-8 border-[#F2F4F7] w-[72px] h-[72px]  place-items-center flex place-content-center bg-[#F2F4F7] ${ActiveCanvasNum === '8' ? ` ring-2 `: `ring-0`}`}
+                    onClick={() => {circleImage();setActiveCanvasNum('8')}}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex rounded-full bg-[#fff]">
                         <Panorama />
                     </div>
@@ -414,13 +449,13 @@ const Duzenle = (props) => {
 
 
             <label className={` ml-5 text-popNormal12 mt-8`} >Arkaplan Kaldır</label>
-            <span className="inline-grid grid-cols-3 gap-3 mt-4 place-content-center place-items-center mx-5 hover:cursor-pointer">
-                <span onClick={() => ResetImageBack()} className={`box-border border-8  border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] `}>
+            <span className={` inline-grid grid-cols-3 gap-3 mt-4 place-content-center place-items-center mx-5 hover:cursor-pointer `} >
+                <span onClick={() => {ResetImageBack();setActiveBackRemove(false)}} className={`box-border border-8  border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] ${ActiveBackRemove=== false ? `ring-2`:`ring-0`} `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Block />
                     </div>
                 </span>
-                <span onClick={() => { RemoveImageBack() }} className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px] `}>
+                <span onClick={() => { {RemoveImageBack();setActiveBackRemove(true)} }} className={` border-8 border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center hover:cursor-pointer rounded-[4px]  ${ActiveBackRemove=== true ? `ring-2`:`ring-0`} `}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Back_Replace />
                     </div>
@@ -430,21 +465,21 @@ const Duzenle = (props) => {
 
             <label className={` ml-5 text-popNormal12 mt-8`} >Sığdırma</label>
             <span className="inline-grid grid-cols-3 gap-3 mt-4 place-content-center place-items-center mx-5">
-                <span className={`hover:cursor-pointer box-border border-l-[9px] border-r-[9px] border-t-[18.5px] border-b-[18.5px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] `}
-                    onClick={() => removeImageScale()}>
+                <span className={`hover:cursor-pointer box-border border-l-[9px] border-r-[9px] border-t-[18.5px] border-b-[18.5px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] ${ActiveScaleNum === '0' ? `ring-2`: `ring-0`} `}
+                    onClick={() => {removeImageScale();setActiveScaleNum('0')}}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Block />
                     </div>
                 </span>
                 <span
-                    className={`hover:cursor-pointer border-[9px] border-r-[9px] border-t-[18.5px] border-b-[18.5px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] `}
-                    onClick={() => coverImage()}>
+                    className={`hover:cursor-pointer border-[9px] border-r-[9px] border-t-[18.5px] border-b-[18.5px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] ${ActiveScaleNum === '1' ? `ring-2`: 'ring-0'} `}
+                    onClick={() => {coverImage();setActiveScaleNum('1')}}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Panorama_2 />
                     </div>
                 </span>
-                <span className={`hover:cursor-pointer border-[9px] border-r-[9px] border-t-[18.5px] border-b-[18.5px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px]`}
-                    onClick={() => containImage()}>
+                <span className={`hover:cursor-pointer border-[9px] border-r-[9px] border-t-[18.5px] border-b-[18.5px] border-[#F2F4F7] w-[72px] h-[72px] place-items-center flex place-content-center rounded-[4px] ${ActiveScaleNum === '2' ? `ring-2`: `ring-0`}`}
+                    onClick={() => {containImage();setActiveScaleNum('2')}}>
                     <div className=" border-[#D0D5DD] border w-full h-full place-content-center place-items-center flex">
                         <Panorama_3 />
                     </div>

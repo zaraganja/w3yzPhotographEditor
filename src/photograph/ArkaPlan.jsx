@@ -15,19 +15,30 @@ const ArkaPlan = (props) => {
 
     const BlurBackground = () => {
         var photo_div = document.getElementById('photo_div');
+        var vignetteContainer = document.getElementById('vignetteContainer');
+        var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var prc = document.getElementById('volume');
         prc.addEventListener('input', () => {
             var pixel = prc.value * 0.100;
             photo_div.style.filter = `blur(${pixel + ''}px)`;
+            photo_image.style.display = 'none';
+            photo_image_hidden.style.display='flex';
+
+
         })
     }
 
     const TansparencyOpacityBackground = () => {
+        var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var photo_div = document.getElementById('photo_div');
         const prc2 = document.getElementById('transparency');
-        prc2.addEventListener('input', () => { 
-            var pixel = prc2.value /100;
+        prc2.addEventListener('input', () => {
+            var pixel = prc2.value / 100;
             photo_div.style.opacity = `${pixel}`;
+            photo_image.style.display = 'none';
+            photo_image_hidden.style.display='flex';
         })
     }
 
@@ -41,12 +52,12 @@ const ArkaPlan = (props) => {
         photo_div.style.backgroundColor = color.hex;
     };
 
-    const [backlist,setbacklist]=useState([]);
-    const GetBackgroundList =()=>{
-        axios.get('https://w3yzdev.com/api/react/editor/background').then((res)=>{
-        setbacklist(res.data);
-       
-        }).catch((err)=> console.log(err))
+    const [backlist, setbacklist] = useState([]);
+    const GetBackgroundList = () => {
+        axios.get('https://w3yzdev.com/api/react/editor/background').then((res) => {
+            setbacklist(res.data);
+
+        }).catch((err) => console.log(err))
     }
 
     // const backlist = [
@@ -107,9 +118,9 @@ const ArkaPlan = (props) => {
         })
     };
 
-    const ChangeBackground=(image)=>{
-      var photo_div= document.getElementById("photo_div");
-        photo_div.style.backgroundImage='url('+image+')';
+    const ChangeBackground = (image) => {
+        var photo_div = document.getElementById("photo_div");
+        photo_div.style.backgroundImage = 'url(' + image + ')';
     }
 
 
@@ -120,7 +131,7 @@ const ArkaPlan = (props) => {
         };
 
         getSliderRange2();
-        // TansparencyOpacityBackground();
+         TansparencyOpacityBackground();
         GetBackgroundList();
 
     })
@@ -153,7 +164,7 @@ const ArkaPlan = (props) => {
                 <label className={` text-pop40012 text-bar-offline-0`}>Görseli Arka plana Ekle</label>
                 {/* Toggle checkbox */}
                 <label className="relative inline-flex items-center cursor-pointer">
-                    <input  onChange={() => handleSetChecked(!checked)} type="checkbox" value=""
+                    <input onChange={() => handleSetChecked(!checked)} type="checkbox" value=""
                         className="sr-only peer" checked={checked} />
                     <div className="w-11 h-6 bg-gray-200 rounded-full peer    dark:bg-[#EAECF0] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1163FA] "></div>
                 </label>
@@ -203,15 +214,15 @@ const ArkaPlan = (props) => {
                     // width="200px"
                     value={Background}
                     // onChangeComplete={(color) => handleChangeComplete(color)}
-                    onChange={(color) => {handleChangeComplete(color);setchecked(false)}}
+                    onChange={(color) => { handleChangeComplete(color); setchecked(false) }}
                 // onChange={(color)=>handleChangeComplete(color)}
                 />
 
             </div>
 
             <div className="grid grid-cols-4 gap-4 bg-white px-3  place-items-center overflow-scroll pb-[20%] ">
-                {backlist.map((item,index) => (
-                    <img onClick={()=> {ChangeBackground(item);setchecked(false)}} key={index} src={item} className=" bg-blue-300 w-[45px] h-[45px] rounded hover:cursor-pointer " />
+                {backlist.map((item, index) => (
+                    <img onClick={() => { ChangeBackground(item); setchecked(false) }} key={index} src={item} className=" bg-blue-300 w-[45px] h-[45px] rounded hover:cursor-pointer " />
                 ))}
             </div>
         </div>

@@ -354,7 +354,7 @@ const MetinEkle = (props) => {
                 </div>
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4`}>Etiket  Ekle</label>
-            <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden mb-[50%] ">
+            <div className="grid grid-cols-3 gap-[20px] bg-white mt-4 ml-4 overflow-hidden mb-[50%] hover:cursor-pointer ">
                 {etiketler.map((item, index) => (
                     <div key={index}>
                         <img onClick={() => {props.AddSticker(item)}} src={item}  />
