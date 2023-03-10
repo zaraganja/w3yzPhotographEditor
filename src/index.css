@@ -553,8 +553,7 @@ code {
   width: auto;
   height: auto;
   max-height: 636px;
-  top: 14%;
-  bottom: 0px;
+  margin-top: 1.5%;
   align-self: center;
   position: absolute;
   display: none;

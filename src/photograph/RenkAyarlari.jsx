@@ -12,37 +12,47 @@ const RenkAyarlari = (props) => {
 
     const Brightness = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var BRI = document.getElementById('brightness');
         BRI.addEventListener('input', () => {
             photo_image.style.filter = `brightness(${BRI.value}%)`;
+            photo_image_hidden.style.filter = `brightness(${BRI.value}%)`;
         })
     }
 
     const Contrast = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var CRT = document.getElementById('contrast');
         CRT.addEventListener('input', () => {
             photo_image.style.filter = `contrast(${CRT.value}%)`;
+            photo_image_hidden.style.filter = `contrast(${CRT.value}%)`;
         })
     }
 
     const Sharpness = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var SHRP = document.getElementById('sharpness');
         SHRP.addEventListener('input', () => {
             photo_image.style.filter = `contrast(${SHRP.value}%)`;
             photo_image.style.filter = `brightness(${SHRP.value}%)`;
             photo_image.style.filter = `saturate(${SHRP.value}%)`;
-
+            
+            photo_image_hidden.style.filter = `contrast(${SHRP.value}%)`;
+            photo_image_hidden.style.filter = `brightness(${SHRP.value}%)`;
+            photo_image_hidden.style.filter = `saturate(${SHRP.value}%)`;
 
         })
     }
 
     const Temprature = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var TMP = document.getElementById('temprature');
         TMP.addEventListener('input', () => {
             photo_image.style.filter = `hue-rotate(${-TMP.value}deg)`;
+            photo_image_hidden.style.filter = `hue-rotate(${-TMP.value}deg)`;
             //  photo_image.style.filter = `brightness(${TMP.value}%)`;
             //  photo_image.style.filter= `contrast(${TMP.value}%)`;
 
@@ -51,37 +61,45 @@ const RenkAyarlari = (props) => {
 
     const Saturation = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var STR = document.getElementById('saturation');
         STR.addEventListener('input', () => {
             photo_image.style.filter = `saturate(${STR.value}%)`;
+            photo_image_hidden.style.filter = `saturate(${STR.value}%)`;
         })
     }
 
     const Vignette = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var vignetteContainer = document.getElementById('vignetteContainer');
         var VGT = document.getElementById('vignette');
         VGT.addEventListener('input', () => {
             //    photo_image.style.border=  `5px`;
             vignetteContainer.style.boxShadow = '10px 10px 2000px rgba(0,0,0,1.5) inset';
             photo_image.style.borderRadius = `${VGT.value + ''}px`;
+            photo_image_hidden.style.borderRadius = `${VGT.value + ''}px`;
             if (VGT.value === 0) {
                 photo_image.style.padding = '0';
+                photo_image_hidden.style.padding = '0';
             }
         })
     }
 
     const BlurBackground = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
         var prc = document.getElementById('blurimg');
         prc.addEventListener('input', () => {
             var pixel = prc.value * 0.100;
             photo_image.style.filter = `blur(${pixel + ''}px)`;
+            photo_image_hidden.style.filter = `blur(${pixel + ''}px)`;
         })
     }
 
     const ResetSettings = () => {
         var photo_image = document.getElementById('photo_image');
+        var photo_image_hidden = document.getElementById('photo_image_hidden');
 
         document.getElementById('blurimg').value = "50";
         document.getElementById('vignette').value = "50";
@@ -94,7 +112,9 @@ const RenkAyarlari = (props) => {
         photo_image.style.filter = `none`;
         photo_image.style.borderRadius = `0px`;
         photo_image.style.padding = '0';
-
+        photo_image_hidden.style.filter = `none`;
+        photo_image_hidden.style.borderRadius = `0px`;
+        photo_image_hidden.style.padding = '0';
 
     }
     const filters = [
@@ -158,6 +178,7 @@ const RenkAyarlari = (props) => {
         {
             id: 10,
             class:"filter-crema",
+            classForBlurBackImage:"filter-clarendon imageOfBlurBack",
             filtername:"Crema"
         },
         {
