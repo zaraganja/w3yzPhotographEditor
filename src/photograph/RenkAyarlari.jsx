@@ -38,7 +38,7 @@ const RenkAyarlari = (props) => {
             photo_image.style.filter = `contrast(${SHRP.value}%)`;
             photo_image.style.filter = `brightness(${SHRP.value}%)`;
             photo_image.style.filter = `saturate(${SHRP.value}%)`;
-            
+
             photo_image_hidden.style.filter = `contrast(${SHRP.value}%)`;
             photo_image_hidden.style.filter = `brightness(${SHRP.value}%)`;
             photo_image_hidden.style.filter = `saturate(${SHRP.value}%)`;
@@ -109,10 +109,10 @@ const RenkAyarlari = (props) => {
         document.getElementById('contrast').value = "50";
         document.getElementById('brightness').value = "50";
 
-        photo_image.style.filter = `none`;
+        photo_image.style.removeProperty('filter');
         photo_image.style.borderRadius = `0px`;
         photo_image.style.padding = '0';
-        photo_image_hidden.style.filter = `none`;
+        photo_image_hidden.style.removeProperty('filter');
         photo_image_hidden.style.borderRadius = `0px`;
         photo_image_hidden.style.padding = '0';
 
@@ -120,132 +120,132 @@ const RenkAyarlari = (props) => {
     const filters = [
         {
             id: 1,
-           class:"",
-           classForBlurBackImage:"imageOfBlurBack",
-           filtername:"Normal"
+            class: "",
+            classForBlurBackImage: "imageOfBlurBack",
+            filtername: "Normal"
 
         },
         {
             id: 2,
-            class:"filter-inkwell",
-            classForBlurBackImage:"filter-inkwell imageOfBlurBack",
-            filtername:"Inkwell"
+            class: "filter-inkwell",
+            classForBlurBackImage: "filter-inkwell imageOfBlurBack",
+            filtername: "Inkwell"
         },
-       
+
         {
             id: 3,
-            class:"filter-aden",
-            classForBlurBackImage:"filter-aden imageOfBlurBack",
-            filtername:"Aden"
+            class: "filter-aden",
+            classForBlurBackImage: "filter-aden imageOfBlurBack",
+            filtername: "Aden"
         },
         {
             id: 4,
-            class:"filter-amaro",
-            classForBlurBackImage:"filter-amaro imageOfBlurBack",
-            filtername:"Amaro"
+            class: "filter-amaro",
+            classForBlurBackImage: "filter-amaro imageOfBlurBack",
+            filtername: "Amaro"
         },
         {
             id: 5,
-            class:"filter-ashby",
-            classForBlurBackImage:"filter-ashby imageOfBlurBack",
-            filtername:"Ashby"
+            class: "filter-ashby",
+            classForBlurBackImage: "filter-ashby imageOfBlurBack",
+            filtername: "Ashby"
         },
         {
             id: 6,
-            class:"filter-brannan",
-            classForBlurBackImage:"filter-brannan imageOfBlurBack",
-            filtername:"Brannan"
+            class: "filter-brannan",
+            classForBlurBackImage: "filter-brannan imageOfBlurBack",
+            filtername: "Brannan"
         },
         {
             id: 7,
             class: "filter-brooklyn",
-            classForBlurBackImage:"filter-brooklyn imageOfBlurBack",
-            filtername:"Broklyn"
+            classForBlurBackImage: "filter-brooklyn imageOfBlurBack",
+            filtername: "Broklyn"
         },
         {
             id: 8,
-            class:"filter-charmes",
-            classForBlurBackImage:"filter-charmes imageOfBlurBack",
-            filtername:"Charmes"
+            class: "filter-charmes",
+            classForBlurBackImage: "filter-charmes imageOfBlurBack",
+            filtername: "Charmes"
         },
 
         {
             id: 9,
-            class:"filter-clarendon",
-            classForBlurBackImage:"filter-clarendon imageOfBlurBack",
-            filtername:"Clarendon"
+            class: "filter-clarendon",
+            classForBlurBackImage: "filter-clarendon imageOfBlurBack",
+            filtername: "Clarendon"
         },
         {
             id: 10,
-            class:"filter-crema",
-            classForBlurBackImage:"filter-clarendon imageOfBlurBack",
-            filtername:"Crema"
+            class: "filter-crema",
+            classForBlurBackImage: "filter-clarendon imageOfBlurBack",
+            filtername: "Crema"
         },
         {
             id: 11,
-            class:"filter-dogpatch",
-            classForBlurBackImage:"filter-dogpatch imageOfBlurBack",
-            filtername:"Dogpatch"
+            class: "filter-dogpatch",
+            classForBlurBackImage: "filter-dogpatch imageOfBlurBack",
+            filtername: "Dogpatch"
         },
         {
             id: 12,
-            class:"filter-earlybird",
-            classForBlurBackImage:"filter-earlybird imageOfBlurBack",
-            filtername:"Earlybird"
+            class: "filter-earlybird",
+            classForBlurBackImage: "filter-earlybird imageOfBlurBack",
+            filtername: "Earlybird"
         },
         {
             id: 13,
-            class:"filter-gingham",
-            classForBlurBackImage:"filter-gingham imageOfBlurBack",
-            filtername:"Gingham"
+            class: "filter-gingham",
+            classForBlurBackImage: "filter-gingham imageOfBlurBack",
+            filtername: "Gingham"
         },
         {
             id: 14,
-            class:"filter-ginza",
-            classForBlurBackImage:"filter-ginza imageOfBlurBack",
-            filtername:"Ginza"
+            class: "filter-ginza",
+            classForBlurBackImage: "filter-ginza imageOfBlurBack",
+            filtername: "Ginza"
         },
         {
             id: 15,
-            class:"filter-hefe",
-            classForBlurBackImage:"filter-hefe imageOfBlurBack",
-            filtername:"Hefe"
+            class: "filter-hefe",
+            classForBlurBackImage: "filter-hefe imageOfBlurBack",
+            filtername: "Hefe"
         },
         {
             id: 16,
-            class:"filter-clarendon",
-            classForBlurBackImage:"filter-clarendon imageOfBlurBack",
-            filtername:"Clarendon"
+            class: "filter-clarendon",
+            classForBlurBackImage: "filter-clarendon imageOfBlurBack",
+            filtername: "Clarendon"
         },
         {
             id: 17,
-            class:"filter-helena",
-            classForBlurBackImage:"filter-helena imageOfBlurBack",
-            filtername:"Helena"
+            class: "filter-helena",
+            classForBlurBackImage: "filter-helena imageOfBlurBack",
+            filtername: "Helena"
         },
         {
             id: 18,
-            class:"filter-hudson",
-            classForBlurBackImage:"filter-hudson imageOfBlurBack",
-            filtername:"Hudson"
+            class: "filter-hudson",
+            classForBlurBackImage: "filter-hudson imageOfBlurBack",
+            filtername: "Hudson"
         },
         {
             id: 19,
-            class:"filter-1977",
-            classForBlurBackImage:"filter-1977 imageOfBlurBack",
-            filtername:"1977"
+            class: "filter-1977",
+            classForBlurBackImage: "filter-1977 imageOfBlurBack",
+            filtername: "1977"
         },
         {
             id: 20,
-            class:"filter-kelvin",
-            classForBlurBackImage:"filter-kelvin imageOfBlurBack",
-            filtername:"Kelvin"
+            class: "filter-kelvin",
+            classForBlurBackImage: "filter-kelvin imageOfBlurBack",
+            filtername: "Kelvin"
         },
         {
             id: 21,
-            class:"filter-juno",
-            classForBlurBackImage:"filter-juno imageOfBlurBack",
-            filtername:"Juno"
+            class: "filter-juno",
+            classForBlurBackImage: "filter-juno imageOfBlurBack",
+            filtername: "Juno"
         }
     ];
     const [PhoneIconSelected, setPhoneIconSelected] = useState(false);
@@ -318,13 +318,19 @@ const RenkAyarlari = (props) => {
             </div>
             <label className={` text-popNormal12 text-text-color-0 ml-4 mt-[23px]`}>Renk Filtreleri</label>
             <div className="grid grid-cols-3 gap-4 bg-white place-items-center mx-4 mt-4  overflow-scroll pb-[30%] ">
-                {filters.map((item,index) => (
-                 <div onClick={()=> {props.Applyfilterclass(item.class); props.ApplyclassForBlurBackImage(item.classForBlurBackImage)} } key={index} className=" hover:cursor-pointer" >
-                         <figure  class={item.class} >
-                        <img  src={props.imageURI} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
+                {filters.map((item, index) => (
+                    <div onClick={() => {
+                        props.Applyfilterclass(item.class);
+                        var hiddenphoto = document.getElementById("photo_image_hidden");
+                        hiddenphoto.style.removeProperty('filter');
+                        props.ApplyclassForBlurBackImage(item.classForBlurBackImage);
+
+                    }} key={index} className=" hover:cursor-pointer" >
+                        <figure class={item.class} >
+                            <img src={props.imageURI} className=" bg-blue-300 w-[65px] h-[65px] rounded " />
                         </figure>
                         <label className={` text-pop40012 text-bar-offline-0`}>{item.filtername}</label>
-                   </div>
+                    </div>
                 ))}
             </div>
         </div>

@@ -13,7 +13,7 @@ import { ReactComponent as CloseTxt } from '../assets/icons/closetxt.svg';
 //     format_color_text as TXT
 // } from '../assets/icons';
 
-import yummphotoo from "../assets/images/instagram.jpg";
+import BasePhotoForEdit from "../assets/images/instagram.jpg";
 import insta from "../assets/images/instagram.jpg";
 import Duzenle from "./Duzenle";
 import ArkaPlan from "./ArkaPlan";
@@ -23,14 +23,10 @@ import { toPng } from 'html-to-image';
 import { Resizable } from 'react-resizable';
 
 
-
-
-
-
 const PhotographMain = (props) => {
-    const [yummphoto, setyummphoto] = useState(yummphotoo);
+    const [PhotoforEdit, setPhotoforEdit] = useState(BasePhotoForEdit);
     const SETimagePhoto = (image) => {
-        setyummphoto(image);
+        setPhotoforEdit(image);
     }
 
     const ref = useRef()
@@ -222,9 +218,9 @@ const PhotographMain = (props) => {
     const Applyfilterclass = (item) => {
         setfilterclass(item);
     }
-    const [classForBlurBackImage,setclassForBlurBackImage]=useState("imageOfBlurBack");
-    const ApplyclassForBlurBackImage=(item)=>{
-setclassForBlurBackImage(item);
+    const [classForBlurBackImage, setclassForBlurBackImage] = useState("imageOfBlurBack");
+    const ApplyclassForBlurBackImage = (item) => {
+        setclassForBlurBackImage(item);
     }
 
 
@@ -254,13 +250,13 @@ setclassForBlurBackImage(item);
                         <button onClick={() => GetFinalImage()} className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
                     </ul>
                 </div>
-                <div className={`flex flex-row h-screen`}>
-                    <div className={`w-[80%] min-w-[80%] flex flex-col pr-[0.5%] `}>
+                <div className={`  flex flex-row h-screen `}>
+                    <div className={`  w-[80%] min-w-[80%] flex flex-col pr-[0.5%]  `}>
 
-                        {/* hidden IMAGE */}   
-                       
-                        <img id="photo_image_hidden" src={yummphoto} className={classForBlurBackImage}   />  
-                   
+                        {/* hidden IMAGE */}
+
+                        <img id="photo_image_hidden" src={PhotoforEdit} className={classForBlurBackImage} />
+
                         {/* HIDDEN İMAGE */}
 
                         {Stickers.map(div => div)}
@@ -272,7 +268,7 @@ setclassForBlurBackImage(item);
                                 <div id="vignetteContainer" className=" w-auto h-auto place-items-center flex ">
                                     <figure className={filterclass}  >
 
-                                        <img src={yummphoto} className={` object-fill w-auto h-auto max-h-[636px] self-center flex`} id="photo_image" />
+                                        <img src={PhotoforEdit} className={` object-fill w-auto h-auto max-h-[636px] self-center flex`} id="photo_image" />
 
                                     </figure>
                                 </div>
@@ -283,7 +279,10 @@ setclassForBlurBackImage(item);
                         {/* <div className={` bg-black justify-center justify-items-center  overflow-hidden`}> */}
                         {/* bottom buttons */}
                         <ul className={`flex flex-row justify-between align-middle overflow-hidden  bg-white w-[65%] self-center mt-[2%] `}>
-                            <li onClick={() => { setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false) }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center mx-[2%]`} >
+                            <li onClick={() => {
+                                setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false);
+                            
+                            }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center mx-[2%]`} >
                                 <Cropicon fill={OnCropSelect ? '#1D2939' : '#888888'} />
                                 <button className={` pt-2 hover:text-gray-600 text-pop60016 ${OnCropSelect ? ` text-text-color-0` : ` text-bar-offline-0 `}  `}>Düzenle</button>
                             </li>
@@ -305,7 +304,7 @@ setclassForBlurBackImage(item);
                     {/* right menue */}
                     <div className={` w-[20%] min-w-[20%] bg-white border-border-color-0 border-l overflow-scroll h-screen  `}>
                         {OnCropSelect ?
-                            <Duzenle imageURI={yummphotoo} SETimagePhoto={SETimagePhoto} />
+                            <Duzenle imageURI={PhotoforEdit} SETimagePhoto={SETimagePhoto} />
                             :
                             <></>
                         }
@@ -315,7 +314,7 @@ setclassForBlurBackImage(item);
                             <></>
                         }
                         {OnColorsSelect ?
-                            <RenkAyarlari Applyfilterclass={Applyfilterclass} ApplyclassForBlurBackImage={ApplyclassForBlurBackImage} imageURI={yummphotoo} />
+                            <RenkAyarlari Applyfilterclass={Applyfilterclass} ApplyclassForBlurBackImage={ApplyclassForBlurBackImage} imageURI={PhotoforEdit} />
                             :
                             <></>}
                         {OnAddTXTselect ?
