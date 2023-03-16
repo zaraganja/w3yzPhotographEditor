@@ -32,6 +32,11 @@ const PhotographMain = (props) => {
     const ref = useRef()
 
     const GetFinalImage = useCallback(() => {
+        var bottomPart = document.getElementById("bottomPart");
+        var screencaptureSection= document.getElementById("screencaptureSection");
+        screencaptureSection.style.height="700px";
+        bottomPart.style.display="none";
+        
         if (ref.current === null) {
             return
         }
@@ -43,7 +48,10 @@ const PhotographMain = (props) => {
                 link.href = dataUrl
                 link.click()
                 console.log(dataUrl)
-                console.log(link)
+                console.log(link);
+                bottomPart.style.display="flex";
+                screencaptureSection.style.height="auto";
+                
             })
             .catch((err) => {
                 console.log(JSON.stringify(err));
@@ -251,7 +259,7 @@ const PhotographMain = (props) => {
                     </ul>
                 </div>
                 <div className={`  flex flex-row h-screen `}>
-                    <div className={`  w-[80%] min-w-[80%] flex flex-col pr-[0.5%]  `}>
+                    <div ref={ref} id="screencaptureSection" className={`  w-[80%] min-w-[80%] flex flex-col pr-[0.5%]  `}>
 
                         {/* hidden IMAGE */}
 
@@ -261,7 +269,7 @@ const PhotographMain = (props) => {
 
                         {Stickers.map(div => div)}
                         {divs.map(div => div)}
-                        <div ref={ref} id="photo_maindiv" className=" z-10 w-[97%] max-w-[97%] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden flex place-items-center place-content-center justify-center align-middle ">
+                        <div id="photo_maindiv" className=" z-10 w-[97%] max-w-[97%] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden flex place-items-center place-content-center justify-center align-middle ">
 
                             <div className={` bg-myBackImage bg-cover h-[640px] w-[1280px] flex place-content-center overflow-hidden place-items-center`}
                                 id="photo_div" >
@@ -276,12 +284,13 @@ const PhotographMain = (props) => {
 
 
                         </div>
+
                         {/* <div className={` bg-black justify-center justify-items-center  overflow-hidden`}> */}
                         {/* bottom buttons */}
-                        <ul className={`flex flex-row justify-between align-middle overflow-hidden  bg-white w-[65%] self-center mt-[2%] `}>
+                        <ul id="bottomPart" className={`flex flex-row justify-between align-middle overflow-hidden  bg-white w-[65%] self-center mt-[2%] `}>
                             <li onClick={() => {
                                 setOnBackgroundSelect(false); setOnCropSelect(true); setOnColorsSelect(false); setOnAddTXTselect(false);
-                            
+
                             }} className={` hover:cursor-pointer flex flex-col place-content-center self-center overflow-hidden place-items-center mx-[2%]`} >
                                 <Cropicon fill={OnCropSelect ? '#1D2939' : '#888888'} />
                                 <button className={` pt-2 hover:text-gray-600 text-pop60016 ${OnCropSelect ? ` text-text-color-0` : ` text-bar-offline-0 `}  `}>Düzenle</button>
@@ -304,7 +313,7 @@ const PhotographMain = (props) => {
                     {/* right menue */}
                     <div className={` w-[20%] min-w-[20%] bg-white border-border-color-0 border-l overflow-scroll h-screen  `}>
                         {OnCropSelect ?
-                            <Duzenle imageURI={PhotoforEdit} SETimagePhoto={SETimagePhoto} />
+                            <Duzenle imageURI={PhotoforEdit} BasePhotoForEdit={BasePhotoForEdit} SETimagePhoto={SETimagePhoto} />
                             :
                             <></>
                         }

@@ -62,6 +62,8 @@ const Duzenle = (props) => {
         photo_image_hidden.style.width = 'auto';
         photo_image_hidden.style.height = 'auto';
         photo_image_hidden.style.borderRadius = '0%';
+        photo_image.style.scale= 'none';
+        photo_image_hidden.style.scale='none';
         // vignetteContainer.style.justifyContent = 'center';
         // vignetteContainer.style.alignItems = 'center';
         // photo_image.style.width = '392px';
@@ -108,6 +110,7 @@ const Duzenle = (props) => {
         photo_image.style.maxHeight = '636px';
         photo_image_hidden.style.maxHeight = '636px';
         photo_image_hidden.style.scale = 'none';
+        photo_image.style.scale = 'none';
         photo_image_hidden.style.objectFit = 'fill';
         // vignetteContainer.style.height='auto';
         // vignetteContainer.style.width='auto';
@@ -168,6 +171,7 @@ const Duzenle = (props) => {
         if(border700pxDone){
             photo_image.style.width = '1280px';
             photo_image.style.height = 'auto';
+            photo_image.style.scale= ' 2 2 '
             photo_image_hidden.style.width = '21%';
             photo_image_hidden.style.borderRadius = '600px';
             photo_image_hidden.style.height = '650px';
@@ -315,6 +319,7 @@ const Duzenle = (props) => {
             photo_image.style.height = 'auto';
             photo_image.style.width = '500000px';
             photo_image.style.maxHeight = '100%';
+            photo_image.style.scale=' 3 3 ';
             photo_image_hidden.style.height = '100%';
             photo_image_hidden.style.width = '21%';
             photo_image_hidden.style.maxHeight = '39%';
@@ -696,8 +701,7 @@ const Duzenle = (props) => {
 
         photo_div.style.width = '400px';
         photo_div.style.height = '630px';
-        photo_image.style.height = "auto";
-        photo_image.style.width = "auto";
+        photo_image.style.maxHeight = "auto";
         photo_maindiv.style.display = 'flex';
         photo_maindiv.style.placeContent = 'center';
         photo_div.style.borderRadius = '600px';
@@ -743,8 +747,8 @@ const Duzenle = (props) => {
     }
 
     const ResetImageBack = () => {
-        const image = document.getElementById('photo_image');
-        props.SETimagePhoto(props.imageURI);
+        // const image = document.getElementById('photo_image');
+        props.SETimagePhoto(props.BasePhotoForEdit);
 
     }
 
