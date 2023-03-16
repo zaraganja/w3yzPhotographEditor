@@ -34,8 +34,10 @@ const PhotographMain = (props) => {
     const GetFinalImage = useCallback(() => {
         var bottomPart = document.getElementById("bottomPart");
         var screencaptureSection= document.getElementById("screencaptureSection");
-         screencaptureSection.style.height="700px";
-
+        var photo_image_hidden = document.getElementById("photo_image_hidden");
+         screencaptureSection.style.height="670px";
+         photo_image_hidden.style.top= "1px";
+         photo_image_hidden.style.left="18%"; 
         bottomPart.style.display="none";
         
         if (ref.current === null) {
@@ -52,7 +54,8 @@ const PhotographMain = (props) => {
                 console.log(link);
                 bottomPart.style.display="flex";
                 screencaptureSection.style.height="auto";
-                
+                photo_image_hidden.style.top= "auto";
+                photo_image_hidden.style.left="auto";
                 
             })
             .catch((err) => {
