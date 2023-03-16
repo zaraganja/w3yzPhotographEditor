@@ -34,7 +34,8 @@ const PhotographMain = (props) => {
     const GetFinalImage = useCallback(() => {
         var bottomPart = document.getElementById("bottomPart");
         var screencaptureSection= document.getElementById("screencaptureSection");
-        screencaptureSection.style.height="700px";
+         screencaptureSection.style.height="700px";
+
         bottomPart.style.display="none";
         
         if (ref.current === null) {
@@ -51,6 +52,7 @@ const PhotographMain = (props) => {
                 console.log(link);
                 bottomPart.style.display="flex";
                 screencaptureSection.style.height="auto";
+                
                 
             })
             .catch((err) => {
@@ -258,17 +260,17 @@ const PhotographMain = (props) => {
                         <button onClick={() => GetFinalImage()} className={`rounded bg-btn-blue-0 hover:bg-blue-800 h-10 w-20 text-white text-pop14`}>Kaydet</button>
                     </ul>
                 </div>
-                <div className={`  flex flex-row h-screen `}>
-                    <div ref={ref} id="screencaptureSection" className={`  w-[80%] min-w-[80%] flex flex-col pr-[0.5%]  `}>
+                <div   className={`  flex flex-row h-screen `}>
+                    <div ref={ref} id="screencaptureSection"  className={`  w-[80%] min-w-[80%] flex flex-col pr-[0.5%]  `}>
 
                         {/* hidden IMAGE */}
-
+                      
                         <img id="photo_image_hidden" src={PhotoforEdit} className={classForBlurBackImage} />
 
                         {/* HIDDEN İMAGE */}
-
-                        {Stickers.map(div => div)}
+                       
                         {divs.map(div => div)}
+                        {Stickers.map(div => div)}
                         <div id="photo_maindiv" className=" z-10 w-[97%] max-w-[97%] h-importantHeight ml-5 mt-5 mr-[3px] relative overflow-hidden flex place-items-center place-content-center justify-center align-middle ">
 
                             <div className={` bg-myBackImage bg-cover h-[640px] w-[1280px] flex place-content-center overflow-hidden place-items-center`}
